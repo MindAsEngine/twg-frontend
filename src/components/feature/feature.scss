@@ -1,0 +1,24 @@
+.feature{
+    margin-top: 88px;
+    flex-direction: column;
+    &__content{
+        margin-top: 62px;  
+        p{
+            max-width: 752px;
+        }
+
+        .content__text{
+            margin-top: 17px;
+        }
+
+        .content__button{
+            border-radius: 76px;
+            margin-top: 77px;
+            max-width: 425px;
+            width: 100%;
+
+            max-height: 64px;
+            height: 100%;
+        }
+    }
+}

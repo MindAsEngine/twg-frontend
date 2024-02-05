@@ -1,0 +1,30 @@
+.header{
+    width: 100%;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    &__list{
+        flex: 1 1 auto;
+        gap: 24px;
+
+        .header__href{
+            color: rgba(255, 255, 255, 1);
+            padding: 10px;
+
+            cursor: pointer;
+        }
+    }
+    &__auth{
+        button{
+            padding: 10px 31px;
+            border-radius: 10px;
+        }
+    }
+}
+#header{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    z-index: 2;
+}

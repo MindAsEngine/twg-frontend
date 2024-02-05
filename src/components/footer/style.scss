@@ -1,0 +1,23 @@
+.footer {
+  gap: 144px;
+  width: 100%;
+  padding-top: 32px;
+
+  &__list {
+    flex: 1 1 auto;
+    display: flex;
+    gap: 56px;
+
+    .list__title {
+      margin-bottom: 32px;
+    }
+    .list__item{
+        flex-direction: column;
+        gap: 17px;
+
+        .footer__href{
+            cursor: pointer;
+        }
+    }
+  }
+}
