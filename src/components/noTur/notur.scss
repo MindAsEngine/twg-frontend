@@ -1,13 +1,13 @@
-.feature{
-    margin: 88px auto 0 auto;
+.notur {
+    margin-top: 48px;
     flex-direction: column;
-
-    background-image: url('../../img/featureVector.svg');
+    
+    background-image: url('../../img/NoTurBackground.png');
     background-repeat: no-repeat;
-    background-size: 55% auto;
-    background-position: center right;
+    background-size: cover;
+    background-position: center;
 
-    padding-bottom: 64px;
+    padding-bottom: 96px;
 
     &__content{
         margin-top: 48px;
@@ -22,6 +22,7 @@
 
         .content__text{
             margin-top: 0;
+            max-width: 480px;
         }
 
         .content__button{
@@ -33,7 +34,7 @@
             max-height: 64px;
             height: 100%;
 
-            padding: 12px;
+            padding: 8px;
         }
     }
 }
