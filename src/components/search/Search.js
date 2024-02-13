@@ -1,7 +1,7 @@
 import "./style.scss";
 import SeacrhSvg from "../../img/search.svg";
 
-const Seacrh = ({ placeholder, maxWidth }) => {
+const Search = ({ placeholder, maxWidth }) => {
   return (
     <>
       <img
@@ -22,10 +22,11 @@ const Seacrh = ({ placeholder, maxWidth }) => {
           padding: "10px 10px 10px 46px",
           fontSize: "20px",
           width: "100%",
+          fontFamily: "inherit"
         }}
       />
     </>
   );
 };
 
-export default Seacrh;
+export default Search;

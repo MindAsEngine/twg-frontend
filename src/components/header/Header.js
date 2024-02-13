@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 import Logo from "../../img/LogoM.png";
+import ChevronDown from "../../img/chevron-down.svg"
+
 import ModalComponent from "../modal/Modal";
-import Seacrh from "../search/Seacrch";
+import Search from "../search/SearchMini";
 import { handleDragStart } from "../../app/function";
 
 import "./style.scss";
@@ -25,29 +27,29 @@ export const Header = () => {
             <img src={Logo} alt="" onDragStart={handleDragStart} />
           </div>
         </Link>
+        <div className="header__i18n">
+          <button>
+            <span>RU</span>
+            <img src={ChevronDown} alt="" />
+          </button>
+        </div>
         <ul className="header__list flex align-cent justif-ss-cent">
-          <li className="header__href">Решения</li>
-          <li className="header__href">Ресурсы</li>
-          <li className="header__href">О нас</li>
-          <li className="header__href">Блог</li>
-          <li className="header__href">Контакты</li>
+          <li className="header__href"><NavLink>Решения</NavLink></li>
+          <li className="header__href"><NavLink>О нас</NavLink></li>
+          <li className="header__href"><NavLink>Блог</NavLink></li>
+          <li className="header__href"><NavLink>Контакты</NavLink></li>
         </ul>
-        <div className="header__search flex">
-          <div
-            className="flex"
-            style={{
-              maxWidth: "220px",
-              width: "100%",
-              position: "relative",
-              paddingRight: "5px",
-            }}
-          >
-            <Seacrh placeholder={"Найти"} maxWidth={"220px"} />
+        <div className="header__search flex" style={{ marginLeft: 'auto' }}>
+          <div>
+            <Search placeholder={"Найти"} maxWidth={"220px"} />
           </div>
         </div>
-        <div className="header__auth" style={{ marginLeft: "24px" }}>
+        <div className="header__auth flex">
           <button className="bgYl" onClick={modalHandler}>
             Вход
+          </button>
+          <button className="bg2 f-cWh header__registerbtn" onClick={modalHandler}>
+            Регистрация
           </button>
         </div>
       </header>
