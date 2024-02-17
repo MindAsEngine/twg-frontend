@@ -15,7 +15,7 @@ const CardItem = ({ title, description, rating, reviewsAmount, img, path }) => {
           <div className="card__description">
             <p>{ description }</p>
           </div>
-          <div className="flex justif-ss-end">
+          <div className="flex justif-ss-cent">
             <button>
             <Link to={path}>Узнать больше</Link>
             </button>

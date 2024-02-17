@@ -1,4 +1,3 @@
-import CardsList from "../../components/CardsList/CardsList";
 import Feature from "../../components/feature/Feature";
 import Map from "../../components/map/Map";
 import NoTur from "../../components/noTur/NoTur";
@@ -13,9 +12,6 @@ const Home = () => {
       </section>
       <section id="map">
         <Map />
-      </section>
-      <section id="cards-list" className="bg3">
-        <CardsList />
       </section>
       <section id="author-tours" className="bg3">
         <AuthorTours />
