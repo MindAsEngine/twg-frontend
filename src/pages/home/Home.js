@@ -12,7 +12,7 @@ const Map = lazy(() => import("../../components/map/Map"));
 const Home = () => {
   return (
     <>
-      <section id="feature" className="bg2">
+      <section id="feature" class="bgGr">
         <Feature />
       </section>
       <section id="map">
@@ -26,7 +26,7 @@ const Home = () => {
       <section id="author-tours" className="bg3">
         <AuthorTours />
       </section>
-      <section id="notur" className="bg2">
+      <section id="notur"  className="bgGr">
         <NoTur />
       </section>
     </>
