@@ -30,3 +30,5 @@ export const getSome = async (url) => {
   console.log(data);
   return data;
 };
+
+

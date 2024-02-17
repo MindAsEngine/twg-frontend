@@ -1,4 +1,8 @@
 Libs: - react-router: library for routing apps - react-tooltip: use for notification block
+node: 16.13.1
+
+npm install
+npm start
 
 Сборщик - webpack ------------------------------------------------Redux --------------------------------------------------------------------------------
 
