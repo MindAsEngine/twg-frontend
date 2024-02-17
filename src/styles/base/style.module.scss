@@ -1,7 +1,15 @@
 //Общие стили для страницы
 @import "./variables.module.scss";
 
+// Шрифт Open Sans
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+// Шрифт Montserrat
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 body {
+  background-color: $backgroundGr;
+  font-family: 'Open Sans', sans-serif;
   &.lock {
     overflow: hidden;
   }
@@ -83,6 +91,9 @@ body {
 .bg2 {
   background-color: $backgroundBl;
 }
+.bg3 {
+  background-color: $backgroundGr;
+}
 .bgYl {
   background-color: $backgroundYl;
 }
@@ -90,9 +101,18 @@ body {
 .f-cWh {
   color: $fontWh;
 }
+.f-cBlue {
+  color: $fontBlue;
+}
+.f-cBl {
+  color: $fontBl;
+}
 
 .fw700 {
   font-weight: $Fw700;
+}
+.fw600 {
+  font-weight: $Fw600;
 }
 .fw400 {
   font-weight: $Fw400;
@@ -113,6 +133,12 @@ body {
 
 .fs96 {
   font-size: $Fs96;
+}
+.fs64 {
+  font-size: $Fs64;
+}
+.fs48 {
+  font-size: $Fs48;
 }
 .fs32 {
   font-size: $Fs32;
@@ -142,4 +168,3 @@ body {
   background-color: rgba(0, 68, 120, 1);
   border-radius: 20px;
 }
-
