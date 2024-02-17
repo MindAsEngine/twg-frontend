@@ -19,6 +19,9 @@ const Home = () => {
           <Map />
         </Suspense>
       </section>
+      <section id="aboutUs">
+          <AboutUs />
+      </section>
       <section id="notur" className="bg2">
         <NoTur />
       </section>
