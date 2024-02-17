@@ -1,8 +1,12 @@
 import Feature from "../../components/feature/Feature";
-import Map from "../../components/map/Map";
+//import Map from "../../components/map/Map";
 import NoTur from "../../components/noTur/NoTur";
 import "./style.module.scss";
 import AboutUs from "../../components/aboutUs/AboutUs";
+
+import { lazy, Suspense } from "react";
+
+const Map = lazy(() => import("../../components/map/Map"));
 
 const Home = () => {
   return (
@@ -11,12 +15,11 @@ const Home = () => {
         <Feature />
       </section>
       <section id="map">
-        <Map />
+        <Suspense fallback={<></>} >
+          <Map />
+        </Suspense>
       </section>
-      <section id="aboutUs">
-          <AboutUs />
-      </section>
-      <section id="notur"  className="bg2">
+      <section id="notur" className="bg2">
         <NoTur />
       </section>
     </>
