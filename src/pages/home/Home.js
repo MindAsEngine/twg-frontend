@@ -1,6 +1,7 @@
 import Feature from "../../components/feature/Feature";
 //import Map from "../../components/map/Map";
 import NoTur from "../../components/noTur/NoTur";
+import AuthorTours from "../../components/AuthorTours/AuthorTours";
 import "./style.module.scss";
 import AboutUs from "../../components/aboutUs/AboutUs";
 
@@ -21,6 +22,9 @@ const Home = () => {
       </section>
       <section id="aboutUs">
           <AboutUs />
+      </section>
+      <section id="author-tours" className="bg3">
+        <AuthorTours />
       </section>
       <section id="notur" className="bg2">
         <NoTur />

@@ -3,6 +3,7 @@
 
 body {
   background-color: $backgroundGr;
+  font-family: 'Open Sans', sans-serif;
   &.lock {
     overflow: hidden;
   }
@@ -83,6 +84,9 @@ body {
 
 .bg2 {
   background-color: $backgroundBl;
+}
+.bg3 {
+  background-color: $backgroundGr;
 }
 .bgYl {
   background-color: $backgroundYl;
