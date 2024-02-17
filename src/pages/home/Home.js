@@ -6,13 +6,13 @@ import "./style.module.scss";
 const Home = () => {
   return (
     <>
-      <section id="feature" className="bg2">
+      <section id="feature" class="bgGr">
         <Feature />
       </section>
       <section id="map">
         <Map />
       </section>
-      <section id="notur"  className="bg2">
+      <section id="notur"  className="bgGr">
         <NoTur />
       </section>
     </>

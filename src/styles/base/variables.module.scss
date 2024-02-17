@@ -3,13 +3,17 @@
 
 // Размер шрифта
 $font-SizeMain: 14px;
-// $fontFamily1: ;
+$fontFamily1: 'Open Sans', sans-serif;
+$fontFamilyTitle: 'Montserrat', sans-serif;
 
 // backgroung // Header// Preview
 $backgroundBl:  rgba(0, 28, 34, 1);
 $backgroundYl:  rgba(255, 212, 53, 1);
+$backgroundGr: rgba(245, 245, 245, 1);
 
 $fontWh:rgba(255, 255, 255, 1);
+$fontBlue: rgba(0, 28, 34, 1);
+$fontBl: rgba(0, 0, 0, 1);
 
 //FontSize
 $Fw700: 700;
@@ -22,6 +26,9 @@ $Lh32: 32px;
 $Lh22: 22px; 
 
 $Fs96: 96px;
+$Fs64: 64px;
 $Fs48: 48px;
 $Fs32: 32px;
 $Fs24: 24px;
+
+$mobileBreakpoint: 950px;

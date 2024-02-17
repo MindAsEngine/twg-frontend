@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import FeatureImg from "../../img/featureGlobe.png";
 import "./feature.scss";
 
 // import FeatureImg from "../../img/featureVector.svg";
@@ -12,10 +13,11 @@ const Feature = () => {
       >
         <div className="container" style={{ width: "100%" }}>
           <div className="feature__content">
-            <div className="content__title f-cWh fw700 fs48">
+            <img alt="" className="content__mobileimg" src={FeatureImg} />
+            <div className="content__title f-cBlue fw700 fs64">
               <p>Собери свой тур</p>
             </div>
-            <div className="content__text f-cWh fw400 fs32 lh41">
+            <div className="content__text f-cBlue fw400 fs32 lh41">
               <p>
                 Вы можете оставить заявку и мы подберём лучший вариант специально для вас
               </p>

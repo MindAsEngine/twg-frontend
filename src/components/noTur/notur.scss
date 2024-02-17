@@ -1,23 +1,49 @@
+@import '../../styles/base/variables.module.scss';
+
+#notur {
+    box-shadow: 0px 0px 26.200000762939453px 0px #00000040 inset;
+    background-color: #EDEDED;
+}
+
 .notur {
     margin-top: 48px;
     flex-direction: column;
     
-    background-image: url('../../img/NoTurBackground.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    font-family: 'Open Sans';
 
-    padding-bottom: 96px;
+    &__image {
+        background-image: url('../../img/NoTurImage.svg');
+        background-repeat: no-repeat;
+        background-size: 35% auto;
+        background-position: bottom right;
+
+        @media (max-width: $mobileBreakpoint) {
+            background-image: none;
+        }
+    }
 
     &__content{
-        margin-top: 48px;
+        margin: 48px 0 96px 0;
         p{
             max-width: 752px;
         }
 
+        .content__mobileimg {
+            display: none;
+            width: 75%;
+            max-width: 240px;
+            margin: 0 auto;
+            user-select: none;
+
+            @media (max-width: $mobileBreakpoint) {
+                display: block;
+            }
+        }
+
         .content__title {
-            margin: 88px 0 48px 0;
+            margin: 88px 0 24px 0;
             line-height: normal;
+            font-family: $fontFamilyTitle;
         }
 
         .content__text{
@@ -27,14 +53,17 @@
 
         .content__button{
             border-radius: 76px;
-            margin-top: 77px;
-            max-width: 425px;
-            width: 100%;
+            margin-top: 128px;
 
-            max-height: 64px;
-            height: 100%;
+            padding: 16px 32px;
+            font-family: inherit;
+            color: #00000099;
 
-            padding: 8px;
+            box-shadow: 0px 4px 4px 0px #00000040;
+
+            @media (max-width: $mobileBreakpoint) {
+                width: 100%;
+            }
         }
     }
 }
