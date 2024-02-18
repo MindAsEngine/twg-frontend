@@ -1,13 +1,10 @@
 import React, { Component } from "react";
 import * as maptilersdk from "@maptiler/sdk";
 import MapPanel from "../panelMap/MapPanel";
-import axios from "axios";
-
-import { Spain } from "./mapex";
 
 import "./map.scss";
 
-import { getDriveRoute, getDriveRouteMulti } from "../../app/api/map";
+import { getDriveRoute } from "../../app/api/map";
 
 class Map extends Component {
   constructor(props) {
@@ -37,22 +34,6 @@ class Map extends Component {
     );
     const routeCoordinates = routeData.features[0].geometry.coordinates;
     this.setState({ getRoutes: [...this.state.getRoutes, routeCoordinates] });
-
-    // const routeData1 = await getDriveRoute(
-    //   [52.09102770452696, 9.201657959853016],
-    //   [42.583389164900495, 10.17190424631698]
-    // );
-    // const routeCoordinates1 = routeData1.features[0].geometry.coordinates;
-    // console.log(routeCoordinates1);
-
-    // this.setState({ getRoutes: [...this.state.getRoutes, routeCoordinates1] });
-
-    // const routeData2 = await getDriveRoute(
-    //   [42.09102770452696, 7.201657959853016],
-    //   [41.583389164900495, 12.17190424631698]
-    // );
-    // const routeCoordinates2 = routeData2.features[0].geometry.coordinates;
-    // this.setState({ getRoutes: [...this.state.getRoutes, routeCoordinates2] });
     this.map.on("load", () => {
       this.map.addLayer({
         id: "route",
@@ -77,10 +58,7 @@ class Map extends Component {
           "line-width": 4,
         },
       });
-
-      for (let i = 0; i < this.state.getRoutes.length; i++) {
-        const el = this.state.getRoutes[i];
-      }
+      
     });
   }
 

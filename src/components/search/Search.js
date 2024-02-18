@@ -1,5 +1,5 @@
 import "./style.scss";
-import SeacrhSvg from "../../img/search.svg";
+import SeacrhSvg from "../../img/search-white.svg";
 
 const Search = ({ placeholder, maxWidth }) => {
   return (
@@ -10,7 +10,7 @@ const Search = ({ placeholder, maxWidth }) => {
         style={{
           position: "absolute",
           top: "10px",
-          left: "10px",
+          left: "80%",
           bottom: "13px",
         }}
       />
@@ -22,7 +22,10 @@ const Search = ({ placeholder, maxWidth }) => {
           padding: "10px 10px 10px 46px",
           fontSize: "20px",
           width: "100%",
-          fontFamily: "inherit"
+          fontFamily: "inherit",
+          backgroundColor: 'rgba(0, 28, 34, 1)',
+          maxWidth: maxWidth,
+          color:"rgba(255, 255, 255, 1)"
         }}
       />
     </>
