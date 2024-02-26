@@ -1,0 +1,50 @@
+@import '../../styles/base/variables.module.scss';
+
+#constructor {
+    margin: 0 auto;
+}
+
+.constructor {
+    margin: 0 auto;
+    padding: 48px 20px;
+
+    #constructor-offers {
+        margin-top: 64px;
+
+        &__submit {
+            margin-top: 128px;
+            line-height: 1.25;
+
+            button {
+                display: block;
+                margin: 32px auto 0 auto;
+                background-color: #e2e2e2;
+                padding: 12px 128px;
+                border-radius: 9999px;
+                user-select: none;
+                font-family: inherit;
+                color: #8a8a8a;
+            }
+        }
+    }
+
+    @media (min-width: $mobileBreakpoint) {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 64px;
+
+        #constructor-offers {
+            margin-top: 0;
+        }
+    }
+}
+
+#constructor div {
+    // outline: 1px solid red;
+}
+
+.constructor {
+    &__section {
+        // outline: 1px dashed red;
+    }
+}
