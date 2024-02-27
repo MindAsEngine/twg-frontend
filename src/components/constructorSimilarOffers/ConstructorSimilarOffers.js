@@ -40,7 +40,7 @@ export default function ConstructorSimilarOffers() {
             <p className="fw600 fs24 text2">Похожие предложения</p>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginTop: '24px' }}>
-                {offersList.map((o) => <SimilarOffer title={o.title} img={o.img} path={o.path} />)}
+                {offersList.map((o, index) => <SimilarOffer key={index} title={o.title} img={o.img} path={o.path} />)}
             </div>
         </>
     )
