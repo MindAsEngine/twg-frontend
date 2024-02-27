@@ -16,11 +16,11 @@ const tabsList = [
     },
     {
         title: 'Медицина',
-        component: 'Вкладка 2'
+        component: 'Содержимое вкладки «Медицина»'
     },
     {
         title: 'Автобусные туры',
-        component: 'Вкладка 3'
+        component: 'Содержимое вкладки «Автобусные туры»'
     }
 ];
 
@@ -77,7 +77,7 @@ const Constructor = () => {
                 onSubmit={(values, { setSubmitting }) => {
                     handlePost();
                     setSubmitting(false);
-                    console.log(values);
+                    // console.log(values);
                 }}
                 >
                     {({ isSubmitting }) => (
