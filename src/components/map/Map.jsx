@@ -58,10 +58,8 @@ class Map extends Component {
           "line-width": 4,
         },
       });
-      
     });
   }
-
 
   // Хуита для запроса на route для того чтобы не было ошибок
   // handleAddRoute = (el) => {
@@ -88,10 +86,8 @@ class Map extends Component {
       <div className="container m-centr map">
         <div className="map__panel">
           <MapPanel handleCallback={this.handleCallback} />
-          <div className="panel__wrapper">
-            <div className="map-wrap">
-              <div ref={this.mapContainer} className="map__content" />
-            </div>
+          <div className="map-wrap">
+            <div ref={this.mapContainer} className="map__content" />
           </div>
         </div>
       </div>

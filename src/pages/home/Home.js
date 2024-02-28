@@ -1,15 +1,17 @@
+import { lazy, Suspense } from "react";
+import { useSelector } from "react-redux";
+
 import Feature from "../../components/feature/Feature";
-//import Map from "../../components/map/Map";
 import NoTur from "../../components/noTur/NoTur";
 import AuthorTours from "../../components/AuthorTours/AuthorTours";
 import "./style.module.scss";
 import AboutUs from "../../components/aboutUs/AboutUs";
-
-import { lazy, Suspense } from "react";
+import News from "../../components/news/News";
 
 const Map = lazy(() => import("../../components/map/Map"));
 
 const Home = () => {
+  const visibilityIndex = useSelector((state) => state.visibilityIndex.visibile);
   return (
     <>
       <section id="feature" class="bgGr">
@@ -28,6 +30,9 @@ const Home = () => {
       </section>
       <section id="notur"  className="bgGr">
         <NoTur />
+      </section>
+      <section id="news"  className="bgGr">
+        <News />
       </section>
     </>
   );

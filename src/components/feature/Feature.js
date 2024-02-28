@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import FeatureImg from "../../img/featureGlobe.png";
 import "./feature.scss";
 
@@ -28,7 +29,7 @@ const Feature = () => {
       <div className="flex justif-ss-cent">
         <div className="container" style={{ width: "100%" }}>
           <div className="feature__content">
-            <img alt="" className="content__mobileimg" src={FeatureImg} />
+            <LazyLoadImage src={FeatureImg} className="content__mobileimg" />
             <div className="content__title f-cBlue fw700 fs64">
               <p>{changedText.title}</p>
             </div>
