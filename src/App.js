@@ -10,6 +10,7 @@ const Home = lazy(() => import("./pages/home/Home"));
 const Constructor = lazy(() => import("./pages/constructor/Constructor"));
 const Tur = lazy(() => import("./pages/tur/Tur"));
 
+
 function App() {
   return (
     <>

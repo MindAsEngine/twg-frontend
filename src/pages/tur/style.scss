@@ -1,10 +1,29 @@
 @import "../../styles/base/variables.module.scss";
 
 .tur {
+  & .pd {
+    padding: 0 6.37rem;
+  }
+  .section__title {
+    margin-bottom: 2rem;
+    margin-top: 2.5rem;
+  }
   &__about {
-    .Collapsible {
-      display: flex;
-      flex-direction: column-reverse;
+    .showMore__btn {
+      gap: 10px;
+
+      align-items: center;
+      color: rgba(0, 68, 120, 1);
+      margin-top: 24px;
+      svg {
+        transform: rotate(180deg);
+      }
+
+      &.opn {
+        svg {
+          transform: rotate(360deg);
+        }
+      }
     }
     .tur__photo {
       max-width: 754px;
@@ -14,13 +33,13 @@
 
   .preview__body {
     padding: 232px 0 36px;
-    .preview__text{
+    .preview__text {
       align-items: end;
     }
   }
 
-  &__map{
-    .map__feedback{
+  &__map {
+    .map__feedback {
       display: flex;
       flex-direction: column;
       align-items: center;
