@@ -41,9 +41,12 @@ form {
 .Collapsible {
     width: 100%;
     &__trigger {
-        font-weight: 700;
-        font-size: 24px;
+        font-weight: $Fw700;
+        font-size: $Fs24;
         cursor: pointer;
+
+        display: flex;
+        align-items: center;
     }
     // chevron у триггеров разворачиваемых блоков
     &__trigger::after {
@@ -56,7 +59,7 @@ form {
         transition-duration: .25s;
     }
     &__trigger.is-open::after {
-        transform: rotate(0deg) translateY(4px);
+        transform: rotate(0deg) ;
     }
     &__contentInner {
         padding-top: 24px;

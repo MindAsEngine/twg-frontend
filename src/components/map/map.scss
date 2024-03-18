@@ -4,6 +4,17 @@
   height: 690px;
   border-radius: 10px;
   overflow: hidden;
+
+  .dropdown {
+    position: absolute;
+    bottom: 16px;
+    left: 26px;
+  }
+  .dropleft {
+    position: absolute;
+    bottom: 16px;
+    left: 122px;
+  }
 }
 
 .map__content {

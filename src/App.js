@@ -9,7 +9,9 @@ import Footer from "./components/footer/Footer";
 const Home = lazy(() => import("./pages/home/Home"));
 const Constructor = lazy(() => import("./pages/constructor/Constructor"));
 const Tur = lazy(() => import("./pages/tur/Tur"));
-
+const Display = lazy(() => import("./pages/display/Display"));
+const Attractions = lazy(() => import("./pages/attractions/Attractions"));
+const Hotel = lazy(() => import("./pages/hotel/Hotel"));
 
 function App() {
   return (
@@ -29,7 +31,7 @@ function App() {
               }
             />
             <Route
-              path="/constructor"
+              path="/const"
               element={
                 <Suspense fallback={<></>}>
                   <Constructor />
@@ -41,6 +43,30 @@ function App() {
               element={
                 <Suspense fallback={<></>}>
                   <Tur />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/attraction"
+              element={
+                <Suspense fallback={<></>}>
+                  <Attractions />
+                </Suspense>
+              }
+            />
+             <Route
+              path="/hotel"
+              element={
+                <Suspense fallback={<></>}>
+                  <Hotel />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/display"
+              element={
+                <Suspense fallback={<></>}>
+                  <Display />
                 </Suspense>
               }
             />

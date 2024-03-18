@@ -1,0 +1,232 @@
+.dropdown {
+  &__container {
+    position: relative;
+    display: flex;
+    user-select: none;
+    flex-direction: column-reverse;
+    width: 72px; // Set width
+    height: auto; // Allow height to adjust based on content
+  }
+
+  &__toggle {
+    background-color: rgba(224, 224, 224, 1);
+    border: none;
+    width: 72px;
+    height: 72px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    border-top-left-radius: 91px;
+    border-bottom-right-radius: 91px;
+    border-bottom-left-radius: 91px;
+    z-index: 2;
+
+    &.closed {
+      border-top-right-radius: 91px;
+      border-top-left-radius: 91px;
+      border-bottom-right-radius: 91px;
+      border-bottom-left-radius: 91px;
+      transition: border-radius 0.5s, background-color 0.6s;
+    }
+
+    &.open {
+      background-color: rgba(255, 212, 53, 1);
+      border-radius: 91px;
+      transition: border-radius 0.5s, background-color 0.3s;
+
+      svg {
+        path {
+          stroke: black;
+        }
+      }
+    }
+
+    &.selected {
+      background-color: rgba(255, 212, 53, 1);
+
+      svg {
+        path {
+          stroke: black;
+        }
+      }
+    }
+  }
+
+  &__menu {
+    position: absolute;
+    bottom: 46%;
+    overflow: hidden;
+    border-top-right-radius: 91px;
+    border-top-left-radius: 91px;
+    transition: border-radius 0.3s;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+
+    z-index: 1;
+    &.open {
+      animation: floatIn 0.5s ease forwards;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      transition: all 0.3s;
+      background-color: rgba(255, 212, 53, 1);
+    }
+
+    &.closed {
+      animation: floatOut 0.5s ease forwards;
+      pointer-events: none;
+      transition: all 0.3s;
+      background-color: rgba(224, 224, 224, 1);
+    }
+
+    &.selected {
+      background-color: rgba(255, 212, 53, 1);
+    }
+    ul {
+      list-style-type: none;
+      li {
+        padding: 19.5px;
+
+        svg.selected {
+          path {
+            stroke: rgba(255, 255, 255, 1);
+          }
+        }
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+@keyframes floatIn {
+  from {
+    height: 0;
+  }
+  to {
+    height: 243px;
+  }
+}
+
+@keyframes floatOut {
+  from {
+    height: 243px;
+  }
+  to {
+    height: 0;
+  }
+}
+
+.dropleft {
+  &__container {
+    position: relative;
+    user-select: none;
+    height: 70px; // Set width
+    width: auto;
+  }
+
+  &__toggle {
+    background-color: rgba(224, 224, 224, 1);
+    border: none;
+    width: 72px;
+    height: 72px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    border-top-right-radius: 91px;
+    border-top-left-radius: 91px;
+    border-bottom-right-radius: 91px;
+    border-bottom-left-radius: 91px;
+    z-index: 2;
+
+    &.closed {
+      border-top-right-radius: 91px;
+      border-top-left-radius: 91px;
+      border-bottom-right-radius: 91px;
+      border-bottom-left-radius: 91px;
+      transition: border-radius 0.5s, background-color 0.6s;
+    }
+
+    &.open {
+      background-color: rgba(255, 212, 53, 1);
+      border-radius: 91px;
+      transition: border-radius 0.5s, background-color 0.3s;
+
+      svg {
+        path {
+          fill: rgba(0, 0, 0, 1);
+        }
+      }
+    }
+
+    &.selected {
+      background-color: rgba(255, 212, 53, 1);
+
+      svg {
+        path {
+          fill: rgba(0, 0, 0, 1);
+        }
+      }
+    }
+  }
+  &__menu {
+    position: absolute;
+    bottom: 0;
+    left: 40%;
+    overflow: hidden;
+    transition: border-radius 0.3s;
+
+    border-top-right-radius: 33px;
+    border-bottom-right-radius: 33px;
+    z-index: 1;
+    &.open {
+      animation: floatInRight 0.5s ease forwards;
+      transition: all 0.3s;
+      background-color: rgba(255, 212, 53, 1);
+    }
+
+    &.closed {
+      animation: floatOutRight 0.5s ease forwards;
+      pointer-events: none;
+      transition: all 0.3s;
+      background-color: rgba(224, 224, 224, 1);
+    }
+
+    &.selected {
+      background-color: rgba(255, 212, 53, 1);
+    }
+
+    ul {
+      list-style-type: none;
+      flex-direction: row-reverse;
+      li {
+        padding: 19.5px;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+@keyframes floatInRight {
+  from {
+    width: 0;
+  }
+  to {
+    width: 380px;
+  }
+}
+
+@keyframes floatOutRight {
+  from {
+    width: 380px;
+  }
+  to {
+    width: 0;
+  }
+}

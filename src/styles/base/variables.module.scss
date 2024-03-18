@@ -1,39 +1,64 @@
-// Сюда пишем переменные, которые потом будем использовать. 
+// Сюда пишем переменные, которые потом будем использовать.
 // нейминг name.module.scss
 
 // Размер шрифта
 $font-SizeMain: 14px;
-$fontFamily1: 'Open Sans', sans-serif;
-$fontFamilyTitle: 'Montserrat', sans-serif;
+$fontFamily1: "Open Sans", sans-serif;
+$fontFamilyTitle: "Montserrat", sans-serif;
 
 // backgroung // Header// Preview
-$backgroundBl:  rgba(0, 28, 34, 1);
-$backgroundYl:  rgba(255, 212, 53, 1);
-$backgroundPr:  rgba(234, 235, 238, 1);
-$backgroundGr:  rgba(245, 245, 245, 1);
+$backgroundBl: rgba(0, 28, 34, 1);
+$backgroundYl: rgba(255, 212, 53, 1);
+$backgroundPr: rgba(234, 235, 238, 1);
+$backgroundGr: rgba(245, 245, 245, 1);
 $backgroundWh: rgba(255, 255, 255, 1);
+$backgroundYlGr: linear-gradient(
+  90deg,
+  rgba(255, 212, 53, 1) 0%,
+  rgba(191, 255, 87, 1) 100%
+);
 
-$fontWh:rgba(255, 255, 255, 1);
+//Цвета нового дизайна
+$backgroundMainBlue: rgba(4, 96, 217, 1);
+$backgroundMainCooper: rgba(121, 57, 57, 1);
+$backgroundMainAqua: rgba(15, 107, 157, 1);
+$backgroundMainSilver: rgba(152, 170, 180, 1);
+$backgroundMainCvet1: rgba(131, 130, 126, 1);
+$backgroundMainBlueExtra: rgba(20, 101, 219, 1);
+$backgroundMainGolden: rgba(183, 123, 89, 1);
+
+$backgroundNoTur: linear-gradient(90deg, #1970E1 -111.49%, #9CD0E6 147.14%, #1BB090 147.17%);
+
+$fontWh: rgba(255, 255, 255, 1);
 $fontBlue: rgba(0, 28, 34, 1);
 $fontBl: rgba(0, 0, 0, 1);
+$fontGr: rgba(138, 138, 138, 1);
 
 //FontSize
 $Fw700: 700;
 $Fw600: 600;
 $Fw400: 400;
 
-$Lh123: 123px; 
-$Lh52: 52px; 
-$Lh41: 41px; 
-$Lh32: 32px; 
-$Lh22: 22px; 
+$Lh123: 123px;
+$Lh52: 52px;
+$Lh44: 44px;
+$Lh41: 41px;
+$Lh32: 32px;
+$Lh30: 30px;
+$Lh27: 27px;
+$Lh24: 24px;
+$Lh22: 22px;
+$Lh20: 20px;
+$Lh18: 18px;
 
 $Fs96: 96px;
 $Fs64: 64px;
 $Fs48: 48px;
 $Fs40: 40px;
+$Fs36: 36px;
 $Fs32: 32px;
 $Fs24: 24px;
+$Fs20: 20px;
 $Fs16: 16px;
 
 $mobileBreakpoint: 950px;

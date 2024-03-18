@@ -1,10 +1,13 @@
-import Collapsible from "react-collapsible";
 import Preview from "../../img/TurPrew.png";
 import turNo from "../../img/turNo.png";
 import "./style.scss";
 import { ShowMoreContent } from "../../components/showMore/ShowMore";
+import Comments from "../../components/comments/Comments";
+import MapsWithSideBar from "../../components/map/MapsWithSideBar";
+import { Tag } from "../../components/tags/Tags";
+import TagsList from "../../components/tags/TagsList";
 
-const Tur = () => {
+const Tur = ({ link }) => {
   return (
     <div className="tur">
       <section id="preview">
@@ -17,16 +20,17 @@ const Tur = () => {
             backgroundRepeat: "no-repeat",
           }}
         >
-          <div className="preview__text container m-centr flex justif-ss-betw">
+          <div className="preview__text container m-centr flex justif-ss-betw pd">
             <p className="tur__name fs64 f-cWh">Кипр Тур А</p>
-            <div className="tur__contact fs16 fw400 lh22 f-cWh">
-              <p className="tur__mail">pochta@pocta.de</p>
-              <p className="tur__num">+1 234 567 89 00</p>
+            <div className="tur__price  bgYl">
+              <p className="fs36 fw600 lh44">$6000</p>
             </div>
           </div>
         </div>
       </section>
-      <section id="tags"></section>
+      <section id="tags">
+        <TagsList />
+      </section>
       <section id="photos"></section>
       <section id="about-tur">
         <div className="tur__about container m-centr pd">
@@ -61,17 +65,10 @@ const Tur = () => {
       <section id="add-tags"></section>
       <section id="map">
         <div className="tur__map container m-centr pd">
-          <div className="map__feedback">
-            <button>Заказать тур</button>
-            <p>Или связаться с нами</p>
-            <div className="tur__contact">
-              <p className="tur__mail">pochta@pocta.de</p>
-              <p className="tur__num">+1 234 567 89 00</p>
-            </div>
-          </div>
+          <MapsWithSideBar />
         </div>
       </section>
-      <section id="comments"></section>
+      <Comments />
     </div>
   );
 };

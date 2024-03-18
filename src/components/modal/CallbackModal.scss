@@ -1,0 +1,53 @@
+.modalCallback {
+  height: 100%;
+  &__wrapper {
+    width: 100%;
+    .modalCallback__subtitle {
+      margin-top: 12px;
+    }
+
+    form {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      .form__input {
+        display: flex;
+        flex-direction: column;
+        label {
+          margin-bottom: 12px;
+          line-height: 27px;
+        }
+        &:first-child {
+          margin-bottom: 16px;
+        }
+
+        input {
+          border: 1px solid rgba(212, 212, 212, 1);
+          padding: 0 12px;
+          height: 47px;
+          border-radius: 6px;
+        }
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+          /* display: none; <- Crashes Chrome on hover */
+          -webkit-appearance: none;
+          margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+        }
+      }
+      button {
+        margin-top: 25px;
+        line-height: 28px;
+        padding: 11.5px 23px;
+        background-color: rgba(226, 226, 226, 1);
+        border-radius: 38px;
+        transition: all 0.3s ease-in-out;
+
+        &.full {
+          background-color: rgba(255, 212, 53, 1);
+          color: rgba(0, 0, 0, 1);
+        }
+      }
+    }
+  }
+}

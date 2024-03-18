@@ -3,12 +3,31 @@
 .ReactModal__Overlay {
   opacity: 0;
   transition: all 500ms ease-in-out;
+
+  overflow-y: hidden;
 }
 
 .ReactModal__Overlay--after-open {
   opacity: 1;
+  z-index: 4;
 }
 
 .ReactModal__Overlay--before-close {
   opacity: 0;
+}
+
+.modal-que{
+  gap: 24px;
+
+  .btn-cli{
+    flex: 1 1 auto;
+  }
+  .btn-men{
+    max-width: 343px;
+    width: 100%;
+  }
+
+  .modal__button{
+    height: 84px;
+  }
 }

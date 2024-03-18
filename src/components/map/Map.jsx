@@ -5,6 +5,9 @@ import MapPanel from "../panelMap/MapPanel";
 import "./map.scss";
 
 import { getDriveRoute } from "../../app/api/map";
+import DropUp from "../filtrs/DropUp";
+import ExtenLeft from "../filtrs/ExtenLeft";
+import MapTurs from "./mapturs/MapTurs";
 
 class Map extends Component {
   constructor(props) {
@@ -58,21 +61,12 @@ class Map extends Component {
           "line-width": 4,
         },
       });
+      this.map.on("click", (e) => {
+        const { lng, lat } = e.lngLat;
+        console.log("Coordinates:", lng, lat);
+      });
     });
   }
-
-  // Хуита для запроса на route для того чтобы не было ошибок
-  // handleAddRoute = (el) => {
-  //   setTimeout(async () => {
-  //     const routeData = await getDriveRoute(
-  //       [50.09102770452696, 6.201657959853016],
-  //       [49.583389164900495, 13.17190424631698]
-  //     );
-  //     const routeCoordinates = routeData.features[0].geometry.coordinates;
-  //     this.setState({ getRoutes: [...this.state.getRoutes, routeCoordinates] });
-  //   }, 500);
-  //   console.log(this.state.getRoutes);
-  // };
   handleCallback = (el) => {
     this.setState({ panelShow: el });
   };
@@ -87,9 +81,12 @@ class Map extends Component {
         <div className="map__panel">
           <MapPanel handleCallback={this.handleCallback} />
           <div className="map-wrap">
+            <DropUp />
+            <ExtenLeft />
             <div ref={this.mapContainer} className="map__content" />
           </div>
         </div>
+        <MapTurs />
       </div>
     );
   }

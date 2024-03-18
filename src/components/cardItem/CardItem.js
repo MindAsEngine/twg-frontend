@@ -1,23 +1,35 @@
-import { Link } from 'react-router-dom';
-import './carditem.scss'
-import Stars from './Stars/Stars';
+import { Link } from "react-router-dom";
+import "./carditem.scss";
+import RatingComponent from "../rating/Rating";
+import { handleDragStart } from "../../app/function";
 
 const CardItem = ({ title, description, rating, reviewsAmount, img, path }) => {
   return (
     <>
       <div className="card">
-        <img className="card__thumbnail" src={img} alt="" />
+        <img
+          className="card__thumbnail"
+          src={img}
+          alt=""
+          onDragStart={handleDragStart}
+        />
         <div className="card__wrapper flex">
           <div className="card__title flex justif-ss-betw">
-            <p>{ title }</p>
-            <div className="card__rating"><Stars rating={rating} reviewsAmount={reviewsAmount} /></div>
+            <p>{title}</p>
+            <div className="card__rating">
+              <RatingComponent
+                ratingNumber={reviewsAmount}
+                ratingAverage={rating}
+                readonly={true}
+              />
+            </div>
           </div>
           <div className="card__description">
-            <p>{ description }</p>
+            <p>{description}</p>
           </div>
           <div className="flex justif-ss-cent">
-            <button>
-            <Link to={path}>Узнать больше</Link>
+            <button className="card__button">
+              <Link to={path}>Узнать больше</Link>
             </button>
           </div>
         </div>

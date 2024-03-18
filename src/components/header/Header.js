@@ -5,11 +5,11 @@ import { useSelector } from "react-redux";
 import Logo from "../../img/LogoM.png";
 import { DropdownLg } from "../cardItem/Dropdown/DropdownLan";
 
-import ModalComponent from "../modal/Modal";
 import Search from "../search/Search";
 import { handleDragStart } from "../../app/function";
 
 import "./style.scss";
+import ModalAuthQuestComponent from "../modal/ModalQuest";
 
 export const Header = () => {
   const [state, setState] = useState({
@@ -19,6 +19,11 @@ export const Header = () => {
   function modalHandler() {
     setState({ ...state, show: !state.show });
   }
+
+  function parentCallBack(el) {
+    setState({ ...state, show: el });
+  }
+
   const language = useSelector((state) => state.language.value);
   const changedText =
     language === "RU"
@@ -75,13 +80,22 @@ export const Header = () => {
           </button>
         </div>
       </header>
-      <ModalComponent
+
+      <ModalAuthQuestComponent
         open={<>Open</>}
         close={<>Close</>}
         content={<>Lorem, ipsum dolor.</>}
         show={state.show}
         //style={customStyles}
+        contentModal={<ModalAdmin />}
+        callBack={parentCallBack}
       />
     </>
   );
+};
+
+//Модалки 
+const ModalAdmin = () => {
+  return <>
+  Lorem, ipsum dolor.</>;
 };

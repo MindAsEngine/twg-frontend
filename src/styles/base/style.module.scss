@@ -26,6 +26,37 @@ body {
   align-items: center;
 }
 
+.tags__wrapper {
+  display: block;
+  overflow-x: scroll;
+  overflow-y: hidden;
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+
+  /* ie 10+ */
+  & {
+    -ms-overflow-style: none;
+  }
+
+  /* фф (свойство больше не работает, других способов тоже нет)*/
+  & {
+    overflow: -moz-scrollbars-none;
+  }
+  .tags__list {
+    gap: 20px;
+    padding-bottom: 10px;
+
+    &:hover{
+      cursor: default;
+    }
+    &:active{
+      cursor: grabbing;
+    }
+  }
+}
+
 .flex {
   display: flex;
 }
@@ -95,8 +126,44 @@ body {
   margin-left: 0 !important;
 }
 
+.loading__wrapper {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.loading {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+  right: 50%;
+  transform: translate(50%, 50%);
+
+  width: 40px;
+  height: 40px;
+  animation: animate 2s infinite linear;
+  border-radius: 50%;
+  background-image: url("../../img/loading.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+@keyframes animate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .bg2 {
-  background-color: $backgroundBl;
+  //background-color: $backgroundBl;
+  background-color: $backgroundMainBlue;
+}
+.noTurbg {
+  background: $backgroundNoTur;
 }
 .bg3 {
   background-color: $backgroundGr;
@@ -104,15 +171,21 @@ body {
 .bgYl {
   background-color: $backgroundYl;
 }
+.bgYlGr {
+  background: $backgroundYlGr;
+}
 .bgWh {
   background-color: $backgroundWh;
 }
-.bgPr{
+.bgPr {
   background-color: $backgroundPr;
 }
 
 .f-cWh {
   color: $fontWh;
+}
+.f-cGr {
+  color: $fontGr;
 }
 .f-cBlue {
   color: $fontBlue;
@@ -137,14 +210,32 @@ body {
 .lh52 {
   line-height: $Lh52;
 }
+.lh44 {
+  line-height: $Lh44;
+}
 .lh41 {
   line-height: $Lh41;
 }
 .lh32 {
   line-height: $Lh32;
 }
+.lh30 {
+  line-height: $Lh30;
+}
+.lh27 {
+  line-height: $Lh27;
+}
+.lh24 {
+  line-height: $Lh24;
+}
 .lh22 {
   line-height: $Lh22;
+}
+.lh20 {
+  line-height: $Lh22;
+}
+.lh18 {
+  line-height: $Lh18;
 }
 
 .fs96 {
@@ -152,6 +243,9 @@ body {
 }
 .fs64 {
   font-size: $Fs64;
+}
+.fs36 {
+  font-size: $Fs36;
 }
 .fs40 {
   font-size: $Fs40;
@@ -164,6 +258,9 @@ body {
 }
 .fs24 {
   font-size: $Fs24;
+}
+.fs20 {
+  font-size: $Fs20;
 }
 .fs16 {
   font-size: $Fs16;

@@ -23,10 +23,11 @@ const Search = ({ placeholder, maxWidth }) => {
           fontSize: "20px",
           width: "100%",
           fontFamily: "inherit",
-          backgroundColor: 'rgba(0, 28, 34, 1)',
+          //backgroundColor: 'rgba(0, 28, 34, 1)',
           maxWidth: maxWidth,
           color:"rgba(255, 255, 255, 1)"
         }}
+        className="bg2"
       />
     </>
   );

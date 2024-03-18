@@ -73,15 +73,16 @@ class ModalComponent extends React.Component {
   }
   closeModal() {
     this.setState({ modalShow: false });
+    this.props.callBack(false);
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.show !== prevProps.show) {
       this.setState({ modalShow: this.props.show });
     }
-  }
 
-  
+    console.log(this.props);
+  }
 
   render() {
     return (

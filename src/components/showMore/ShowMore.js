@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 
 export const ShowMoreContent = (props) => {
+  console.log(props);
   const [state, setState] = useState({
     button: true,
     showMore: false,
