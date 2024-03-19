@@ -89,10 +89,10 @@ export default function AuthorTours({ runScroll }) {
       <h2 className="cardslist__title">{changedText[0]}</h2>
       <p className="cardslist__description">{changedText[1]}</p>
       <div className="cardslist__scrollable flex" {...events} ref={ref}>
-        {cardsList.map((card) => {
+        {cardsList.map((card, index) => {
           return (
             <CardItem
-              key={card}
+              key={index}
               title={card.title}
               description={card.description}
               rating={card.rating}

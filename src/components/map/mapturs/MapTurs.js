@@ -61,10 +61,10 @@ const MapTurs = () => {
   return (
     <div className="cardslist container">
       <div className="cardslist__scrollable flex" {...events} ref={ref}>
-        {cardsList.map((card) => {
+        {cardsList.map((card, index) => {
           return (
             <CardItem
-              key={card}
+              key={index}
               title={card.title}
               description={card.description}
               rating={card.rating}

@@ -128,7 +128,7 @@ const News = () => {
           <div className="news__loading"></div>
         ) : (
           state.newsList.slice(0, state.counter).map((el, i) => (
-            <li className="item" id={i}>
+            <li className="item" id={i} key={i}>
               <div className="item__main flex">
                 <div className="item__img">
                   <ReactResizeDetector
