@@ -37,7 +37,7 @@ const Feature = () => {
               <p>{changedText.text}</p>
             </div>
             <button className="content__button bgYlGr fw600 fs24 lh41">
-              <Link to="/constructor">{changedText.button}</Link>
+              <Link to="/const">{changedText.button}</Link>
             </button>
           </div>
         </div>
