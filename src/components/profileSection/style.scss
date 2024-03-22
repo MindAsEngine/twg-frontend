@@ -1,0 +1,27 @@
+@import '../../styles/base/variables.module.scss'; 
+
+.profilesection {
+    &__header {
+        // font-size: 24px;
+        font-size: 18px;
+        font-weight: 600;
+        font-family: $fontFamilyTitle;
+        // margin-bottom: 24px;
+
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+    &__items {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin: 12px 0;
+    }
+    &__emptymsg {
+        text-align: center;
+        // font-size: 18px;
+        font-size: 14px;
+        padding: 32px;
+    }
+}

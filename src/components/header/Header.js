@@ -9,19 +9,23 @@ import Search from "../search/Search";
 import { handleDragStart } from "../../app/function";
 
 import "./style.scss";
-import ModalAuthQuestComponent from "../modal/ModalQuest";
+// import ModalAuthQuestComponent from "../modal/ModalQuest";
+
+import ModalAuthComponent from "../modal/auth/AuthModal";
 
 export const Header = () => {
-  const [state, setState] = useState({
-    show: false,
-  });
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [authModalTab, setAuthModalTab] = useState(0);
 
-  function modalHandler() {
-    setState({ ...state, show: !state.show });
+  function openAuthModal(initTab) {
+    setShowAuthModal(true);
+    setAuthModalTab(current => initTab);
   }
-
-  function parentCallBack(el) {
-    setState({ ...state, show: el });
+  function closeAuthModal() {
+    setShowAuthModal(false);
+  }
+  function onAfterAuthModalClose() {
+    setAuthModalTab(current => -1);
   }
 
   const language = useSelector((state) => state.language.value);
@@ -69,33 +73,30 @@ export const Header = () => {
           <Search maxWidth={"220px"} />
         </div>
         <div className="header__auth flex">
-          <button className="bgYl" onClick={modalHandler}>
+          <button className="bgYl" onClick={() => openAuthModal(0)}>
             {changedText.auth[0]}
           </button>
           <button
             className="bg2 f-cWh header__registerbtn"
-            onClick={modalHandler}
+            onClick={() => openAuthModal(1)}
           >
             {changedText.auth[1]}
           </button>
         </div>
       </header>
 
-      <ModalAuthQuestComponent
-        open={<>Open</>}
-        close={<>Close</>}
-        content={<>Lorem, ipsum dolor.</>}
-        show={state.show}
-        //style={customStyles}
-        contentModal={<ModalAdmin />}
-        callBack={parentCallBack}
+      <ModalAuthComponent
+        show={showAuthModal}
+        initTab={authModalTab}
+        onClose={closeAuthModal}
+        onAfterClose={onAfterAuthModalClose}
       />
     </>
   );
 };
 
 //Модалки 
-const ModalAdmin = () => {
+/*const ModalAdmin = () => {
   return <>
   Lorem, ipsum dolor.</>;
-};
+};*/

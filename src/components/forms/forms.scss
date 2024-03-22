@@ -8,7 +8,7 @@ form {
         gap: 32px;
     }
     
-    input {
+    input:not([type=checkbox]):not([type=file]) {
         border: 1px solid #D4D4D4;
         background-color: white;
         box-shadow: 0px 2px 5px 0px #00000040 inset;

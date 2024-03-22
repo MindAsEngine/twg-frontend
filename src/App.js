@@ -12,6 +12,7 @@ const Tur = lazy(() => import("./pages/tur/Tur"));
 const Display = lazy(() => import("./pages/display/Display"));
 const Attractions = lazy(() => import("./pages/attractions/Attractions"));
 const Hotel = lazy(() => import("./pages/hotel/Hotel"));
+const Profile = lazy(() => import("./pages/profile/Profile"));
 
 function App() {
   return (
@@ -67,6 +68,14 @@ function App() {
               element={
                 <Suspense fallback={<></>}>
                   <Display />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <Suspense fallback={<></>}>
+                  <Profile />
                 </Suspense>
               }
             />
