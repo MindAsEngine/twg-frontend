@@ -298,3 +298,20 @@ body {
 #main {
   flex: 1 1 auto;
 }
+
+// scrollbar
+:root {
+  ::-webkit-scrollbar {
+    --thickness: 10px;
+    width: var(--thickness);
+    height: var(--thickness);
+  }
+  ::-webkit-scrollbar-track {
+    background-color: $scrollbarBG;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: $scrollbarThumb;
+    border-radius: 9999px;
+  }
+}
