@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY package.json ./
 
-RUN echo $(npm i)
+RUN npm i
 COPY . .
-RUN echo $(npm run build)
-RUN echo $(serve -s build)
+RUN npm run build
+RUN serve -s build
