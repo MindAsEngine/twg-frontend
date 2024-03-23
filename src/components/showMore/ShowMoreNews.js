@@ -40,7 +40,7 @@ export const ShowMoreNews = (props) => {
               }
             : {
                 height:
-                  Math.round((props.height - props.height2) / fontSize - 3) *
+                  Math.round((props.height - props.height2 - props.paddingTop - props.paddingBottom) / fontSize - 3) *
                     fontSize +
                   "px",
                 overflow: "hidden",

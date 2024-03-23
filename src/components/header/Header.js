@@ -1,17 +1,14 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import Logo from "../../img/LogoM.png";
 import { DropdownLg } from "../cardItem/Dropdown/DropdownLan";
-import { DropdownLg } from "../cardItem/Dropdown/DropdownLan";
 
-import Search from "../search/Search";
 import Search from "../search/Search";
 import { handleDragStart } from "../../app/function";
 
 import "./style.scss";
-import ModalAuthQuestComponent from "../modal/ModalQuest";
 import ModalAuthQuestComponent from "../modal/ModalQuest";
 
 export const Header = () => {
@@ -47,14 +44,12 @@ export const Header = () => {
   return (
     <>
       <header className="header row align-cent flex bg2 container m-centr">
-        <button onClick={handlerClick}>CLICK</button>
         <Link to="/">
           <div className="header__logo">
             <img src={Logo} alt="" onDragStart={handleDragStart} />
           </div>
         </Link>
         <div className="header__i18n">
-          <DropdownLg />
           <DropdownLg />
         </div>
         <ul className="header__list flex align-cent justif-ss-cent">
@@ -70,34 +65,14 @@ export const Header = () => {
           <li className="header__href">
             <Link to="">{changedText.links[3]}</Link>
           </li>
-          <li className="header__href">
-            <Link to="">{changedText.links[0]}</Link>
-          </li>
-          <li className="header__href">
-            <Link to="">{changedText.links[1]}</Link>
-          </li>
-          <li className="header__href">
-            <Link to="">{changedText.links[2]}</Link>
-          </li>
-          <li className="header__href">
-            <Link to="">{changedText.links[3]}</Link>
-          </li>
         </ul>
-        <div className="header__search flex" style={{ marginLeft: "auto" }}>
-          <Search maxWidth={"220px"} />
         <div className="header__search flex" style={{ marginLeft: "auto" }}>
           <Search maxWidth={"220px"} />
         </div>
         <div className="header__auth flex">
           <button className="bgYl" onClick={modalHandler}>
             {changedText.auth[0]}
-            {changedText.auth[0]}
           </button>
-          <button
-            className="bg2 f-cWh header__registerbtn"
-            onClick={modalHandler}
-          >
-            {changedText.auth[1]}
           <button
             className="bg2 f-cWh header__registerbtn"
             onClick={modalHandler}
@@ -106,8 +81,6 @@ export const Header = () => {
           </button>
         </div>
       </header>
-
-      <ModalAuthQuestComponent
 
       <ModalAuthQuestComponent
         open={<>Open</>}
@@ -124,8 +97,7 @@ export const Header = () => {
   );
 };
 
-//Модалки 
+//Модалки
 const ModalAdmin = () => {
-  return <>
-  Lorem, ipsum dolor.</>;
+  return <>Lorem, ipsum dolor.</>;
 };
