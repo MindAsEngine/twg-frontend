@@ -50,10 +50,21 @@
     }
 
     &__auth {
-        button {
+        button:not(&__avatar) {
             padding: 10px 31px;
             border-radius: 9999px;
             font-family: inherit;
+        }
+
+        &__avatar {
+            padding: 0;
+            margin-left: 8px;
+            img {
+                --size: 36px;
+                width: var(--size);
+                height: var(--size);
+                border-radius: 9999px;
+            }
         }
     }
 
