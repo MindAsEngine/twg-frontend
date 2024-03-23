@@ -5,9 +5,9 @@ services:
     container_name: twg-frontend
     image: twg-frontend
     build:
-      context: ./frontend
-    env-file:
-      - ../environment.env
+      context: ./
+    env_file:
+      - ./environment.env
     volumes:
       - type: bind
         source: ../resources/images #/home/twg/frontend/resources/images
