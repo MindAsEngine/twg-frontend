@@ -1,13 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "./slices/Counter.js";
-import changeSlice from "./slices/Tour.js";
-import mapPanelSlice from "./slices/MapPanel.js"
+import mapPanelSlice from "./slices/MapPanel.js";
+import languageSlice from "./slices/Language.js";
+import  HomePageVisibility  from "./slices/HomePageVisibility.js";
+import UserSlice from "./slices/User.js";
 
 export default configureStore({
   reducer: {
-    // cunter: counterReducer,
-    // tour: changeSlice
-    // language: languageSlice
+    user: UserSlice,
+    language: languageSlice,
     mapPanel: mapPanelSlice,
+    visibilityIndex: HomePageVisibility,
   },
 });

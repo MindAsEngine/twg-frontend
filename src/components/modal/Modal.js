@@ -73,6 +73,7 @@ class ModalComponent extends React.Component {
   }
   closeModal() {
     this.setState({ modalShow: false });
+    this.props.callBack(false);
   }
 
   componentDidUpdate(prevProps) {
@@ -80,8 +81,6 @@ class ModalComponent extends React.Component {
       this.setState({ modalShow: this.props.show });
     }
   }
-
-  
 
   render() {
     return (

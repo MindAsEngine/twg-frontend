@@ -28,3 +28,7 @@ export default configureStore({ reducer: { cunter: counterReducer, // Это sli
 
 Это выглядит примерно так: название компонента и импорт, куда мы пишем адрес нашего компонента 
 // const AdminPage = React.lazy(() => import("./pages/adminMain/AdminMain"));
+
+--------------------------------------------------Координаты------------------------------------------------------------
+
+

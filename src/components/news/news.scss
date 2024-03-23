@@ -1,0 +1,105 @@
+.news__list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  margin-top: 24px;
+  .news__loading {
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    right: 50%;
+    transform: translate(50%, 50%);
+
+    width: 40px;
+    height: 40px;
+    animation: animate 2s infinite linear;
+    border-radius: 50%;
+    background-image: url("../../img/loading.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
+  @keyframes animate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  .item {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    background-color: rgba(255, 255, 255, 1);
+
+    &__img {
+      .news__item {
+        width: 100%;
+        max-width: 482px;
+        img {
+          display: block; /* Делает изображение блочным элементом */
+        }
+      }
+    }
+    &__text {
+      width: 100%;
+      padding-right: 28px;
+      padding-top: 19.5px;
+      padding-bottom: 19.5px;
+      .text__title {
+        margin-bottom: 12px;
+        .title__text {
+          max-width: 350px;
+        }
+      }
+      .text__main {
+        max-width: 762px;
+      }
+    }
+
+    &__main {
+      gap: 20px;
+    }
+    .item__date-mob {
+      display: none;
+      @media (max-width: 768px) {
+        display: block;
+      }
+    }
+    &__trigger {
+      .title {
+        font-family: "Exo", sans-serif;
+        font-size: 16px;
+        margin-bottom: 15px;
+        font-weight: 600;
+      }
+      .Collapsible {
+        display: flex;
+        flex-direction: column-reverse;
+        span {
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+}
+.news__button {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+
+  button {
+    cursor: pointer;
+  }
+}
+.news__btn {
+  margin-top: 40px;
+
+  button {
+    cursor: pointer;
+  }
+}
+
+#news {
+  margin-bottom: 149px;
+}

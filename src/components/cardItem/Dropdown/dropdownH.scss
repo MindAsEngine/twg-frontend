@@ -1,0 +1,57 @@
+.dropdown {
+  &.is-open {
+    .Dropdown-arrow {
+      transform: rotate(180deg);
+    }
+  }
+  .Dropdown-control {
+    position: relative;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 21px;
+    color: rgba(255, 255, 255, 1);
+    border: none;
+    padding: 4px 30px 4px 9px;
+
+    cursor: pointer;
+
+    .Dropdown-arrow {
+      position: absolute;
+      z-index: 100;
+      width: 14px;
+      height: 9px;
+
+      background-image: url("../../../img/chevron-down.svg");
+      border-style: none;
+      background-repeat: no-repeat;
+      background-position: center center;
+
+      right: 7px;
+      top: 10px;
+      transition: all 0.3s ease 0s;
+
+      cursor: pointer;
+    }
+  }
+
+  .Dropdown-menu {
+    margin-top: 15px;
+    font-weight: 600;
+    position: fixed;
+    top: 42px;
+    width: auto;
+    @media (max-width: 768px) {
+      top: 35px;
+    }
+    .Dropdown-option.is-selected {
+      display: none;
+    }
+    .Dropdown-option {
+      color: rgba(255, 255, 255, 1);
+      padding: 8px 20px;
+      background-color: rgba(4, 96, 217, 1);
+
+      cursor: pointer;
+    }
+  }
+}
