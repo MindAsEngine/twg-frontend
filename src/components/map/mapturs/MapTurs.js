@@ -59,8 +59,8 @@ const MapTurs = () => {
   const ref = useRef();
   const { events } = useScrollOnDrag(ref);
   return (
-    <div className="cardslist container">
-      <div className="cardslist__scrollable flex" {...events} ref={ref}>
+    <div className="cardslist mapturslist container">
+      <div className="cardslist__scrollable mapturslist__scrollable flex" {...events} ref={ref}>
         {cardsList.map((card, index) => {
           return (
             <CardItem

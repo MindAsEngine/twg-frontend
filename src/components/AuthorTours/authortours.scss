@@ -16,7 +16,8 @@
   }
 
   &__scrollable {
-    overflow-x: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
 
     padding-bottom: 12px;
     padding: 0 2px 12px 2px;
@@ -30,6 +31,9 @@
     */
   @media (max-width: $mobileBreakpoint) {
     margin: 0 -20px;
+    &__title, &__description {
+      padding: 0 20px;
+    }
     &__scrollable {
       padding-left: 20px;
       padding-right: 20px;
