@@ -28,7 +28,7 @@ body {
 
 .tags__wrapper {
   display: block;
-  overflow-x: scroll;
+  overflow-x: hidden;
   overflow-y: hidden;
 
   &::-webkit-scrollbar {
@@ -45,11 +45,11 @@ body {
     overflow: -moz-scrollbars-none;
   }
   .tags__list {
-    gap: 20px;
-    padding-bottom: 10px;
+    gap: 12px;
+    padding-bottom: 8px;
 
     &:hover{
-      cursor: default;
+      cursor: move;
     }
     &:active{
       cursor: grabbing;

@@ -1,12 +1,17 @@
 @import "../../styles/base/variables.module.scss";
 
 .tur {
-  & .pd {
+  & #preview .pd {
     padding: 0 6.37rem;
+    // padding: 0;
+    @media (max-width: $mobileBreakpoint) {
+      padding: 0 20px;
+    }
   }
   .section__title {
     margin-bottom: 2rem;
     margin-top: 2.5rem;
+    font-weight: 600;
   }
   &__about {
     .showMore__btn {
@@ -32,14 +37,46 @@
   }
 
   .preview__body {
-    padding: 232px 0 36px;
+    padding: 240px 0 32px 0;
     .preview__text {
+      gap: 24px;
       align-items: end;
+      
+      .tur__name {
+        font-weight: 600;
+      }
+      .tur__price{
+        padding: 17px 56px;
+        color: rgba(0, 28, 34, 1);
+        border-radius: 87px;
+      }
+
+      @media (max-width: $mobileBreakpoint) {
+        padding: 0 20px;
+        flex-direction: column;
+        align-items: start;
+      }
     }
-    .tur__price{
-      padding: 17px 56px;
-      color: rgba(0, 28, 34, 1);
-      border-radius: 87px;
+    
+  }
+
+  #photos, #about-tur, #add-info, #add-tags, #map, #comments {
+    padding: 0;
+    & > div {
+      padding: 0 6.37rem;
+    }
+    @media (max-width: $mobileBreakpoint) {
+      & > div {
+        padding: 0 20px;
+      }
+    }
+  }
+
+  #tags {
+    margin: 24px auto;
+    padding: 0 6.37rem;
+    @media (max-width: $mobileBreakpoint) {
+      padding: 0;
     }
   }
 
@@ -50,4 +87,9 @@
       align-items: center;
     }
   }
+}
+
+
+.tur * {
+  // outline: 1px dashed rgba(0, 0, 0, .25);
 }

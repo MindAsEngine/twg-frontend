@@ -67,6 +67,10 @@
   }
   .comments__pages {
     margin-bottom: 145px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    
     &.static {
       margin-bottom: 0;
     }
