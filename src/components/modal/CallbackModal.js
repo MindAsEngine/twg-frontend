@@ -32,6 +32,7 @@ class CallbackModal extends React.Component {
         style={{
           overlay: {
             backgroundColor: "rgba(0, 0, 0, 0.5)",
+            zIndex: 10,
           },
           content: {
             width: "100%",

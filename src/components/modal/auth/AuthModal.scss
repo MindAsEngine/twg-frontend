@@ -86,6 +86,7 @@
 .ReactModal__Overlay {
     opacity: 0;
     transition: opacity .5s ease-in-out;
+    backdrop-filter: blur(2px);
 }
 
 .ReactModal__Overlay--after-open{

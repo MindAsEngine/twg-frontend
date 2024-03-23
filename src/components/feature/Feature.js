@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import FeatureImg from "../../img/featureGlobe.png";
 import "./feature.scss";
+import { handleDragStart } from "../../app/function";
 
 const Feature = () => {
   const language = useSelector((state) => state.language.value);
@@ -29,7 +30,7 @@ const Feature = () => {
       <div className="flex justif-ss-cent">
         <div className="container" style={{ width: "100%" }}>
           <div className="feature__content">
-            <LazyLoadImage src={FeatureImg} className="content__mobileimg" />
+            <LazyLoadImage src={FeatureImg} onDragStart={handleDragStart} className="content__mobileimg" />
             <div className="content__title f-cBlue fw700 fs64">
               <p>{changedText.title}</p>
             </div>

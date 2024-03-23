@@ -14,10 +14,10 @@ const AboutUs = () => {
       : "Biz haqimizda";
   return (
     <div className="bgPr">
-      <div className="container m-centr aboutUs flex justif-ss-betw">
-        <div className="aboutUs__content">
-          <p className="aboutUs__title fw600 fs40">{text}</p>
-          <p className="aboutUs__text ">
+      <div className="container m-centr aboutus flex justif-ss-betw">
+        <div className="aboutus__content">
+          <p className="aboutus__title fw600 fs40">{text}</p>
+          <p className="aboutus__text">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -29,16 +29,9 @@ const AboutUs = () => {
         </div>
         <img
           onDragStart={handleDragStart}
-          className="feature__img"
+          className="aboutus__img"
           src={aboutUsImg}
           alt="#"
-          style={{
-            marginLeft: "auto",
-            maxHeight: "425px",
-            maxWidth: "543px",
-            width: "100%",
-            height: "100%",
-          }}
         />
       </div>
     </div>
