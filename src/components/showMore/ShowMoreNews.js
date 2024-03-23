@@ -2,7 +2,6 @@ import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 
 export const ShowMoreNews = (props) => {
-  console.log(props);
   const [state, setState] = useState({
     button: true,
     showMore: false,

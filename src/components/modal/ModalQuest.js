@@ -81,7 +81,6 @@ class ModalAuthQuestComponent extends React.Component {
       this.setState({ modalShow: this.props.show });
     }
 
-    console.log(this.props);
   }
 
   render() {

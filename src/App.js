@@ -1,8 +1,9 @@
 import { Route, Routes } from "react-router-dom";
+import { lazy, Suspense } from "react";
 
 import "./styles/base/style.module.scss";
 import "./index.scss";
-import { lazy, Suspense } from "react";
+
 import { Header } from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 

@@ -10,6 +10,10 @@ import PaginatedItems from "./commentsPages/CommentsPagesNum";
 const Comments = ({ hideButton }) => {
   const avatar = { img: "", name: "Имя Фамилия" };
 
+  const [state, setState] = useState({
+    rating: 0,
+    comment: "",
+  });
   const [rating, setRating] = useState(0);
   const handleRatingChange = (rating) => {
     // Вызываем коллбэк из Formik, передавая новое значение рейтинга
@@ -103,7 +107,7 @@ const Comments = ({ hideButton }) => {
                   setSubmitting(false);
                 }}
               >
-                {({ isSubmitting, isValid }) => (
+                {({ isSubmitting, isValid, values}) => (
                   <Form className="comments__form">
                     <Field
                       as="textarea"
@@ -116,7 +120,9 @@ const Comments = ({ hideButton }) => {
                       <button
                         type="submit"
                         disabled={rating == 0 || isSubmitting}
-                        className="fw400 fs16 lh22"
+                        className={`fw400 fs16 lh22 ${
+                          values.stars > 0 && values.text.length != 0 ? "full" : ""
+                        }`}
                       >
                         Отправить
                       </button>

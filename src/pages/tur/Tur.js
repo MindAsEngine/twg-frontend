@@ -6,6 +6,7 @@ import Comments from "../../components/comments/Comments";
 import MapsWithSideBar from "../../components/map/MapsWithSideBar";
 import { Tag } from "../../components/tags/Tags";
 import TagsList from "../../components/tags/TagsList";
+import Album from "../../components/album/Album";
 
 const Tur = ({ link }) => {
   return (
@@ -31,7 +32,9 @@ const Tur = ({ link }) => {
       <section id="tags">
         <TagsList />
       </section>
-      <section id="photos"></section>
+      <section id="photos">
+        <Album />
+      </section>
       <section id="about-tur">
         <div className="tur__about container m-centr pd">
           <div className="section__title m-centr fs24 fw400 lh22">О туре</div>

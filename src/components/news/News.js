@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import ReactResizeDetector from "react-resize-detector";
 
+
 import "./news.scss";
 
 import NewsImg from "../../img/newsImg.png";
@@ -51,10 +52,12 @@ const News = () => {
   const [heightArray, setHeightArray] = useState([]);
   const [heightArray2, setHeightArray2] = useState([]);
   const handleResize = (entry, width, height) => {
-    const paddingTop = window.getComputedStyle(blockRef.current).getPropertyValue('padding-top');
-    const paddingBottom = window.getComputedStyle(blockRef.current).getPropertyValue('padding-bottom');
-    console.log(paddingTop);
-    console.log(paddingBottom);
+    const paddingTop = window
+      .getComputedStyle(blockRef.current)
+      .getPropertyValue("padding-top");
+    const paddingBottom = window
+      .getComputedStyle(blockRef.current)
+      .getPropertyValue("padding-bottom");
     setHeightArray((prevHeightArray) => {
       const newArray = [...prevHeightArray];
       newArray[entry] = height > 17 ? height : 200;
