@@ -30,6 +30,7 @@ body {
   display: block;
   overflow-x: hidden;
   overflow-y: hidden;
+  cursor: default;
 
   &::-webkit-scrollbar {
     width: 0;
@@ -47,11 +48,9 @@ body {
   .tags__list {
     gap: 12px;
     padding-bottom: 8px;
-
-    &:hover{
-      cursor: move;
-    }
-    &:active{
+    cursor: default;
+    
+    &:active {
       cursor: grabbing;
     }
   }
