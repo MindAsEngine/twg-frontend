@@ -143,20 +143,17 @@ class Map extends Component {
 
     this.map.on("load", () => {
       const waiting = () => {
-        if (!this.map.isStyleLoaded()) {
+        if (this.map.isStyleLoaded() == false) {
           setTimeout(waiting, 200);
         } else {
-          addCluster(this.map, "hotels", "cat", data)
-
+          addCluster(this.map, "hotels", "cat", data);
           // Добавление стиля для страны
           addCountryLayer(this.map, Spain);
         }
       };
       waiting();
-
       this.map.on("click", (e) => {
         const { lng, lat } = e.lngLat;
-        console.log("Coordinates:", lng, lat);
       });
     });
   }
