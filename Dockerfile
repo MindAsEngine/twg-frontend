@@ -1,10 +1,19 @@
-FROM node:18-alpine
+FROM node:16.13.1-alpine
 
+# set working directory
 WORKDIR /app
 
-COPY package.json ./
+# add `/app/node_modules/.bin` to $PATH
+ENV PATH /app/node_modules/.bin:$PATH
 
-RUN npm i
-COPY . .
-RUN npm run build
-RUN serve -s build
+# install app dependencies
+COPY package.json ./
+COPY package-lock.json ./
+RUN npm install
+RUN npm install react-scripts@3.4.1 -g
+
+# add app
+COPY . ./
+
+# start app
+CMD ["npm", "start"]
