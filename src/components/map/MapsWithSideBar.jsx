@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import * as maptilersdk from "@maptiler/sdk";
+import * as maptilersdk from "maplibre-gl";
 import MapPanel from "../panelMap/MapPanel";
 
 import "./map.scss";
@@ -28,37 +28,12 @@ class MapsWithSideBar extends Component {
       dragRotate: false,
     });
 
-    const routeData = await getDriveRoute(
+    await getDriveRoute(
       [50.09102770452696, 6.201657959853016],
       [49.583389164900495, 13.17190424631698]
     );
-    const routeCoordinates = routeData.features[0].geometry.coordinates;
-    this.setState({ getRoutes: [...this.state.getRoutes, routeCoordinates] });
-    this.map.on("load", () => {
-      this.map.addLayer({
-        id: "route",
-        type: "line",
-        source: {
-          type: "geojson",
-          data: {
-            type: "Feature",
-            properties: {},
-            geometry: {
-              type: "LineString",
-              coordinates: routeCoordinates,
-            },
-          },
-        },
-        layout: {
-          "line-join": "round",
-          "line-cap": "round",
-        },
-        paint: {
-          "line-color": "#ffd435",
-          "line-width": 4,
-        },
-      });
-    });
+
+    this.map.on("load", () => {});
   }
   handleCallback = (el) => {
     this.setState({ panelShow: el });

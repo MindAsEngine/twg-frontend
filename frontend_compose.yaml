@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  twg-frontend:
+    container_name: twg-frontend
+    image: twg-frontend
+    build:
+      context: ./
+    env_file:
+      - ./environment.env
+    volumes:
+      - type: bind
+        source: ../resources/images #/home/twg/frontend/resources/images
+        target: /home/twg/images #change if needed
+    ports:
+      - "80:3000"
+      - "443:3000"
+    networks:
+      - frontend
+      - backend
+
+networks:
+  frontend:
+    name: frontend_network
+  backend:
+    name: backend_network
+    external: true

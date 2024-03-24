@@ -48,13 +48,19 @@ const News = () => {
   const blockRef = useRef(null);
   const textDivRef = useRef(null);
   const [fontSize, setFontSize] = useState(18.5);
+  const [paddingTop, setPaddingTop] = useState();
+  const [paddingBottom, setPaddingBottom] = useState();
   const [heightArray, setHeightArray] = useState([]);
   const [heightArray2, setHeightArray2] = useState([]);
   const handleResize = (entry, width, height) => {
-    const paddingTop = window.getComputedStyle(blockRef.current).getPropertyValue('padding-top');
-    const paddingBottom = window.getComputedStyle(blockRef.current).getPropertyValue('padding-bottom');
-    console.log(paddingTop);
-    console.log(paddingBottom);
+    const paddingTop = window
+      .getComputedStyle(blockRef.current)
+      .getPropertyValue("padding-top");
+    const paddingBottom = window
+      .getComputedStyle(blockRef.current)
+      .getPropertyValue("padding-bottom");
+      setPaddingTop(paddingTop);
+      setPaddingBottom(paddingBottom);
     setHeightArray((prevHeightArray) => {
       const newArray = [...prevHeightArray];
       newArray[entry] = height > 17 ? height : 200;
@@ -161,6 +167,8 @@ const News = () => {
                       i={i}
                       height={heightArray[i]}
                       height2={heightArray2[i]}
+                      paddingTop={paddingTop}
+                      paddingBottom={paddingBottom}
                     />
                   </div>
                 </div>

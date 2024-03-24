@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import Logo from "../../img/LogoM.png";
 import { DropdownLg } from "../cardItem/Dropdown/DropdownLan";
@@ -20,6 +20,7 @@ export const Header = () => {
 
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [authModalTab, setAuthModalTab] = useState(0);
+
 
   function openAuthModal(initTab) {
     setShowAuthModal(true);
@@ -96,7 +97,7 @@ export const Header = () => {
           </button>}
         </div>
       </header>
-
+           
       <ModalAuthComponent
         show={showAuthModal}
         initTab={authModalTab}
