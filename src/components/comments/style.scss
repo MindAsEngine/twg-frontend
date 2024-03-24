@@ -89,6 +89,7 @@
     height: 66px;
     display: flex;
     justify-content: center;
+    z-index: 99;
 
     &.static {
       position: static;

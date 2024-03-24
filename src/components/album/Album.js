@@ -1,15 +1,12 @@
-import { Swiper, SwiperSlide } from "swiper/react";
 import { useRef, useState } from "react";
 import useScrollOnDrag from "react-scroll-ondrag";
 
-import "swiper/css";
-
 import { handleDragStart } from "../../app/function";
-import { ReactComponent as Close } from "../../img/Close.svg";
 
 import Album1 from "../../img/album/image1.png";
 
 import "./style.scss";
+import AlbumSwiper from "./AlbumSwiper";
 
 const Album = ({ runScroll }) => {
   const ref = useRef();
@@ -22,6 +19,10 @@ const Album = ({ runScroll }) => {
     setTempImgSrc(imgSrc, i);
     setModel(true);
     swiper.current.swiper.slideTo(i);
+  };
+
+  const handleCallback = (el) => {
+    setModel(el);
   };
 
   const [albumList, setAlbumList] = useState([
@@ -53,27 +54,12 @@ const Album = ({ runScroll }) => {
 
   return (
     <>
-      <div className={model ? "model__wrapper open" : "model__wrapper"}>
-        <div className={model ? "model open" : "model"}>
-          <div className="model__controller">
-            <Close onClick={() => setModel(false)} />
-          </div>
-          <Swiper spaceBetween={120} slidesPerView={1} ref={swiper}>
-            {albumList.map((el, i) => {
-              return (
-                <SwiperSlide>
-                  <img
-                    src={el.img}
-                    onDragStart={handleDragStart}
-                    onDoubleClick={() => getItem(el.img, i)}
-                  />
-                </SwiperSlide>
-              );
-            })}
-          </Swiper>
-        </div>
-      </div>
-
+      <AlbumSwiper
+        albumList={albumList}
+        model={model}
+        swiper={swiper}
+        handleCallback={handleCallback}
+      />
       <div className="album container m-centr">
         <div
           className="album__wrapper album__scrollable flex"
