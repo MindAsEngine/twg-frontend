@@ -14,7 +14,7 @@ const Home = () => {
   const visibilityIndex = useSelector((state) => state.visibilityIndex.visibile);
   return (
     <>
-      <section id="feature" class="bgGr">
+      <section id="feature" className="bgGr">
         <Feature />
       </section>
       <section id="map">

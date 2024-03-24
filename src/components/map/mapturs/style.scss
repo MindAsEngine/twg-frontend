@@ -1,13 +1,16 @@
-.cardslist {
-  margin-top: -10px;
-  padding: 35px 43px 71px;
-  background-color: white;
+@import "../../../styles/base/variables.module.scss";
+
+.mapturslist {
+  margin: -10px auto 0 auto;
+  padding: 34px 16px 16px 16px;
+  width: 100%;
+
   &__scrollable {
-    overflow-x: hidden;
-
+    overflow-x: auto;
+    overflow-y: hidden;
     gap: 12px;
-
     border-radius: 10px;
-    overflow: hidden;
+    padding-left: 2px;
+    padding-right: 2px;
   }
 }

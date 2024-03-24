@@ -3,6 +3,7 @@
 .ReactModal__Overlay {
   opacity: 0;
   transition: all 500ms ease-in-out;
+  backdrop-filter: blur(2px);
 
   overflow-y: hidden;
 }

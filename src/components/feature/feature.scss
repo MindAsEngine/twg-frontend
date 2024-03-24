@@ -55,15 +55,18 @@
         .content__button{
             border-radius: 76px;
             margin-top: 64px;
-            padding: 20px 128px;
             box-shadow: 0px 4px 8px 0px #02640080;
             font-family: inherit;
-            & a {
+            width: min-content;
+            text-align: center;
+            a {
                 color: inherit;
+                display: block;
+                white-space: nowrap;
+                padding: 20px 128px;
             }
 
             @media (max-width: $mobileBreakpoint) {
-                padding: 20px;
                 width: 100%;
                 font-size: 24px;
             }

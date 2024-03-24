@@ -28,7 +28,7 @@ body {
 
 .tags__wrapper {
   display: block;
-  overflow-x: scroll;
+  overflow-x: hidden;
   overflow-y: hidden;
 
   &::-webkit-scrollbar {
@@ -45,11 +45,11 @@ body {
     overflow: -moz-scrollbars-none;
   }
   .tags__list {
-    gap: 20px;
-    padding-bottom: 10px;
+    gap: 12px;
+    padding-bottom: 8px;
 
     &:hover{
-      cursor: default;
+      cursor: move;
     }
     &:active{
       cursor: grabbing;
@@ -297,4 +297,24 @@ body {
 
 #main {
   flex: 1 1 auto;
+}
+
+// scrollbar
+:root {
+  ::-webkit-scrollbar {
+    --thickness: 10px;
+    width: var(--thickness);
+    height: var(--thickness);
+  }
+  ::-webkit-scrollbar-track {
+    background-color: $scrollbarBG;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: $scrollbarThumb;
+    border-radius: 9999px;
+  }
+}
+button {
+  user-select: none;
 }

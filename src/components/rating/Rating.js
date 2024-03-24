@@ -4,6 +4,7 @@ import Rating from "react-rating";
 import ratingEmpty from "../../img/ratingStarempty.svg";
 import ratingFull from "../../img/ratingStarFull.svg";
 import "./style.scss";
+import { handleDragStart } from "../../app/function";
 
 const RatingComponent = ({
   ratingNumber,
@@ -22,8 +23,8 @@ const RatingComponent = ({
     <div className="flex rating">
       <div className="rating__body flex">
         <Rating
-          emptySymbol={<img src={ratingEmpty} className="icon" />}
-          fullSymbol={<img src={ratingFull} className="icon" />}
+          emptySymbol={<img onDragStart={handleDragStart} src={ratingEmpty} className="icon" />}
+          fullSymbol={<img onDragStart={handleDragStart} src={ratingFull} className="icon" />}
           onChange={onStarClick}
           initialRating={ratingAverage == null ? rating : ratingAverage}
           readonly={readonly}

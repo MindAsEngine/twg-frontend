@@ -16,7 +16,7 @@ const Tur = ({ link }) => {
           className="preview__body"
           style={{
             backgroundImage: `url(${Preview})`,
-            backgroundSize: "100% 100%",
+            backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
           }}
@@ -29,7 +29,7 @@ const Tur = ({ link }) => {
           </div>
         </div>
       </section>
-      <section id="tags">
+      <section id="tags" className="container">
         <TagsList />
       </section>
       <section id="photos">
@@ -71,7 +71,9 @@ const Tur = ({ link }) => {
           <MapsWithSideBar />
         </div>
       </section>
-      <Comments />
+      <section id="comments">
+        <Comments />
+      </section>
     </div>
   );
 };

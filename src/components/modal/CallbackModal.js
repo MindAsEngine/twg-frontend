@@ -32,13 +32,15 @@ class CallbackModal extends React.Component {
         style={{
           overlay: {
             backgroundColor: "rgba(0, 0, 0, 0.5)",
+            zIndex: 10,
           },
           content: {
-            maxWidth: " 512px",
-            maxHeight: "432px",
-            height: "100%",
-            margin: "223px auto 0",
-            padding: "25px 32px",
+            width: "100%",
+            maxWidth: "512px",
+            maxHeight: "max-content",
+            position: "absolute",
+            top: "50%", left: "50%",
+            transform: "translate(-50%, -50%)"
           },
         }}
       >

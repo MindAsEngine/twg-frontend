@@ -9,20 +9,28 @@ import Search from "../search/Search";
 import { handleDragStart } from "../../app/function";
 
 import "./style.scss";
-import ModalAuthQuestComponent from "../modal/ModalQuest";
+// import ModalAuthQuestComponent from "../modal/ModalQuest";
+
+import ModalAuthComponent from "../modal/auth/AuthModal";
 
 export const Header = () => {
-  const [state, setState] = useState({
-    show: false,
-  });
+  // по значению user ниже определяется,
+  // авторизован ли пользователь или нет
+  const [user, setUser] = useState(undefined);
 
-  const dispatch = useDispatch();
-  function modalHandler() {
-    setState({ ...state, show: !state.show });
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [authModalTab, setAuthModalTab] = useState(0);
+
+
+  function openAuthModal(initTab) {
+    setShowAuthModal(true);
+    setAuthModalTab(current => initTab);
   }
-
-  function parentCallBack(el) {
-    setState({ ...state, show: el });
+  function closeAuthModal() {
+    setShowAuthModal(false);
+  }
+  function onAfterAuthModalClose() {
+    setAuthModalTab(current => -1);
   }
 
   const language = useSelector((state) => state.language.value);
@@ -30,16 +38,16 @@ export const Header = () => {
     language === "RU"
       ? {
           links: ["Решения", "О нас", "Блог", "Кoнтакты"],
-          auth: ["Вход", "Регистрация"],
+          auth: ["Вход", "Регистрация", "Мои туры"],
         }
       : language === "EN"
       ? {
           links: ["Solutions", "About us", "Blog", "Contacts"],
-          auth: ["Login", "Registration"],
+          auth: ["Sign in", "Sign up", "My Tours"],
         }
       : {
           links: ["Yechimlar", "Biz haqimizda", "Blog", "Aloqa"],
-          auth: ["Kirish", "Ro'yxatdan o'tish"],
+          auth: ["Kirish", "Ro'yxatdan o'tish", "Mening sayohatlarim"],
         };
   return (
     <>
@@ -67,37 +75,41 @@ export const Header = () => {
           </li>
         </ul>
         <div className="header__search flex" style={{ marginLeft: "auto" }}>
-          <Search maxWidth={"220px"} />
+          <Search />
         </div>
         <div className="header__auth flex">
-          <button className="bgYl" onClick={modalHandler}>
+          { /* видно, если пользователь не авторизован */ }
+          {!user && <button className="bgYl" onClick={() => openAuthModal(0)}>
             {changedText.auth[0]}
-          </button>
-          <button
+          </button> }
+          {!user && <button
             className="bg2 f-cWh header__registerbtn"
-            onClick={modalHandler}
+            onClick={() => openAuthModal(1)}
           >
             {changedText.auth[1]}
-          </button>
+          </button>}
+          { /* видно, если пользователь авторизован */ }
+          {user && <button className="bgYl">
+            {changedText.auth[2]}
+          </button> }
+          {user && <button className="header__auth__avatar">
+            <img src="https://imgur.com/EBOf5v2.png"></img>
+          </button>}
         </div>
       </header>
-
-      <ModalAuthQuestComponent
-        open={<>Open</>}
-        close={<>Close</>}
-        content={<>Lorem, ipsum dolor.</>}
-        show={state.show}
-        //style={customStyles}
-        contentModal={<ModalAdmin />}
-        callBack={parentCallBack}
-        contentModal={<ModalAdmin />}
-        callBack={parentCallBack}
+           
+      <ModalAuthComponent
+        show={showAuthModal}
+        initTab={authModalTab}
+        onClose={closeAuthModal}
+        onAfterClose={onAfterAuthModalClose}
       />
     </>
   );
 };
 
-//Модалки
-const ModalAdmin = () => {
-  return <>Lorem, ipsum dolor.</>;
-};
+//Модалки 
+/*const ModalAdmin = () => {
+  return <>
+  Lorem, ipsum dolor.</>;
+};*/

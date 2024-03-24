@@ -1,8 +1,45 @@
+@import "../../styles/base/variables.module.scss";
+
 .search {
     &__mini {
         padding: 10px 24px;
     }
 }
-.header__search{
+.header__search {
     position: relative;
+    max-width: 220px;
+    margin-right: 8px;
+
+    input {
+        margin-right: 8px;
+        padding: 10px 20px;
+
+        background-color: transparent;
+
+        border-radius: 64px;
+        font-family: inherit;
+        font-size: inherit;
+        color: $fontWh;
+        width: 0px;
+        font-size: .875rem;
+
+        &:focus-visible {
+            width: 100%;
+            padding-left: 20px;
+            // padding: 10px 20px;
+            background-color: rgba(255, 255, 255, .1);
+        }
+    }
+
+    img {
+        position: absolute;
+        right: 16px;
+        top: 20%;
+        user-select: none;
+        cursor: text;
+        // position: absolute;
+        // top: 10px;
+        // left: 80px;
+        // bottom: 13px;
+    }
 }

@@ -1,35 +1,31 @@
 import "./style.scss";
 import SeacrhSvg from "../../img/search-white.svg";
+import { useRef } from "react";
 
 const Search = ({ placeholder, maxWidth }) => {
+  const inputRef = useRef();
+  function handleClick() {
+    inputRef.current.focus();
+  }
+
   return (
-    <>
-      <img
-        src={SeacrhSvg}
-        alt=""
-        style={{
-          position: "absolute",
-          top: "10px",
-          left: "80%",
-          bottom: "13px",
-        }}
-      />
+    <div class="header__search__wrapper">
+      <label htmlFor="headersearch">
+        <img
+          src={SeacrhSvg}
+          alt=""
+          onClick={handleClick}
+          onDragStart={(e) => e.preventDefault()}
+        />
+      </label>
       <input
         type="text"
+        id="headersearch"
         placeholder={placeholder}
-        style={{
-          borderRadius: "63px",
-          padding: "10px 10px 10px 46px",
-          fontSize: "20px",
-          width: "100%",
-          fontFamily: "inherit",
-          //backgroundColor: 'rgba(0, 28, 34, 1)',
-          maxWidth: maxWidth,
-          color:"rgba(255, 255, 255, 1)"
-        }}
+        ref={inputRef}
         className="bg2"
       />
-    </>
+    </div>
   );
 };
 
