@@ -74,7 +74,7 @@ export const Header = () => {
           </li>
         </ul>
         <div className="header__search flex" style={{ marginLeft: "auto" }}>
-          <Search maxWidth={"220px"} />
+          <Search />
         </div>
         <div className="header__auth flex">
           { /* видно, если пользователь не авторизован */ }
@@ -91,7 +91,7 @@ export const Header = () => {
           {user && <button className="bgYl">
             {changedText.auth[2]}
           </button> }
-          {user && <button class="header__auth__avatar">
+          {user && <button className="header__auth__avatar">
             <img src="https://imgur.com/EBOf5v2.png"></img>
           </button>}
         </div>

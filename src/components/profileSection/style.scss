@@ -24,4 +24,50 @@
         font-size: 14px;
         padding: 32px;
     }
+
+    &__fileupload {
+        padding: 10px 32px;
+        background-color: #D3D3D3;
+        border-radius: 9999px;
+
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 16px;
+
+        cursor: pointer;
+        user-select: none;
+
+        input[type=file] {
+            display: none;
+        }
+
+        img {
+            width: 18px;
+        }
+    }
+
+    &__agentsgrid {
+        --columns: 4;
+        display: grid;
+        grid-template-columns: repeat(var(--columns), 1fr);
+        gap: 24px;
+        margin-top: 24px;
+        text-align: center;
+
+        @media (max-width: $mobileBreakpoint) {
+            --columns: 2;
+        }
+
+        img {
+            --size: 128px;
+            width: var(--size);
+            height: var(--size);
+            border-radius: 50%;
+        }
+        &__title {
+            font-weight: 600;
+            margin-top: 8px;
+        }
+    }
 }

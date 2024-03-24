@@ -1,0 +1,39 @@
+@import '../../styles/base/variables.module.scss'; 
+
+.profilesection__currency form .grid {
+    display: grid;
+    width: min-content;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 16px;
+    gap: 0 16px;
+
+    input {
+        width: 156px;
+    }
+}
+
+button.profilesection__currency__swapbtn {
+    background-color: $backgroundYl;
+    padding: 10px;
+    aspect-ratio: 1 / 1;
+    border-radius: 9999px;
+
+    img {
+        margin: 0;
+    }
+}
+
+button.profilesection__currency__savebtn {
+    background-color: rgba(226, 226, 226, 1);
+    color: $fontGr;
+    transition-duration: .25s;
+    padding: 10px 24px;
+    border-radius: 9999px;
+    font-size: inherit;
+    font-family: inherit;
+
+    &:focus-visible, &:hover {
+        color: $fontBl;
+        background-color: $backgroundYl;
+    }
+}
