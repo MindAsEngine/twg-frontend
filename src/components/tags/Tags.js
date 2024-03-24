@@ -5,7 +5,7 @@ import { ReactComponent as Medal } from "../../img/tags/medal.svg";
 import { ReactComponent as Music } from "../../img/tags/music.svg";
 import { ReactComponent as Wifi } from "../../img/tags/wifi.svg";
 
-import "./style.scss";
+import "./tags.scss";
 
 //Тут пишем все значения tags
 const tagIcons = {

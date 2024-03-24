@@ -1,6 +1,6 @@
 import Preview from "../../img/TurPrew.png";
 import turNo from "../../img/turNo.png";
-import "./style.scss";
+import "./attractionPage.scss";
 import { ShowMoreContent } from "../../components/showMore/ShowMore";
 import Comments from "../../components/comments/Comments";
 import MapsWithSideBar from "../../components/map/MapsWithSideBar";
