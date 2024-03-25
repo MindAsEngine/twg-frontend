@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { WithContext as ReactTags } from 'react-tag-input';
 import { Formik, Form, Field, ErrorMessage, useField, useFormikContext } from 'formik';
 import axios from "axios";
 
@@ -13,37 +12,6 @@ import EditorLanguageTabs from '../../components/editorLanguageTabs/EditorLangua
 import MapsWithSideBar from '../../components/map/MapsWithSideBar'
 
 import EditorTagsList from '../../components/editorTagsList/EditorTagsList';
-
-// tags list component
-function TagsListComponent({ value, setValue, suggestions }) {
-    const handleAddition = currtag => {
-        //if (setSuggestionsList.find((tag) => tag.id === currtag.id)) {
-            setValue([...value, currtag]);
-        //}
-    }
-    const handleDelete = i => {
-        setValue(value.filter((tag, index) => index !== i));
-    }
-    const handleDrag = (tag, currPos, newPos) => {
-        const newTags = value.slice();
-        newTags.splice(currPos, 1);
-        newTags.splice(newPos, 0, tag);
-        setValue(newTags);
-    }
-    return (
-        <ReactTags
-            tags={value}
-            handleAddition={handleAddition}
-            handleDelete={handleDelete}
-            handleDrag={handleDrag}
-            suggestions={suggestions}
-            inputFieldPosition="inline"
-            placeholder=""
-            autocomplete
-            autofocus={false}
-        />
-    )
-}
 
 // ru
 function LanguageTabRU({ extraPhotosList }) {
@@ -154,15 +122,18 @@ function LanguageTabUZ({ extraPhotosList }) {
 }
 
 // main component
-export default function TourEditorAdmin() {
+export default function TourEditorBus() {
     const formInitialValues = {
         'title': '',
-        'country': '',
-        'resort': '',
         
         'thumbnail': '',
         'gallery': '',
         'extra': '',
+
+        'start_1': '',
+        'start_2': '',
+        'finish_1': '',
+        'finish_2': '',
 
         /*'tags': '',*/
         /*'properties': ''*/
@@ -276,20 +247,6 @@ export default function TourEditorAdmin() {
                         </div>
 
                         <div className="form-row">
-                            <label htmlFor="country">
-                                <p className="form-row__title">Страна тура</p>
-                            </label>
-                            <Field type="text" name="country" id="country" />
-                        </div>
-
-                        <div className="form-row">
-                            <label htmlFor="resort">
-                                <p className="form-row__title">Курорт</p>
-                            </label>
-                            <Field type="text" name="resort" id="resort" />
-                        </div>
-
-                        <div className="form-row">
                             <label>
                                 <p className="form-row__title">Обложка</p>
                                 <p className="form-row__caption">Фото должно соответствовать следующим критериям</p>
@@ -327,6 +284,24 @@ export default function TourEditorAdmin() {
                             <EditorTagsList value={propertiesList} setValue={setPropertiesList} suggestions={propertiesSuggestions} />
                         </div>
 
+                        <div className="form-row">
+                            <p className="form-row__title">Маршрут</p>
+                            <p className="form-row__caption">Старт</p>
+                            <div className="form-row__flex" style={{ gap: "64px" }}>
+                                <div className="form-row__flex"><Field type="number" name="start_1" id="start_1" /> с. ш.</div>
+                                <div className="form-row__flex"><Field type="number" name="start_2" id="start_2" /> в. д.</div>
+                            </div>
+                            <p className="form-row__caption">Финиш</p>
+                            <div className="form-row__flex" style={{ gap: "64px" }}>
+                                <div className="form-row__flex"><Field type="number"name="finish_1" id="finish_1" /> с. ш.</div>
+                                <div className="form-row__flex"><Field type="number"name="finish_2" id="finish_2" /> в. д.</div>
+                            </div>
+                        </div>
+
+                        <div className="form-row">
+                            <MapsWithSideBar />
+                        </div>
+
                         <div className="form-cols">
                             <div className="form-row">
                                 <label htmlFor="hotel-address">
@@ -336,11 +311,11 @@ export default function TourEditorAdmin() {
                             </div>
 
                             <div className="form-row">
-                            <label htmlFor="hotel-name">
-                                <p className="form-row__title">Название отеля</p>
-                            </label>
-                            <Field type="text" name="hotel-name" id="hotel-name" />
-                        </div>
+                                <label htmlFor="hotel-name">
+                                    <p className="form-row__title">Название отеля</p>
+                                </label>
+                                <Field type="text" name="hotel-name" id="hotel-name" />
+                            </div>
                         </div>
 
                         <div className="form-row">

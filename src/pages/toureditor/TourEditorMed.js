@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { WithContext as ReactTags } from 'react-tag-input';
 import { Formik, Form, Field, ErrorMessage, useField, useFormikContext } from 'formik';
 import axios from "axios";
 
@@ -13,37 +12,6 @@ import EditorLanguageTabs from '../../components/editorLanguageTabs/EditorLangua
 import MapsWithSideBar from '../../components/map/MapsWithSideBar'
 
 import EditorTagsList from '../../components/editorTagsList/EditorTagsList';
-
-// tags list component
-function TagsListComponent({ value, setValue, suggestions }) {
-    const handleAddition = currtag => {
-        //if (setSuggestionsList.find((tag) => tag.id === currtag.id)) {
-            setValue([...value, currtag]);
-        //}
-    }
-    const handleDelete = i => {
-        setValue(value.filter((tag, index) => index !== i));
-    }
-    const handleDrag = (tag, currPos, newPos) => {
-        const newTags = value.slice();
-        newTags.splice(currPos, 1);
-        newTags.splice(newPos, 0, tag);
-        setValue(newTags);
-    }
-    return (
-        <ReactTags
-            tags={value}
-            handleAddition={handleAddition}
-            handleDelete={handleDelete}
-            handleDrag={handleDrag}
-            suggestions={suggestions}
-            inputFieldPosition="inline"
-            placeholder=""
-            autocomplete
-            autofocus={false}
-        />
-    )
-}
 
 // ru
 function LanguageTabRU({ extraPhotosList }) {
@@ -154,11 +122,9 @@ function LanguageTabUZ({ extraPhotosList }) {
 }
 
 // main component
-export default function TourEditorAdmin() {
+export default function TourEditorMed() {
     const formInitialValues = {
         'title': '',
-        'country': '',
-        'resort': '',
         
         'thumbnail': '',
         'gallery': '',
@@ -178,6 +144,8 @@ export default function TourEditorAdmin() {
         'extra-uz': '',
         'hotel-address': '',
         'hotel-name': '',
+        'hospital-address': '',
+        'hospital-name': '',
         'email': '',
         'phone': '',
         'price': '0',
@@ -276,20 +244,6 @@ export default function TourEditorAdmin() {
                         </div>
 
                         <div className="form-row">
-                            <label htmlFor="country">
-                                <p className="form-row__title">Страна тура</p>
-                            </label>
-                            <Field type="text" name="country" id="country" />
-                        </div>
-
-                        <div className="form-row">
-                            <label htmlFor="resort">
-                                <p className="form-row__title">Курорт</p>
-                            </label>
-                            <Field type="text" name="resort" id="resort" />
-                        </div>
-
-                        <div className="form-row">
                             <label>
                                 <p className="form-row__title">Обложка</p>
                                 <p className="form-row__caption">Фото должно соответствовать следующим критериям</p>
@@ -341,6 +295,26 @@ export default function TourEditorAdmin() {
                             </label>
                             <Field type="text" name="hotel-name" id="hotel-name" />
                         </div>
+                        </div>
+
+                        <div className="form-row">
+                            <MapsWithSideBar />
+                        </div>
+
+                        <div className="form-cols">
+                            <div className="form-row">
+                                <label htmlFor="hospital-address">
+                                    <p className="form-row__title">Адрес больницы</p>
+                                </label>
+                                <Field type="text" name="hospital-address" id="hospital-address" />
+                            </div>
+
+                            <div className="form-row">
+                                <label htmlFor="hospital-name">
+                                    <p className="form-row__title">Название больницы</p>
+                                </label>
+                                <Field type="text" name="hospital-name" id="hospital-name" />
+                            </div>
                         </div>
 
                         <div className="form-row">
