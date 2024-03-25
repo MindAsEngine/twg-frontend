@@ -1,3 +1,6 @@
+import { useParams } from "react-router-dom";
+
+
 import Preview from "../../img/TurPrew.png";
 import turNo from "../../img/turNo.png";
 import "./turPage.scss";

@@ -5,7 +5,7 @@ import aboutUsImg from "../../img/AboutUs.png";
 import { handleDragStart } from "../../app/function";
 
 const AboutUs = () => {
-  const language = useSelector((state) => state.language.value);
+  const language = useSelector((state) => state.persistantReducer.language.value);
   const text =
     language === "RU"
       ? "О нас"

@@ -12,13 +12,17 @@ import "./style.scss";
 // import ModalAuthQuestComponent from "../modal/ModalQuest";
 
 import ModalAuthComponent from "../modal/auth/AuthModal";
+import StandartSvg from "../../img/userIcon.svg";
 
 export const Header = () => {
   // по значению user ниже определяется,
   // авторизован ли пользователь или нет
-  const userState = useSelector((el) => el);
+  const userState = useSelector((el) => el.persistantReducer.user);
+
+  //Тут должен быть запрос на сервер по поводу фоток, пока его нету(
+
   //
-  const [user, setUser] = useState(undefined);
+  const [user, setUser] = useState(userState.name !== null);
 
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [authModalTab, setAuthModalTab] = useState(0);
@@ -33,7 +37,9 @@ export const Header = () => {
   function onAfterAuthModalClose() {
     setAuthModalTab((current) => -1);
   }
-  const language = useSelector((state) => state.persistantReducer.language.value);
+  const language = useSelector(
+    (state) => state.persistantReducer.language.value
+  );
 
   const changedText =
     language === "RU"
@@ -94,10 +100,14 @@ export const Header = () => {
             </button>
           )}
           {/* видно, если пользователь авторизован */}
-          {user && <button className="bgYl">{changedText.auth[2]}</button>}
+          {user && (
+            <Link to="/profile">
+              <button className="bgYl">{changedText.auth[2]}</button>
+            </Link>
+          )}
           {user && (
             <button className="header__auth__avatar">
-              <img src={userState.avatar}></img>
+              <img src={StandartSvg}></img>
             </button>
           )}
         </div>

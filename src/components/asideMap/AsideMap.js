@@ -37,7 +37,7 @@ const AsideMap = ({ asideShow }) => {
   ];
   const [model, setModel] = useState(false);
   const [tempImgSrc, setTempImgSrc] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const swiper = useRef();
 
   const getItem = (imgSrc, i) => {

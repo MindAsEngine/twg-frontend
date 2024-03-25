@@ -4,11 +4,17 @@ import "./attractionPage.scss";
 import { ShowMoreContent } from "../../components/showMore/ShowMore";
 import Comments from "../../components/comments/Comments";
 import MapsWithSideBar from "../../components/map/MapsWithSideBar";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 
 //Данные переданные в страницу: link - адрес, для выполнения запроса
 
 const Attractions = ({ link }) => {
-  
+  const { id } = useParams();
+  useEffect(() => {
+
+    
+  }, [])
   return (
     <div className="tur">
       <section id="preview">

@@ -1,5 +1,13 @@
-import { Route, Routes } from "react-router-dom";
-import { lazy, Suspense } from "react";
+import {
+  Route,
+  Routes,
+  useLocation,
+  Redirect,
+  Navigate,
+  useParams,
+} from "react-router-dom";
+import { lazy, Suspense, useLayoutEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 import "./styles/base/style.module.scss";
 import "./index.scss";
@@ -16,9 +24,22 @@ const Hotel = lazy(() => import("./pages/hotel/Hotel"));
 const Profile = lazy(() => import("./pages/profile/Profile"));
 const ProfileAgent = lazy(() => import("./pages/profileAgent/ProfileAgent"));
 
+const Wrapper = ({ children }) => {
+  const location = useLocation();
+  useLayoutEffect(() => {
+    document.documentElement.scrollTo(0, 0);
+  }, [location.pathname]);
+  return children;
+};
+
 function App() {
+  const userState = useSelector((el) => el.persistantReducer.user);
+  let { id } = useParams();
+  const [isAuthenticated, userHasAuthenticated] = useState(
+    userState.name !== null
+  );
   return (
-    <>
+    <Wrapper>
       <section id="header" className="bg2 flex justif-ss-cent">
         <Header />
       </section>
@@ -42,7 +63,7 @@ function App() {
               }
             />
             <Route
-              path="/tur"
+              path="/tur/:id"
               element={
                 <Suspense fallback={<></>}>
                   <Tur />
@@ -50,15 +71,15 @@ function App() {
               }
             />
             <Route
-              path="/attraction"
+              path={`attraction/:id`}
               element={
                 <Suspense fallback={<></>}>
                   <Attractions />
                 </Suspense>
               }
             />
-             <Route
-              path="/hotel"
+            <Route
+              path="/hotel/:id"
               element={
                 <Suspense fallback={<></>}>
                   <Hotel />
@@ -73,22 +94,30 @@ function App() {
                 </Suspense>
               }
             />
+
             <Route
               path="/profile"
               element={
-                <Suspense fallback={<></>}>
-                  <Profile />
-                </Suspense>
+                isAuthenticated ? (
+                  <Suspense fallback={<></>}>
+                    <Profile />
+                  </Suspense>
+                ) : (
+                  <Navigate to="/" />
+                )
               }
             />
-            <Route
-              path="/profile/agent"
-              element={
-                <Suspense fallback={<></>}>
-                  <ProfileAgent />
-                </Suspense>
-              }
-            />
+
+            {false && (
+              <Route
+                path="/profile/agent"
+                element={
+                  <Suspense fallback={<></>}>
+                    <ProfileAgent />
+                  </Suspense>
+                }
+              />
+            )}
           </Routes>
         </main>
       </section>
@@ -98,7 +127,7 @@ function App() {
       <div className="footer__copyright bg2 flex justif-ss-cent f-cWh">
         <p>Copyright</p>
       </div>
-    </>
+    </Wrapper>
   );
 }
 
