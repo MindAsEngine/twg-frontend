@@ -5,16 +5,46 @@ import { ShowMoreContent } from "../../components/showMore/ShowMore";
 import Comments from "../../components/comments/Comments";
 import MapsWithSideBar from "../../components/map/MapsWithSideBar";
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import instance from "../../app/axiosClient";
+import { useSelector } from "react-redux";
 
 //Данные переданные в страницу: link - адрес, для выполнения запроса
 
 const Attractions = ({ link }) => {
+  const language = useSelector(
+    (state) => state.persistantReducer.language.value
+  );
+  //Тут мы добавляем возможность получения id из url. Т.к. могут отправить ссылку на тур
   const { id } = useParams();
+  const [state, setState] = useState({
+    loading: false,
+    pageContent: null,
+  });
   useEffect(() => {
+    async function fetchData() {
+      let config = {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      };
+      try {
+        setState({ ...state, loading: true });
+        const response = await instance.get(
+          `/travel/${language}/tours/get?id=${id || link}`,
+          config
+        );
+        console.log(response);
+        setState({ ...state, loading: false });
+        setState({ ...state, pageContent: response.data });
+      } catch (error) {
+        setState({ ...state, loading: false });
+        console.log(error);
+      }
+    }
 
-    
-  }, [])
+    fetchData();
+  }, []);
   return (
     <div className="tur">
       <section id="preview">

@@ -22,17 +22,17 @@ function LoginUser({ switchTab }) {
   };
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handlePost = (values) => {
     async function fetchData() {
       try {
         //setState({ ...state, loading: true });
         const response = await instance.post("/auth/users/sign-in", values);
-        instance.defaults.headers.common["token"] = response.data.token;
+        instance.defaults.headers.common["Authorization"] =
+          "Bearer " + response.data.token;
         dispatch(getUser(values));
-        localStorage.setItem('token', response.data.token);
-        //Обновление страницы после получения данных в redux 
+        localStorage.setItem("token", response.data.token);
+        //Обновление страницы после получения данных в redux
         window.location.reload();
       } catch (error) {
         //setState({ ...state, loading: false });
@@ -115,12 +115,18 @@ function SignupUser({ switchTab }) {
     username: "",
   };
 
+  const dispatch = useDispatch();
+
   const handlePost = (values) => {
     async function fetchData() {
       try {
         //setState({ ...state, loading: true });
         const response = await instance.post("/auth/users/sign-up", values);
         instance.defaults.headers.common["token"] = response.data.token;
+
+        dispatch(getUser(values));
+        localStorage.setItem("token", response.data.token);
+        window.location.reload();
       } catch (error) {
         //setState({ ...state, loading: false });
         console.log(error);

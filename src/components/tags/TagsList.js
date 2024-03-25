@@ -3,7 +3,7 @@ import React, { useRef } from "react";
 import useScrollOnDrag from "react-scroll-ondrag";
 import { TagsAsideMap } from "./TagsAsideMap";
 
-const TagsList = ({ runScroll, tagsAside, tagsColor}) => {
+const TagsList = ({ runScroll, tagsAside, tagsColor, tagsList }) => {
   const tags = [
     { tagsName: "droplet", tagsText: "Бесплатный вайфай" },
     { tagsName: "medal", tagsText: "Трёхразовое питание" },
@@ -19,7 +19,11 @@ const TagsList = ({ runScroll, tagsAside, tagsColor}) => {
       <div className="tags__list flex">
         {tags.map((el, i) =>
           tagsAside ? (
-            <TagsAsideMap tagsName={el.tagsName} tagsText={el.tagsText} tagsColor={tagsColor}/>
+            <TagsAsideMap
+              tagsName={el.tagsName}
+              tagsText={el.tagsText}
+              tagsColor={tagsColor}
+            />
           ) : (
             <Tag tagsName={el.tagsName} tagsText={el.tagsText} />
           )

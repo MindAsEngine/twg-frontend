@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { useSelector } from "react-redux";
 
 import Feature from "../../components/feature/Feature";
@@ -11,28 +11,29 @@ import News from "../../components/news/News";
 const Map = lazy(() => import("../../components/map/Map"));
 
 const Home = () => {
-
-  const visibilityIndex = useSelector((state) => state.persistantReducer.visibilityIndex.visibile);
+  const visibilityIndex = useSelector(
+    (state) => state.persistantReducer.visibilityIndex.visibile
+  );
   return (
     <>
       <section id="feature" className="bgGr">
         <Feature />
       </section>
       <section id="map">
-        <Suspense fallback={<></>} >
+        <Suspense fallback={<></>}>
           <Map />
         </Suspense>
       </section>
       <section id="aboutUs">
-          <AboutUs />
+        <AboutUs />
       </section>
       <section id="author-tours" className="bg3">
         <AuthorTours />
       </section>
-      <section id="notur"  className="bgGr">
+      <section id="notur" className="bgGr">
         <NoTur />
       </section>
-      <section id="news"  className="bgGr">
+      <section id="news" className="bgGr">
         <News />
       </section>
     </>

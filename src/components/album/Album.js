@@ -8,7 +8,8 @@ import Album1 from "../../img/album/image1.png";
 import "./style.scss";
 import AlbumSwiper from "./AlbumSwiper";
 
-const Album = ({ runScroll }) => {
+const Album = ({ runScroll, medias }) => {
+  console.log(medias);
   const ref = useRef();
   const swiper = useRef();
   const { events } = useScrollOnDrag(ref);
@@ -25,37 +26,10 @@ const Album = ({ runScroll }) => {
     setModel(el);
   };
 
-  const [albumList, setAlbumList] = useState([
-    {
-      img: Album1,
-    },
-    {
-      img: Album1,
-    },
-    {
-      img: Album1,
-    },
-    {
-      img: Album1,
-    },
-    {
-      img: Album1,
-    },
-    {
-      img: Album1,
-    },
-    {
-      img: Album1,
-    },
-    {
-      img: Album1,
-    },
-  ]);
-
   return (
     <>
       <AlbumSwiper
-        albumList={albumList}
+        albumList={medias}
         model={model}
         swiper={swiper}
         handleCallback={handleCallback}
@@ -66,7 +40,7 @@ const Album = ({ runScroll }) => {
           {...events}
           ref={ref}
         >
-          {albumList.map((el, i) => {
+          {medias.map((el, i) => {
             return (
               <img
                 src={el.img}

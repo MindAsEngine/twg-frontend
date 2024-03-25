@@ -108,6 +108,8 @@ function App() {
               }
             />
 
+            <Route path="*" element={<Navigate to="/" replace />} />
+
             {false && (
               <Route
                 path="/profile/agent"

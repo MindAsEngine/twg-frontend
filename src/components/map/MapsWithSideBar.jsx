@@ -98,7 +98,7 @@ class MapsWithSideBar extends Component {
         if (this.map.isStyleLoaded() == false) {
           setTimeout(waiting, 200);
         } else {
-          addCluster(this.map, "hotels", "point", data);
+          //addCluster(this.map, "hotels", "point", data);
         }
       };
       waiting();
@@ -111,7 +111,7 @@ class MapsWithSideBar extends Component {
     this.map.on("click", "unclustered-point", (e) => {
       this.setState({ aside: true });
       //Тут я получаю значение id
-      console.log(e.features[0]._vectorTileFeature.properties.id);
+      //console.log(e.features[0]._vectorTileFeature.properties.id);
     });
   }
   handleCallback = (el) => {
