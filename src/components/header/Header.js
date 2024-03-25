@@ -16,24 +16,25 @@ import ModalAuthComponent from "../modal/auth/AuthModal";
 export const Header = () => {
   // по значению user ниже определяется,
   // авторизован ли пользователь или нет
+  const userState = useSelector((el) => el);
+  //
   const [user, setUser] = useState(undefined);
 
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [authModalTab, setAuthModalTab] = useState(0);
 
-
   function openAuthModal(initTab) {
     setShowAuthModal(true);
-    setAuthModalTab(current => initTab);
+    setAuthModalTab((current) => initTab);
   }
   function closeAuthModal() {
     setShowAuthModal(false);
   }
   function onAfterAuthModalClose() {
-    setAuthModalTab(current => -1);
+    setAuthModalTab((current) => -1);
   }
+  const language = useSelector((state) => state.persistantReducer.language.value);
 
-  const language = useSelector((state) => state.language.value);
   const changedText =
     language === "RU"
       ? {
@@ -78,26 +79,30 @@ export const Header = () => {
           <Search />
         </div>
         <div className="header__auth flex">
-          { /* видно, если пользователь не авторизован */ }
-          {!user && <button className="bgYl" onClick={() => openAuthModal(0)}>
-            {changedText.auth[0]}
-          </button> }
-          {!user && <button
-            className="bg2 f-cWh header__registerbtn"
-            onClick={() => openAuthModal(1)}
-          >
-            {changedText.auth[1]}
-          </button>}
-          { /* видно, если пользователь авторизован */ }
-          {user && <button className="bgYl">
-            {changedText.auth[2]}
-          </button> }
-          {user && <button className="header__auth__avatar">
-            <img src="https://imgur.com/EBOf5v2.png"></img>
-          </button>}
+          {/* видно, если пользователь не авторизован */}
+          {!user && (
+            <button className="bgYl" onClick={() => openAuthModal(0)}>
+              {changedText.auth[0]}
+            </button>
+          )}
+          {!user && (
+            <button
+              className="bg2 f-cWh header__registerbtn"
+              onClick={() => openAuthModal(1)}
+            >
+              {changedText.auth[1]}
+            </button>
+          )}
+          {/* видно, если пользователь авторизован */}
+          {user && <button className="bgYl">{changedText.auth[2]}</button>}
+          {user && (
+            <button className="header__auth__avatar">
+              <img src={userState.avatar}></img>
+            </button>
+          )}
         </div>
       </header>
-           
+
       <ModalAuthComponent
         show={showAuthModal}
         initTab={authModalTab}
@@ -108,7 +113,7 @@ export const Header = () => {
   );
 };
 
-//Модалки 
+//Модалки
 /*const ModalAdmin = () => {
   return <>
   Lorem, ipsum dolor.</>;

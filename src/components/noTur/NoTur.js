@@ -17,7 +17,7 @@ const NoTur = () => {
   function parentCallBack(el) {
     setState({ ...state, show: el });
   }
-  const language = useSelector((state) => state.language.value);
+  const language = useSelector((state) => state.persistantReducer.language.value);
   const changedText =
     language === "RU"
       ? [

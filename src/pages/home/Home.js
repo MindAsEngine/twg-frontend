@@ -11,7 +11,8 @@ import News from "../../components/news/News";
 const Map = lazy(() => import("../../components/map/Map"));
 
 const Home = () => {
-  const visibilityIndex = useSelector((state) => state.visibilityIndex.visibile);
+
+  const visibilityIndex = useSelector((state) => state.persistantReducer.visibilityIndex.visibile);
   return (
     <>
       <section id="feature" className="bgGr">

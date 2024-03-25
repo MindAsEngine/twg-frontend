@@ -6,7 +6,7 @@ import "./authortours.scss";
 import CardItem from "../cardItem/CardItem";
 
 export default function AuthorTours({ runScroll }) {
-  const language = useSelector((state) => state.language.value);
+  const language = useSelector((state) => state.persistantReducer.language.value);
   const changedText =
     language === "RU"
       ? [
