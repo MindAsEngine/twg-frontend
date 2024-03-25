@@ -9,7 +9,7 @@ const Search = ({ placeholder, maxWidth }) => {
   }
 
   return (
-    <div class="header__search__wrapper">
+    <div className="header__search__wrapper">
       <label htmlFor="headersearch">
         <img
           src={SeacrhSvg}

@@ -15,6 +15,7 @@ const Attractions = lazy(() => import("./pages/attractions/Attractions"));
 const Hotel = lazy(() => import("./pages/hotel/Hotel"));
 const Profile = lazy(() => import("./pages/profile/Profile"));
 const ProfileAgent = lazy(() => import("./pages/profileAgent/ProfileAgent"));
+const TourEditorAdmin = lazy(() => import("./pages/toureditor/TourEditorAdmin"));
 
 function App() {
   return (
@@ -86,6 +87,14 @@ function App() {
               element={
                 <Suspense fallback={<></>}>
                   <ProfileAgent />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/toureditor/admin"
+              element={
+                <Suspense fallback={<></>}>
+                  <TourEditorAdmin />
                 </Suspense>
               }
             />
