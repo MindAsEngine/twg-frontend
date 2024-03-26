@@ -1,8 +1,12 @@
 @import "../../styles/base/variables.module.scss";
 
 .tur {
-  & .pd {
-    padding: 0 6.37rem;
+  & #preview .pd {
+    padding: 0 6.37rem 0 0;
+    // padding: 0;
+    @media (max-width: $mobileBreakpoint) {
+      padding: 0 20px;
+    }
   }
   .section__title {
     margin-bottom: 2rem;

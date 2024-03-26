@@ -1,3 +1,6 @@
+#footer {
+  margin-top: 20px;
+}
 .footer {
   gap: 144px;
   width: 100%;
@@ -11,13 +14,13 @@
     .list__title {
       margin-bottom: 32px;
     }
-    .list__item{
-        flex-direction: column;
-        gap: 17px;
+    .list__item {
+      flex-direction: column;
+      gap: 17px;
 
-        .footer__href{
-            cursor: pointer;
-        }
+      .footer__href {
+        cursor: pointer;
+      }
     }
   }
 }

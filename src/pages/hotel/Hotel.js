@@ -1,11 +1,48 @@
 import Preview from "../../img/TurPrew.png";
 import turNo from "../../img/turNo.png";
-import "./style.scss";
+import "./hotelPage.scss";
 import { ShowMoreContent } from "../../components/showMore/ShowMore";
 import Comments from "../../components/comments/Comments";
 import MapsWithSideBar from "../../components/map/MapsWithSideBar";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+import instance from "../../app/axiosClient";
 
 const Hotel = ({ link }) => {
+  const language = useSelector(
+    (state) => state.persistantReducer.language.value
+  );
+  //Тут мы добавляем возможность получения id из url. Т.к. могут отправить ссылку на тур
+  const { id } = useParams();
+  const [state, setState] = useState({
+    loading: false,
+    pageContent: null,
+  });
+  useEffect(() => {
+    async function fetchData() {
+      let config = {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      };
+      try {
+        setState({ ...state, loading: true });
+        const response = await instance.get(
+          `/travel/${language}/hotels/get?id=${id || link}`,
+          config
+        );
+        console.log(response);
+        setState({ ...state, loading: false });
+        setState({ ...state, pageContent: response.data });
+      } catch (error) {
+        setState({ ...state, loading: false });
+        console.log(error);
+      }
+    }
+
+    fetchData();
+  }, []);
   return (
     <div className="tur">
       <section id="preview">

@@ -30,6 +30,7 @@ body {
   display: block;
   overflow-x: hidden;
   overflow-y: hidden;
+  cursor: default;
 
   &::-webkit-scrollbar {
     width: 0;
@@ -47,11 +48,9 @@ body {
   .tags__list {
     gap: 12px;
     padding-bottom: 8px;
-
-    &:hover{
-      cursor: move;
-    }
-    &:active{
+    cursor: default;
+    
+    &:active {
       cursor: grabbing;
     }
   }
@@ -126,17 +125,9 @@ body {
   margin-left: 0 !important;
 }
 
-.loading__wrapper {
+.news__loading {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-.loading {
-  position: absolute;
-
-  top: 50%;
+  top: 25px;
   left: 50%;
   right: 50%;
   transform: translate(50%, 50%);

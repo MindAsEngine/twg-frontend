@@ -3,16 +3,20 @@ import { createSlice } from "@reduxjs/toolkit";
 const UserSlice = createSlice({
   name: "user",
   initialState: {
-    name: "",
-    avatar: "",
-    status: " ",
+    name: null,
+    avatar: null,
+    status: null,
   },
   reducers: {
     getUser: (state, action) => {
-      console.log(action.payload);
-      state.name = action.payload.name;
-      state.avatar = action.payload.avatar;
-      state.status = action.payload.status;
+      console.log(action.payload.avatar);
+      state.name = action.payload.username;
+      if (action.payload.avatar == undefined) {
+        state.avatar = 'StandartSvg';
+      }
+      if (action.payload.status == undefined) {
+        state.status = "user";
+      }
     },
   },
 });

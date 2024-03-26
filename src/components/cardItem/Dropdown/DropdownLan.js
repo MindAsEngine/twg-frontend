@@ -6,13 +6,16 @@ import { changeLanguage } from "../../../store/slices/Language";
 import "../Dropdown/dropdownH.scss";
 
 export const DropdownLg = () => {
+  const language = useSelector(
+    (state) => state.persistantReducer.language.value
+  );
   const [state, setState] = useState({
     language: "RU",
   });
   const dispatch = useDispatch();
 
   const options = ["RU", "EN", "UZ"];
-  const defaultOption = options[0];
+  const defaultOption = language || options[0];
   const handleOption = (e) => {
     setState({ ...state, language: e.target });
     dispatch(changeLanguage(e.value));
