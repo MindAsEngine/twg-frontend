@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import "./style.scss";
+import "./showMore.scss";
 
 const ShowMoreComment = (props) => {
   const [state, setState] = useState({

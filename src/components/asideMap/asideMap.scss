@@ -1,0 +1,51 @@
+.map__aside {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -100%;
+  max-width: 382px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 1);
+  padding: 15px 22px;
+  z-index: 2;
+  transition: left 0.5s ease-in-out;
+  &.opn {
+    left: 0;
+    .news__loading {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      right: 50%;
+      transform: translate(50%, 50%);
+
+      width: 40px;
+      height: 40px;
+      animation: animate 2s infinite linear;
+      border-radius: 50%;
+      background-image: url("../../img/loading.png");
+      background-repeat: no-repeat;
+      background-size: 100%;
+    }
+    @keyframes animate {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+  .aside__album {
+    display: grid;
+    grid-template-columns: 1fr 0.38fr;
+    grid-template-rows: repeat(3, 50px);
+    gap: 8px;
+    img {
+      cursor: pointer;
+    }
+    img:nth-child(1) {
+      grid-column: 1 / 1;
+      grid-row: 1 / 4;
+    }
+  }
+}

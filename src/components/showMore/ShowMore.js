@@ -1,7 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 
 export const ShowMoreContent = (props) => {
-  console.log(props);
   const [state, setState] = useState({
     button: true,
     showMore: false,
@@ -15,17 +14,17 @@ export const ShowMoreContent = (props) => {
   const textDivRef = useRef(null);
   const [fontSize, setFontSize] = useState(18.5);
 
-  // state.height > 54 ? console.log('opa') : console.log('more');
   useEffect(() => {
     const handleHeightChange = () => {
       if (textDivRef.current) {
         const height = textDivRef.current.offsetHeight;
+        console.log(height);
         setState({ ...state, textHeight: height });
       }
     };
 
     handleHeightChange(); // Вызываем при монтировании, чтобы получить начальное значение font-size
-  }, []);
+  }, [props.content]);
   return (
     <>
       <p
@@ -39,7 +38,7 @@ export const ShowMoreContent = (props) => {
                 transition: `height ${state.transition} ease`,
               }
             : {
-                height: "60px",
+                height: "auto",
                 overflow: "hidden",
                 transition: `height ${state.transition} ease`,
               }
@@ -47,33 +46,36 @@ export const ShowMoreContent = (props) => {
       >
         <div ref={textDivRef}>{props.content}</div>
       </p>
-      <button
-        onClick={() => {
-          setState({ ...state, showMore: !state.showMore });
-        }}
-        className={
-          state.showMore ? "opn flex showMore__btn" : " flex showMore__btn"
-        }
-        
-      >
-        <svg
-          width="15"
-          height="8"
-          viewBox="0 0 15 8"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          style={{ transition: `all ${state.transition} ease` }}
+      {state.textHeight > 50 ? (
+        <button
+          onClick={() => {
+            setState({ ...state, showMore: !state.showMore });
+          }}
+          className={
+            state.showMore ? "opn flex showMore__btn" : " flex showMore__btn"
+          }
         >
-          <path
-            d="M13.7109 6.97168L7.71094 1.69833L1.71094 6.97168"
-            stroke="rgba(0, 68, 120, 1)"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
-        {!state.showMore ? "Показать больше" : "Показать меньше"}
-      </button>
+          <svg
+            width="15"
+            height="8"
+            viewBox="0 0 15 8"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            style={{ transition: `all ${state.transition} ease` }}
+          >
+            <path
+              d="M13.7109 6.97168L7.71094 1.69833L1.71094 6.97168"
+              stroke="rgba(0, 68, 120, 1)"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          {!state.showMore ? "Показать больше" : "Показать меньше"}
+        </button>
+      ) : (
+        <></>
+      )}
     </>
   );
 };

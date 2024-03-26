@@ -11,7 +11,6 @@ const FormCallback = () => {
   });
   const handlePost = (values) => {
     const formData = new FormData();
-    console.log(values);
     async function fetchData() {
       try {
         setState({ ...state, loading: true });

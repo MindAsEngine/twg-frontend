@@ -3,7 +3,15 @@ import "./carditem.scss";
 import RatingComponent from "../rating/Rating";
 import { handleDragStart } from "../../app/function";
 
-const CardItem = ({ title, description, rating, reviewsAmount, img, path }) => {
+const CardItem = ({
+  sluga,
+  title,
+  description,
+  rating,
+  reviewsAmount,
+  img,
+  path,
+}) => {
   return (
     <>
       <div className="card">
@@ -29,7 +37,7 @@ const CardItem = ({ title, description, rating, reviewsAmount, img, path }) => {
           </div>
           <div className="flex justif-ss-cent">
             <button className="card__button">
-              <Link to={path}>Узнать больше</Link>
+              <Link to={`/tur/${sluga}`}>Узнать больше</Link>
             </button>
           </div>
         </div>

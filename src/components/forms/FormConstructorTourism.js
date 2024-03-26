@@ -6,7 +6,6 @@ import Collapsible from "react-collapsible";
 
 const FormConstructor = () => {
   const handlePost = (values) => {
-    const formData = new FormData();
 
     async function fetchData() {
       try {

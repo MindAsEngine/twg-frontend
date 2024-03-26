@@ -3,11 +3,11 @@ import { changeMapFromPanel } from "../../store/slices/MapPanel";
 
 const MapPanel = ({ handleCallback }) => {
   const dispatch = useDispatch();
-  const counter = useSelector((state) => state.mapPanel.value);
+  const counter = useSelector((state) => state.persistantReducer.mapPanel.value);
   const handleCipher = (string) => {
     dispatch(changeMapFromPanel(string));
   };
-  const language = useSelector((state) => state.language.value);
+  const language = useSelector((state) => state.persistantReducer.language.value);
   const changedText =
     language === "RU"
       ? ["Туризм", "Медицина", "Автобусные туры"]

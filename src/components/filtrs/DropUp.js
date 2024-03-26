@@ -6,7 +6,7 @@ import { ReactComponent as Sun } from "../../img/filtrs/sun.svg";
 import "./filters.scss";
 import { useState } from "react";
 
-const DropUp = () => {
+const DropUp = ({right}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
 
@@ -25,7 +25,7 @@ const DropUp = () => {
   };
 
   return (
-    <div className="dropdown">
+    <div className= {right ? "dropdown right" : "dropdown"}>
       <div className="dropdown__container">
         <button
           className={`dropdown__toggle ${isOpen ? "open" : "closed"} ${

@@ -146,9 +146,9 @@ class Map extends Component {
         if (this.map.isStyleLoaded() == false) {
           setTimeout(waiting, 200);
         } else {
-          addCluster(this.map, "hotels", "cat", data);
+         // addCluster(this.map, "hotels", "cat", data);
           // Добавление стиля для страны
-          addCountryLayer(this.map, Spain);
+         // addCountryLayer(this.map, Spain);
         }
       };
       waiting();
@@ -161,7 +161,7 @@ class Map extends Component {
   //Тут логика заключается в том, что в случае обновления state заново обновляется слой
   componentDidUpdate(prevProps, prevState) {
     if (this.state.getRoutes !== prevState.getRoutes) {
-      addRouteLayer(this.map, this.state.getRoutes);
+     // addRouteLayer(this.map, this.state.getRoutes);
     }
   }
 

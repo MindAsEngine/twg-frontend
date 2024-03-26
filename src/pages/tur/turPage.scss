@@ -2,7 +2,7 @@
 
 .tur {
   & #preview .pd {
-    padding: 0 6.37rem;
+    padding: 0 6.37rem 0 0;
     // padding: 0;
     @media (max-width: $mobileBreakpoint) {
       padding: 0 20px;
@@ -41,11 +41,11 @@
     .preview__text {
       gap: 24px;
       align-items: end;
-      
+
       .tur__name {
         font-weight: 600;
       }
-      .tur__price{
+      .tur__price {
         padding: 17px 56px;
         color: rgba(0, 28, 34, 1);
         border-radius: 87px;
@@ -57,14 +57,15 @@
         align-items: start;
       }
     }
-    
   }
 
-  #photos, #about-tur, #add-info, #add-tags, #map, #comments {
+  #photos,
+  #about-tur,
+  #add-info,
+  #add-tags,
+  #map,
+  #comments {
     padding: 0;
-    & > div {
-      padding: 0 6.37rem;
-    }
     @media (max-width: $mobileBreakpoint) {
       & > div {
         padding: 0 20px;
@@ -74,7 +75,6 @@
 
   #tags {
     margin: 24px auto;
-    padding: 0 6.37rem;
     @media (max-width: $mobileBreakpoint) {
       padding: 0;
     }
@@ -88,7 +88,6 @@
     }
   }
 }
-
 
 .tur * {
   // outline: 1px dashed rgba(0, 0, 0, .25);

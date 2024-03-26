@@ -6,7 +6,7 @@ import { ReactComponent as FiltrGrey } from "../../img/filtrs/filtrLeft.svg";
 import "./filters.scss";
 import { useState } from "react";
 
-const ExtenLeft = () => {
+const ExtenLeft = ({ right }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
 
@@ -23,7 +23,7 @@ const ExtenLeft = () => {
   };
 
   return (
-    <div className="dropleft">
+    <div className={right ? "dropleft right" : "dropleft"}>
       <div className="dropleft__container flex">
         <button
           className={`dropleft__toggle ${isOpen ? "open" : "closed"} ${

@@ -6,7 +6,7 @@ import "./feature.scss";
 import { handleDragStart } from "../../app/function";
 
 const Feature = () => {
-  const language = useSelector((state) => state.language.value);
+  const language = useSelector((state) => state.persistantReducer.language.value);
   const changedText =
     language === "RU"
       ? {
