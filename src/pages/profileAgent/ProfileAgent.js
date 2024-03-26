@@ -10,7 +10,7 @@ import ProfileUploadTours from "../../components/profileUploadTours/ProfileUploa
 import ProfileCurrencyRate from "../../components/profileCurrencyRate/ProfileCurrencyRate";
 import ProfileAddedAgents from "../../components/profileAddedAgents/ProfileAddedAgents";
 
-export default function Profile() {
+export default function ProfileAgent() {
     const [userData, setUserData] = useState({
         picture: 'https://i.imgur.com/EBOf5v2.png',
         firstName: 'Имя',

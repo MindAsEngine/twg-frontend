@@ -1,0 +1,158 @@
+@import "../../styles/base/variables.module.scss";
+
+.toureditor {
+    margin: 0 auto;
+    padding-top: 32px;
+    padding-bottom: 32px;
+
+    h1 {
+        font-size: 32px;
+        font-weight: 600;
+        margin-bottom: 32px;
+    }
+
+    hr {
+        border-bottom: 1px solid #D9D9D9;
+        width: 90%;
+        margin: 24px auto;
+    }
+
+    form, .subform {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .form-row {
+        width: 100%;
+        &__title {
+            font-weight: 600;
+            color: $fontBl;
+        }
+        &__caption {
+            color: $fontGr;
+            font-size: 13px;
+        }
+        &__flex {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        label {
+            margin-bottom: 8px;
+
+            &.checkbox {
+                display: flex;
+                flex-direction: row;
+                gap: 16px;
+                flex-wrap: nowrap;
+                white-space: nowrap;
+                color: $fontBl;
+            }
+        }
+        input {
+            width: 100%;
+            max-width: 100%;
+        }
+        textarea {
+            width: 100%;
+            min-height: 96px;
+            resize: vertical;
+
+            &.textarea-expanded {
+                min-height: 256px;
+            }
+        }
+        select {
+            font-family: inherit;
+            font-size: inherit;
+            color: $fontBl;
+            border: 1px solid #D4D4D4;
+            border-radius: 4px;
+            background-color: $backgroundWh;
+            padding: 10px 24px;
+            box-shadow: 0px 1px 4px 0px #00000020;
+        }
+
+        .ReactTags {
+            &__tags {
+                display: flex;
+                flex-direction: row;
+            }
+            &__selected {
+                display: flex;
+                gap: 8px;
+                flex-wrap: wrap;
+                align-items: start;
+            }
+            &__tag {
+                background-color: #BEBEBE;
+                color: #777777;
+                padding: 8px 16px;
+                border-radius: 9999px;
+            }
+            &__remove {
+                margin-left: 8px;
+            }
+
+            &__suggestions {
+                background-color: $backgroundWh;
+                border: 1px solid #BEBEBE;
+                border-radius: 4px;
+                box-shadow: 0px 0px 4px 0px #00000040;
+                padding: 8px;
+
+                & span {
+                    display: block;
+                    padding: 5px 10px;
+                }
+            }
+            &__activeSuggestion {
+                background-color: #D4D4D4;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            input {
+                display: inline-block;
+            }
+        }
+    }
+
+    &__formsubmit {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        margin-top: 24px;
+
+        button {
+            padding: 10px 24px;
+            font-family: inherit;
+            font-size: inherit;
+            font-weight: 700;
+        }
+
+        &__submit,
+        &__publish {
+            border-radius: 9999px;
+        }
+
+        &__publish {
+            background-color: #E2E2E2;
+            color: #8A8A8A;
+            transition-duration: .25s;
+            &.active {
+                background-color: $backgroundYl;
+                color: black;
+            }
+        }
+    }
+
+    .form-cols {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+}

@@ -1,0 +1,42 @@
+@import "../../styles/base/variables.module.scss";
+
+.photoupload {
+    --size: 128px;
+
+    width: var(--size);
+    height: var(--size);
+    background-color: #BEBEBE;
+    border-radius: 4px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    user-select: none;
+
+    &__wrapper {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    &__input {
+        display: none;
+    }
+
+    &__undertext {
+        font-size: 13px;
+        color: $fontGr;
+        text-align: center;
+        width: 128px;
+        user-select: none;
+    }
+    &__preview {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 4px;
+    }
+}

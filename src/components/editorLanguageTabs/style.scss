@@ -1,0 +1,25 @@
+@import "../../styles/base/variables.module.scss";
+
+.languagetabs {
+    &__tabs {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+
+        button {
+            font-family: inherit;
+            font-weight: 600;
+            color: $fontBl;
+            background-color: $backgroundWh;
+            box-shadow: 0px 4px 4px 0px #00000040;
+            border-radius: 4px;
+            padding: 10px 24px;
+
+            &.current {
+                background-color: #D8D8D8;
+                box-shadow: none;
+            }
+        }
+    }
+}
