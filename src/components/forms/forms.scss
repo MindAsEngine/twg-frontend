@@ -70,3 +70,19 @@ form {
         width: 100%;
     }
 }
+
+.form-row {
+    &__cols {
+        display: grid;
+        grid-template-columns: auto 128px;
+        gap: 16px;
+    }
+    &__showbtn {
+        background-color: $backgroundYl;
+    border-radius: 9999px;
+    padding: 10px 24px;
+    font-family: inherit;
+    font-size: inherit;
+    color: $fontBl;
+    }
+}

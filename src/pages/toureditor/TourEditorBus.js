@@ -2,6 +2,10 @@ import { useEffect, useState } from 'react';
 import { Formik, Form, Field, ErrorMessage, useField, useFormikContext } from 'formik';
 import axios from "axios";
 
+import { useDispatch, useSelector } from "react-redux";
+import { getUser } from "../../store/slices/User";
+import instance from "../../app/axiosClient";
+
 // styles
 import "./style.scss"
 import "../../components/forms/forms.scss"
@@ -218,19 +222,17 @@ export default function TourEditorBus() {
             <Formik
             initialValues={formInitialValues}
             validate={(values) => {
-                const errors = {};
+                /*const errors = {};
                 for (let key of Object.keys(formInitialValues)) {
                     if (!values[key]) {
                         errors[key] = "Требуется заполнить";
                     }
                 }
-                // console.log(Object.keys(errors));
                 setFormState({
                     ...formState,
                     filled: Object.keys(errors).length == 0
                 });
-                // setThumbnail( values.thumbnail.at(-1) || [] );
-                return errors;
+                return errors;*/
             }}
             onSubmit={(values, { setSubmitting }) => {
                 handlePost(values);

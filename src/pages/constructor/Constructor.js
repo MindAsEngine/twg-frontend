@@ -8,6 +8,10 @@ import React from "react";
 import { Formik, Form } from "formik";
 import axios from "axios";
 
+import { useDispatch, useSelector } from "react-redux";
+import { getUser } from "../../store/slices/User";
+import instance from "../../app/axiosClient";
+
 // вкладки
 const tabsList = [
     {
@@ -25,21 +29,6 @@ const tabsList = [
 ];
 
 const Constructor = () => {
-    const handlePost = (values) => {
-        const formData = new FormData();
-        async function fetchData() {
-            try {
-                // setState({ ...state, loading; true });
-                const response = await axios.post("https://jsonplaceholder.typicode.com/todos");
-            } catch (error) {
-                // setState({ ...state, loading; false });
-                console.log(error);
-            }
-        }
-    
-        fetchData();
-    }
-
     // начальные значения полей формы
     const formInitialValues = {
         'destination-start-city': '',
@@ -55,6 +44,29 @@ const Constructor = () => {
         'transfer-region': '',
         'transfer-city': ''
     };
+
+    //const dispatch = useDispatch();
+    //let token = useSelector((state) => state.persistantReducer.token.value);
+    //token == "" ? (token = localStorage.token) : (token = token);
+    const handlePost = (values) => {
+        console.log(values);
+        /*async function fetchData() {
+            let config = {
+                headers: {
+                    Authorization: "Bearer " + token,
+                },
+            };
+            try {
+                //setState({ ...state, loading: true });
+                const response = await instance.post(`/travel/${language}/tours/create`, values, config);
+            } catch (error) {
+                //setState({ ...state, loading: false });
+                console.log(error);
+            }
+        }
+
+        fetchData();*/
+    };
     
     return (
         <>
@@ -65,17 +77,16 @@ const Constructor = () => {
                 <Formik
                 initialValues={formInitialValues}
                 validate={(values) => {
-                    /* требуется заполнить все поля */
-                    const errors = {};
+                    /*const errors = {};
                     for (let key of Object.keys(formInitialValues)) {
                         if (!values[key]) {
                             errors[key] = "Требуется заполнить";
                         }
                     }
-                    return errors;
+                    return errors;*/
                 }}
                 onSubmit={(values, { setSubmitting }) => {
-                    handlePost();
+                    handlePost(values);
                     setSubmitting(false);
                     // console.log(values);
                 }}

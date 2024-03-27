@@ -97,3 +97,9 @@
 .ReactModal__Overlay--before-close {
   opacity: 0;
 }
+
+.ReactModal__Content.ReactModal__Content {
+  height: max-content;
+  max-height: calc(100% - 20px) !important;
+  overflow-y: auto !important;
+}
