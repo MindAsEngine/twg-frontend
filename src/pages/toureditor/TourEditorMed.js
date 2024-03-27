@@ -2,6 +2,10 @@ import { useEffect, useState } from 'react';
 import { Formik, Form, Field, ErrorMessage, useField, useFormikContext } from 'formik';
 import axios from "axios";
 
+import { useDispatch, useSelector } from "react-redux";
+import { getUser } from "../../store/slices/User";
+import instance from "../../app/axiosClient";
+
 // styles
 import "./style.scss"
 import "../../components/forms/forms.scss"
@@ -188,18 +192,22 @@ export default function TourEditorMed() {
         { title: 'en', component: <LanguageTabEN /> }
     ]);
 
+    //const dispatch = useDispatch();
+    //let token = useSelector((state) => state.persistantReducer.token.value);
+    //token == "" ? (token = localStorage.token) : (token = token);
     const handlePost = (values) => {
-        const formData = new FormData();
         console.log(values);
         /*async function fetchData() {
+            let config = {
+                headers: {
+                    Authorization: "Bearer " + token,
+                },
+            };
             try {
-                setState({ ...state, loading: true });
-                const response = await axios.post(
-                    "https://jsonplaceholder.typicode.com/todos"
-                );
-                setState({ ...state, loading: false });
+                //setState({ ...state, loading: true });
+                const response = await instance.post(`/travel/${language}/tours/create`, values, config);
             } catch (error) {
-                setState({ ...state, loading: false });
+                //setState({ ...state, loading: false });
                 console.log(error);
             }
         }
@@ -215,7 +223,7 @@ export default function TourEditorMed() {
             <Formik
             initialValues={formInitialValues}
             validate={(values) => {
-                const errors = {};
+                /*const errors = {};
                 for (let key of Object.keys(formInitialValues)) {
                     if (!values[key]) {
                         errors[key] = "Требуется заполнить";
@@ -227,7 +235,7 @@ export default function TourEditorMed() {
                     filled: Object.keys(errors).length == 0
                 });
                 // setThumbnail( values.thumbnail.at(-1) || [] );
-                return errors;
+                return errors;*/
             }}
             onSubmit={(values, { setSubmitting }) => {
                 handlePost(values);

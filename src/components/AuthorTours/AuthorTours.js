@@ -26,7 +26,6 @@ export default function AuthorTours({ runScroll }) {
           "Bizning mutaxassislar siz uchun eng yaxshi takliflarni maxsus tanlashdi",
         ];
   const [cardsList, setCardsList] = useState([
-    
   ]);
   const [loading, setLoading] = useState(false);
 

@@ -17,7 +17,7 @@ const CardItem = ({
       <div className="card">
         <img
           className="card__thumbnail"
-          src={img}
+          src={img ? img : 'https://i.imgur.com/yVaa0la.png'}
           alt=""
           onDragStart={handleDragStart}
         />

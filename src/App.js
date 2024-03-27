@@ -26,6 +26,8 @@ const ProfileAgent = lazy(() => import("./pages/profileAgent/ProfileAgent"));
 const TourEditorAdmin = lazy(() => import("./pages/toureditor/TourEditorAdmin"));
 const TourEditorBus = lazy(() => import("./pages/toureditor/TourEditorBus"));
 const TourEditorMed = lazy(() => import("./pages/toureditor/TourEditorMed"));
+const TourEditorTest = lazy(() => import("./pages/toureditor/TourEditorTest"));
+const HotelEditorTest = lazy(() => import("./pages/hoteleditor/HotelEditorTest"));
 
 const Wrapper = ({ children }) => {
   const location = useLocation();
@@ -132,6 +134,22 @@ function App() {
               element={
                 <Suspense fallback={<></>}>
                   <TourEditorMed />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/toureditor/test"
+              element={
+                <Suspense fallback={<></>}>
+                  <TourEditorTest />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/hoteleditor/test"
+              element={
+                <Suspense fallback={<></>}>
+                  <HotelEditorTest />
                 </Suspense>
               }
             />

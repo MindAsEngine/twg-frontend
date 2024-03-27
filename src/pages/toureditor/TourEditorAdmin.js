@@ -3,6 +3,10 @@ import { WithContext as ReactTags } from 'react-tag-input';
 import { Formik, Form, Field, ErrorMessage, useField, useFormikContext } from 'formik';
 import axios from "axios";
 
+import { useDispatch, useSelector } from "react-redux";
+import { getUser } from "../../store/slices/User";
+import instance from "../../app/axiosClient";
+
 // styles
 import "./style.scss"
 import "../../components/forms/forms.scss"
@@ -155,6 +159,10 @@ function LanguageTabUZ({ extraPhotosList }) {
 
 // main component
 export default function TourEditorAdmin() {
+    const language = useSelector(
+        (state) => state.persistantReducer.language.value
+      );
+
     const formInitialValues = {
         'title': '',
         'country': '',
@@ -185,6 +193,28 @@ export default function TourEditorAdmin() {
         'showinbot': '',
         'isshowcase': ''
     }
+
+    const dispatch = useDispatch();
+    let token = useSelector((state) => state.persistantReducer.token.value);
+    token == "" ? (token = localStorage.token) : (token = token);
+    const handlePost = (values) => {
+      async function fetchData() {
+        let config = {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        };
+        try {
+          //setState({ ...state, loading: true });
+          const response = await instance.post(`/travel/${language}/tours/create`, values, config);
+        } catch (error) {
+          //setState({ ...state, loading: false });
+          console.log(error);
+        }
+      }
+
+      fetchData();
+    };
 
     /*const { values, submitForm } = useFormikContext();
     useEffect(() => {
@@ -218,26 +248,7 @@ export default function TourEditorAdmin() {
         { title: 'ru', component: <LanguageTabRU /> },
         { title: 'uz', component: <LanguageTabUZ /> },
         { title: 'en', component: <LanguageTabEN /> }
-    ]);
-
-    const handlePost = (values) => {
-        const formData = new FormData();
-        console.log(values);
-        /*async function fetchData() {
-            try {
-                setState({ ...state, loading: true });
-                const response = await axios.post(
-                    "https://jsonplaceholder.typicode.com/todos"
-                );
-                setState({ ...state, loading: false });
-            } catch (error) {
-                setState({ ...state, loading: false });
-                console.log(error);
-            }
-        }
-
-        fetchData();*/
-    };
+    ])
 
     return (
         <div className="toureditor container">
@@ -247,7 +258,7 @@ export default function TourEditorAdmin() {
             <Formik
             initialValues={formInitialValues}
             validate={(values) => {
-                const errors = {};
+                /*const errors = {};
                 for (let key of Object.keys(formInitialValues)) {
                     if (!values[key]) {
                         errors[key] = "Требуется заполнить";
@@ -259,7 +270,7 @@ export default function TourEditorAdmin() {
                     filled: Object.keys(errors).length == 0
                 });
                 // setThumbnail( values.thumbnail.at(-1) || [] );
-                return errors;
+                return errors;*/
             }}
             onSubmit={(values, { setSubmitting }) => {
                 handlePost(values);
