@@ -6,8 +6,14 @@ import "./authortours.scss";
 import CardItem from "../cardItem/CardItem";
 import instance from "../../app/axiosClient";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { ReactComponent as Show } from "../../img/show.svg";
 
-export default function AuthorTours({ runScroll }) {
+export default function AuthorTours({
+  runScroll,
+  hideButton,
+  handleCallback,
+  index,
+}) {
   const language = useSelector(
     (state) => state.persistantReducer.language.value
   );
@@ -58,24 +64,15 @@ export default function AuthorTours({ runScroll }) {
     fetchData();
   }, [token]);
 
-  async function fetchData() {
-    try {
-      setLoading(true);
-      const response = await instance.get(
-        `/travel/${language}/tours?page=${page}&size=2`
-      );
-      setCardsList((prevCardsList) => [...prevCardsList, ...response.data]);
-      console.log(response.data);
-      setPage(page + 1);
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-      console.log(error);
-    }
-  }
-
   return (
     <div className="cardslist container">
+      {hideButton ? (
+        <button onClick={() => handleCallback(index)}>
+        <Show className="adm_editShow" />
+      </button>
+      ) : (
+        <></>
+      )}
       <h2 className="cardslist__title">{changedText[0]}</h2>
       <p className="cardslist__description">{changedText[1]}</p>
       {loading ? (

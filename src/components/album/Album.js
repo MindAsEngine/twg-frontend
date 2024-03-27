@@ -9,7 +9,6 @@ import "./style.scss";
 import AlbumSwiper from "./AlbumSwiper";
 
 const Album = ({ runScroll, medias }) => {
-  console.log(medias);
   const ref = useRef();
   const swiper = useRef();
   const { events } = useScrollOnDrag(ref);

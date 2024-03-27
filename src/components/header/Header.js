@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -13,16 +13,42 @@ import "./style.scss";
 
 import ModalAuthComponent from "../modal/auth/AuthModal";
 import StandartSvg from "../../img/userIcon.svg";
+import instance from "../../app/axiosClient";
+import { getUser } from "../../store/slices/User";
 
 export const Header = () => {
-  // по значению user ниже определяется,
   // авторизован ли пользователь или нет
-  const userState = useSelector((el) => el.persistantReducer.user);
-
+  const userProfile = useSelector((state) => state.persistantReducer.user);
+  const dispatch = useDispatch();
   //Тут должен быть запрос на сервер по поводу фоток, пока его нету(
 
-  //
-  const [user, setUser] = useState(userState.name !== null);
+  const tokenFromLocalStorage = localStorage.getItem("token");
+  const tokenValue = useSelector(
+    (state) => state.persistantReducer.token.value
+  );
+
+  const token = tokenValue || tokenFromLocalStorage;
+  const [user, setUser] = useState(token !== null);
+
+  useEffect(() => {
+    if (token != null) {
+      async function fetchData() {
+        let config = {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        };
+        try {
+          const response = await instance.get(`profile/me`, config);
+          dispatch(getUser(response.data));
+        } catch (error) {
+          console.log(error);
+        }
+      }
+
+      fetchData();
+    }
+  }, [token]);
 
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [authModalTab, setAuthModalTab] = useState(0);
@@ -107,7 +133,14 @@ export const Header = () => {
           )}
           {user && (
             <button className="header__auth__avatar">
-              <img src={StandartSvg}></img>
+              {userProfile.avatar ? (
+                <img src={userProfile.avatar} alt="Avatar" />
+              ) : (
+                <img
+                  src={"https://i.imgur.com/u0JREci.png"}
+                  alt="Fallback Avatar"
+                />
+              )}
             </button>
           )}
         </div>

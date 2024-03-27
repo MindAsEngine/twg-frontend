@@ -31,12 +31,13 @@ const TourEditorBus = lazy(() => import("./pages/toureditor/TourEditorBus"));
 const TourEditorMed = lazy(() => import("./pages/toureditor/TourEditorMed"));
 
 const TourEditorTest = lazy(() => import("./pages/toureditor/TourEditorTest"));
-const HotelEditorTest = lazy(() => import("./pages/hoteleditor/HotelEditorTest"));
+const HotelEditorTest = lazy(() =>
+  import("./pages/hoteleditor/HotelEditorTest")
+);
 
 const AdminHomeEditor = lazy(() =>
   import("./pages/adminHomeEditor/AdminHomeEditor")
 );
-
 
 const Wrapper = ({ children }) => {
   const location = useLocation();
@@ -47,10 +48,15 @@ const Wrapper = ({ children }) => {
 };
 
 function App() {
-  const userState = useSelector((el) => el.persistantReducer.user);
+  const tokenFromLocalStorage = localStorage.getItem("token");
+  const tokenValue = useSelector(
+    (state) => state.persistantReducer.token.value
+  );
+
+  const token = tokenFromLocalStorage || tokenValue;
   let { id } = useParams();
   const [isAuthenticated, userHasAuthenticated] = useState(
-    userState.name !== null
+    token !== null
   );
   return (
     <Wrapper>

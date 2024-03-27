@@ -32,7 +32,6 @@ function LoginUser({ switchTab }) {
           headers: {},
         });
 
-        dispatch(getUser(values));
         dispatch(changeToken(response.data.token));
         //Обновление страницы после получения данных в redux
         window.location.reload();

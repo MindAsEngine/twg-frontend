@@ -49,7 +49,7 @@ body {
     gap: 12px;
     padding-bottom: 8px;
     cursor: default;
-    
+
     &:active {
       cursor: grabbing;
     }
@@ -308,4 +308,11 @@ body {
 }
 button {
   user-select: none;
+}
+
+.adm_editShow {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 10px;
 }

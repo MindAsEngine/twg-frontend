@@ -4,8 +4,9 @@ import "./notur.scss";
 import CallbackModal from "../modal/CallbackModal";
 import NoturImg from "../../img/about1.png";
 // import { handleDragStart } from "../../app/function";
+import { ReactComponent as Show } from "../../img/show.svg";
 
-const NoTur = () => {
+const NoTur = ({ hideButton, handleCallback, index }) => {
   const [state, setState] = useState({
     show: false,
   });
@@ -17,7 +18,9 @@ const NoTur = () => {
   function parentCallBack(el) {
     setState({ ...state, show: el });
   }
-  const language = useSelector((state) => state.persistantReducer.language.value);
+  const language = useSelector(
+    (state) => state.persistantReducer.language.value
+  );
   const changedText =
     language === "RU"
       ? [
@@ -42,6 +45,13 @@ const NoTur = () => {
         <div className="flex justif-ss-cent">
           <div className="container notur__image" style={{ width: "100%" }}>
             <div className="notur__content container">
+              {hideButton ? (
+                <button onClick={() => handleCallback(index)}>
+                <Show className="adm_editShow" />
+              </button>
+              ) : (
+                <></>
+              )}
               <img alt="" className="content__mobileimg" src={NoturImg} />
               <div className="content__title f-cWh fw700 fs48">
                 <p>{changedText[0]}</p>

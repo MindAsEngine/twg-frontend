@@ -5,11 +5,14 @@ import { useSelector } from "react-redux";
 import "./news.scss";
 
 import NewsImg from "../../img/newsImg.png";
+import { ReactComponent as Show } from "../../img/show.svg";
 import { ShowMoreNews } from "../showMore/ShowMoreNews";
 import instance from "../../app/axiosClient";
 
-const News = () => {
-  const language = useSelector((state) => state.persistantReducer.language.value);
+const News = ({ hideButton, handleCallback, index }) => {
+  const language = useSelector(
+    (state) => state.persistantReducer.language.value
+  );
   const [state, setState] = useState({
     // newsList: [
     //   {
@@ -43,7 +46,7 @@ const News = () => {
     //     date: "20 февраля 2024",
     //   },
     // ],
-    newsList:[],
+    newsList: [],
     newsImgList: [],
     loading: false,
     counter: 3,
@@ -131,6 +134,13 @@ const News = () => {
   }, []);
   return (
     <div className="home__news container m-centr">
+      {hideButton ? (
+        <button onClick={() => handleCallback(index)}>
+        <Show className="adm_editShow" />
+      </button>
+      ) : (
+        <></>
+      )}
       <div className="news__title fs40 fw400 Lh52">
         <p>Наши новости</p>
       </div>

@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const tokenSlice = createSlice({
   name: "token",
   initialState: {
-    value: "",
+    value: null,
   },
   reducers: {
     changeToken: (state, action) => {

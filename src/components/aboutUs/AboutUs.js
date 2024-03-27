@@ -3,9 +3,12 @@ import { useSelector } from "react-redux";
 import "./aboutUs.scss";
 import aboutUsImg from "../../img/AboutUs.png";
 import { handleDragStart } from "../../app/function";
+import { ReactComponent as Show } from "../../img/show.svg";
 
-const AboutUs = () => {
-  const language = useSelector((state) => state.persistantReducer.language.value);
+const AboutUs = ({ hideButton, handleCallback, index }) => {
+  const language = useSelector(
+    (state) => state.persistantReducer.language.value
+  );
   const text =
     language === "RU"
       ? "О нас"
@@ -15,6 +18,13 @@ const AboutUs = () => {
   return (
     <div className="bgPr">
       <div className="container m-centr aboutus flex justif-ss-betw">
+        {hideButton ? (
+          <button onClick={() => handleCallback(index)}>
+            <Show className="adm_editShow" />
+          </button>
+        ) : (
+          <></>
+        )}
         <div className="aboutus__content">
           <p className="aboutus__title fw600 fs40">{text}</p>
           <p className="aboutus__text">
