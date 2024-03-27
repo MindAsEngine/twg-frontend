@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./style.scss";
 import { Link } from "react-router-dom";
 import ProfileSection from "../../components/profileSection/ProfileSection";
@@ -7,24 +7,33 @@ import SelectedToursIcon from "../../img/profile/selectedtoursicon.svg";
 import FavoriteIcon from "../../img/profile/favoriteicon.svg";
 import ArchiveIcon from "../../img/profile/archiveicon.svg";
 import instance from "../../app/axiosClient";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
+import StandartSvg from "../../img/userIcon.svg";
+import { changeToken } from "../../store/slices/Token";
 
 export default function Profile() {
   const [state, setState] = useState({
     loading: false,
   });
+  const userAvatar = useRef();
+  const dispatch = useDispatch();
   const [user, setUser] = useState({
     email: "",
-    picture: "https://i.imgur.com/EBOf5v2.png",
+    picture: "",
     firstName: "",
     lastName: "",
     patronymic: "",
     phone: "",
     username: "",
   });
-  const token = useSelector((state) => state.persistantReducer.token.value);
+  const tokenFromLocalStorage = localStorage.getItem("token");
+  const tokenValue = useSelector(
+    (state) => state.persistantReducer.token.value
+  );
+
+  const token = tokenValue || tokenFromLocalStorage;
   useEffect(() => {
-    
     async function fetchData() {
       let config = {
         headers: {
@@ -33,9 +42,10 @@ export default function Profile() {
       };
       try {
         setState({ ...state, loading: true });
+        userAvatar.current.classList.add("load");
         const response = await instance.get(`profile/me`, config);
+        userAvatar.current.classList.remove("load");
         setUser(response.data);
-        console.log(response.data);
         setState({ ...state, loading: false });
       } catch (error) {
         setState({ ...state, loading: false });
@@ -71,14 +81,35 @@ export default function Profile() {
       daysAmount: 4,
     },
   ]);
+  const handlePost = (values) => {
+    async function fetchData() {
+      try {
+        //setState({ ...state, loading: true });
+        let config = {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        };
+        const response = await instance.post("/auth/users/logout", {}, config);
 
+        dispatch(changeToken(null));
+        localStorage.removeItem("token");
+        //Обновление страницы после получения данных в redux
+        window.location.reload();
+      } catch (error) {
+        //setState({ ...state, loading: false });
+        console.log(error);
+      }
+    }
+
+    fetchData();
+  };
   return (
     <div className="profile container">
       <aside className="profile__userinfo">
-        <img
-          className="profile__avatar"
-          src={user.picture || "https://i.imgur.com/EBOf5v2.png"}
-        />
+        <div className="img__wrapper" ref={userAvatar}>
+          <img className="profile__avatar" src={user.picture || StandartSvg} />
+        </div>
         <p>
           <b>
             {user.firstName} {user.lastName}
@@ -86,7 +117,11 @@ export default function Profile() {
         </p>
         <p>@{user.username}</p>
         <p>{user.email}</p>
-        <Link className="profile__editbtn">Редактировать</Link>
+
+        {/* <Link className="profile__editbtn">Редактировать</Link> */}
+        <button onClick={() => handlePost()} className="profile__editbtn">
+          Выйти
+        </button>
       </aside>
       <div className="profile__sections">
         <ProfileSection

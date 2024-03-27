@@ -8,7 +8,9 @@ import CommentUser from "./CommentUser/CommentUser";
 import { useSelector } from "react-redux";
 
 const Comments = ({ hideButton, comments }) => {
-  const userState = useSelector((el) => el.persistantReducer.user);
+  let token = useSelector((state) => state.persistantReducer.token.value);
+  token == "" ? (token = localStorage.token) : (token = token);
+
   const avatar = { img: "", name: "Имя Фамилия" };
 
   const [state, setState] = useState({
@@ -47,34 +49,35 @@ const Comments = ({ hideButton, comments }) => {
   const firstBefore = useRef();
 
   const [bottomStyle, setBottomStyle] = useState(0);
-
   useEffect(() => {
-    const handleScroll = () => {
-      const footer = document.querySelector("footer");
+    if (token) {
+      const handleScroll = () => {
+        const footer = document.querySelector("footer");
 
-      const blockVisibility = footer.getBoundingClientRect();
+        const blockVisibility = footer.getBoundingClientRect();
 
-      const windowHeight = window.innerHeight;
-      const blockTop = blockVisibility.top;
-      const blockBottom = blockVisibility.bottom;
+        const windowHeight = window.innerHeight;
+        const blockTop = blockVisibility.top;
+        const blockBottom = blockVisibility.bottom;
 
-      const visibleHeight =
-        Math.min(blockBottom, windowHeight) - Math.max(blockTop, 0);
+        const visibleHeight =
+          Math.min(blockBottom, windowHeight) - Math.max(blockTop, 0);
 
-      if (visibleHeight > 15) {
-        // Тут проверка на сколько пикселей торчит footer
-        orderButton.current.classList.add("static");
-        firstBefore.current.classList.add("static");
-      } else {
-        orderButton.current.classList.remove("static");
-        firstBefore.current.classList.remove("static");
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
+        if (visibleHeight > 15) {
+          // Тут проверка на сколько пикселей торчит footer
+          orderButton.current.classList.add("static");
+          firstBefore.current.classList.add("static");
+        } else {
+          orderButton.current.classList.remove("static");
+          firstBefore.current.classList.remove("static");
+        }
+      };
+      window.addEventListener("scroll", handleScroll);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }
   }, []);
   return (
     <section id="comments">
@@ -90,7 +93,7 @@ const Comments = ({ hideButton, comments }) => {
           </div>
         </div>
         <div className="comments__body">
-          {userState.name !== null ? <CommentUser /> : <></>}
+          {token ? <CommentUser /> : <></>}
 
           <div className="comments__sort flex justif-ss-end">
             <button className={sort ? "filtred" : ""}>
@@ -103,7 +106,7 @@ const Comments = ({ hideButton, comments }) => {
             <PaginatedItems itemsPerPage={3} comments={comments} />
           </div>
 
-          {userState.name !== null ? (
+          {token ? (
             <div
               className="comment__order flex justif-ss-cent"
               ref={orderButton}

@@ -5,6 +5,8 @@ import "@maptiler/sdk/dist/maptiler-sdk.css";
 
 import "./map.scss";
 import PointMap from "../../img/pointMap.svg";
+import { ReactComponent as Show } from "../../img/show.svg";
+import { ReactComponent as Hide } from "../../img/hidenEye.svg";
 
 import createCustomMarker, {
   addCluster,
@@ -36,7 +38,6 @@ class Map extends Component {
   setPoints = (newPoints) => {
     this.setState({ points: newPoints });
   };
-
   //Функция для обновления state
   updateState = (newData) => {
     this.setState({
@@ -146,22 +147,22 @@ class Map extends Component {
         if (this.map.isStyleLoaded() == false) {
           setTimeout(waiting, 200);
         } else {
-         // addCluster(this.map, "hotels", "cat", data);
+          // addCluster(this.map, "hotels", "cat", data);
           // Добавление стиля для страны
-         // addCountryLayer(this.map, Spain);
+          // addCountryLayer(this.map, Spain);
         }
       };
       waiting();
-      this.map.on("click", (e) => {
-        const { lng, lat } = e.lngLat;
-      });
+      // this.map.on("click", (e) => {
+      //   const { lng, lat } = e.lngLat;
+      // });
     });
   }
 
   //Тут логика заключается в том, что в случае обновления state заново обновляется слой
   componentDidUpdate(prevProps, prevState) {
     if (this.state.getRoutes !== prevState.getRoutes) {
-     // addRouteLayer(this.map, this.state.getRoutes);
+      // addRouteLayer(this.map, this.state.getRoutes);
     }
   }
 
@@ -176,6 +177,17 @@ class Map extends Component {
   render() {
     return (
       <div className="container m-centr map">
+        {/* Тут мы добавляем элемент если передано hideButton так Админ может контролировать внешний вид страницы */}
+        {this.props.hideButton ? (
+          <button
+            className="adm_editShow"
+            onClick={() => this.props.handleCallback(this.props.index)}
+          >
+            {this.props.visible ? <Show /> : <Hide className="hide_svg"/>}
+          </button>
+        ) : (
+          <></>
+        )}
         <div className="map__panel">
           <MapPanel handleCallback={this.handleCallback} />
           <div className="map-wrap">

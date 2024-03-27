@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -13,20 +13,49 @@ import "./style.scss";
 
 import ModalAuthComponent from "../modal/auth/AuthModal";
 import StandartSvg from "../../img/userIcon.svg";
+
+import instance from "../../app/axiosClient";
+import { getUser } from "../../store/slices/User";
+
 import MenuIcon from "../../img/menuicon.svg";
 import WhiteX from "../../img/whitex.svg";
 
 import MobileSidebar from "../mobileSidebar/MobileSidebar";
 
-export const Header = () => {
-  // по значению user ниже определяется,
-  // авторизован ли пользователь или нет
-  const userState = useSelector((el) => el.persistantReducer.user);
 
+export const Header = () => {
+  // авторизован ли пользователь или нет
+  const userProfile = useSelector((state) => state.persistantReducer.user);
+  const dispatch = useDispatch();
   //Тут должен быть запрос на сервер по поводу фоток, пока его нету(
 
-  //
-  const [user, setUser] = useState(userState.name !== null);
+  const tokenFromLocalStorage = localStorage.getItem("token");
+  const tokenValue = useSelector(
+    (state) => state.persistantReducer.token.value
+  );
+
+  const token = tokenValue || tokenFromLocalStorage;
+  const [user, setUser] = useState(token !== null);
+
+  useEffect(() => {
+    if (token != null) {
+      async function fetchData() {
+        let config = {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        };
+        try {
+          const response = await instance.get(`profile/me`, config);
+          dispatch(getUser(response.data));
+        } catch (error) {
+          console.log(error);
+        }
+      }
+
+      fetchData();
+    }
+  }, [token]);
 
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [authModalTab, setAuthModalTab] = useState(0);
@@ -116,11 +145,18 @@ export const Header = () => {
             </Link>
           )}
           {user && (
-            <Link to="/profile">
-              <button className="header__auth__avatar">
-                <img src={StandartSvg}></img>
-              </button>
-            </Link>
+
+            <button className="header__auth__avatar">
+              {userProfile.avatar ? (
+                <img src={userProfile.avatar} alt="Avatar" />
+              ) : (
+                <img
+                  src={"https://i.imgur.com/u0JREci.png"}
+                  alt="Fallback Avatar"
+                />
+              )}
+            </button>
+
           )}
         </div>
         <button className="header__mobilemenu" onClick={handleSidebar}>

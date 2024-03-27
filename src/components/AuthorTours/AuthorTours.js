@@ -6,8 +6,16 @@ import "./authortours.scss";
 import CardItem from "../cardItem/CardItem";
 import instance from "../../app/axiosClient";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { ReactComponent as Show } from "../../img/show.svg";
+import { ReactComponent as Hide } from "../../img/hidenEye.svg";
 
-export default function AuthorTours({ runScroll }) {
+export default function AuthorTours({
+  runScroll,
+  hideButton,
+  handleCallback,
+  index,
+  visible
+}) {
   const language = useSelector(
     (state) => state.persistantReducer.language.value
   );
@@ -36,16 +44,13 @@ export default function AuthorTours({ runScroll }) {
   token == "" ? (token = localStorage.token) : (token = token);
   useEffect(() => {
     async function fetchData() {
-      let config = {
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-      };
       try {
         setLoading(true);
-        const response = await instance.get(
-          `/travel/${language}/tours`
-        );
+
+        const response = await instance.get(`/travel/${language}/tours`, {
+          params: { size: 5, page: 0 },
+        });
+
         setCardsList(response.data);
         setLoading(false);
       } catch (error) {
@@ -55,26 +60,17 @@ export default function AuthorTours({ runScroll }) {
     }
 
     fetchData();
-  }, [token]);
-
-  async function fetchData() {
-    try {
-      setLoading(true);
-      const response = await instance.get(
-        `/travel/${language}/tours?page=${page}&size=2`
-      );
-      setCardsList((prevCardsList) => [...prevCardsList, ...response.data]);
-      console.log(response.data);
-      setPage(page + 1);
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-      console.log(error);
-    }
-  }
+  }, [token, language]);
 
   return (
     <div className="cardslist container">
+      {hideButton ? (
+        <button className="adm_editShow" onClick={() => handleCallback(index)}>
+          {visible ? <Show /> : <Hide className="hide_svg" />}
+        </button>
+      ) : (
+        <></>
+      )}
       <h2 className="cardslist__title">{changedText[0]}</h2>
       <p className="cardslist__description">{changedText[1]}</p>
       {loading ? (
@@ -90,7 +86,7 @@ export default function AuthorTours({ runScroll }) {
                 key={index}
                 title={card.title}
                 description={card.introduction}
-                rating={card.rating}
+                rating={card.grade}
                 reviewsAmount={card.reviewsAmount}
                 img={card.img}
                 path={card.path}

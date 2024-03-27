@@ -49,7 +49,7 @@ body {
     gap: 12px;
     padding-bottom: 8px;
     cursor: default;
-    
+
     &:active {
       cursor: grabbing;
     }
@@ -150,8 +150,10 @@ body {
 }
 
 .bg2 {
-  //background-color: $backgroundBl;
   background-color: $backgroundMainBlue;
+}
+.bgBl{
+  background-color: $backgroundBl;
 }
 .noTurbg {
   background: $backgroundNoTur;
@@ -308,4 +310,16 @@ body {
 }
 button {
   user-select: none;
+}
+
+.adm_editShow {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 10px;
+}
+
+.hide_svg {
+  height: 27px;
+  width: 27px;
 }
