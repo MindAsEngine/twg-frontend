@@ -27,7 +27,12 @@ export default function AuthorTours({ runScroll }) {
           "Mualliflik sayohatlari",
           "Bizning mutaxassislar siz uchun eng yaxshi takliflarni maxsus tanlashdi",
         ];
+<<<<<<< HEAD
   const [cardsList, setCardsList] = useState([]);
+=======
+  const [cardsList, setCardsList] = useState([
+  ]);
+>>>>>>> 910542ce421a86a555c7b48eb3f09d8a3d910a5c
   const [loading, setLoading] = useState(false);
 
   const ref = useRef();

@@ -29,9 +29,14 @@ const TourEditorAdmin = lazy(() =>
 
 const TourEditorBus = lazy(() => import("./pages/toureditor/TourEditorBus"));
 const TourEditorMed = lazy(() => import("./pages/toureditor/TourEditorMed"));
+<<<<<<< HEAD
 const AdminHomeEditor = lazy(() =>
   import("./pages/adminHomeEditor/AdminHomeEditor")
 );
+=======
+const TourEditorTest = lazy(() => import("./pages/toureditor/TourEditorTest"));
+const HotelEditorTest = lazy(() => import("./pages/hoteleditor/HotelEditorTest"));
+>>>>>>> 910542ce421a86a555c7b48eb3f09d8a3d910a5c
 
 const Wrapper = ({ children }) => {
   const location = useLocation();
@@ -169,6 +174,22 @@ function App() {
                 ) : (
                   <Navigate to="/" />
                 )
+              }
+            />
+            <Route
+              path="/toureditor/test"
+              element={
+                <Suspense fallback={<></>}>
+                  <TourEditorTest />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/hoteleditor/test"
+              element={
+                <Suspense fallback={<></>}>
+                  <HotelEditorTest />
+                </Suspense>
               }
             />
 
