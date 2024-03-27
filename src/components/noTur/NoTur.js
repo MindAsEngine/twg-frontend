@@ -5,8 +5,9 @@ import CallbackModal from "../modal/CallbackModal";
 import NoturImg from "../../img/about1.png";
 // import { handleDragStart } from "../../app/function";
 import { ReactComponent as Show } from "../../img/show.svg";
+import { ReactComponent as Hide } from "../../img/hidenEye.svg";
 
-const NoTur = ({ hideButton, handleCallback, index }) => {
+const NoTur = ({ hideButton, handleCallback, index, visible }) => {
   const [state, setState] = useState({
     show: false,
   });
@@ -46,9 +47,12 @@ const NoTur = ({ hideButton, handleCallback, index }) => {
           <div className="container notur__image" style={{ width: "100%" }}>
             <div className="notur__content container">
               {hideButton ? (
-                <button onClick={() => handleCallback(index)}>
-                <Show className="adm_editShow" />
-              </button>
+                <button
+                  onClick={() => handleCallback(index)}
+                  className="adm_editShow"
+                >
+                  {visible ? <Show /> : <Hide className="hide_svg" />}
+                </button>
               ) : (
                 <></>
               )}

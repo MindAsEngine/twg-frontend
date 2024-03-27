@@ -150,8 +150,10 @@ body {
 }
 
 .bg2 {
-  //background-color: $backgroundBl;
   background-color: $backgroundMainBlue;
+}
+.bgBl{
+  background-color: $backgroundBl;
 }
 .noTurbg {
   background: $backgroundNoTur;
@@ -315,4 +317,9 @@ button {
   position: absolute;
   right: 0;
   top: 10px;
+}
+
+.hide_svg {
+  height: 27px;
+  width: 27px;
 }

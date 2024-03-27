@@ -4,8 +4,9 @@ import "./aboutUs.scss";
 import aboutUsImg from "../../img/AboutUs.png";
 import { handleDragStart } from "../../app/function";
 import { ReactComponent as Show } from "../../img/show.svg";
+import { ReactComponent as Hide } from "../../img/hidenEye.svg";
 
-const AboutUs = ({ hideButton, handleCallback, index }) => {
+const AboutUs = ({ hideButton, handleCallback, index, visible }) => {
   const language = useSelector(
     (state) => state.persistantReducer.language.value
   );
@@ -19,8 +20,11 @@ const AboutUs = ({ hideButton, handleCallback, index }) => {
     <div className="bgPr">
       <div className="container m-centr aboutus flex justif-ss-betw">
         {hideButton ? (
-          <button onClick={() => handleCallback(index)}>
-            <Show className="adm_editShow" />
+          <button
+            className="adm_editShow"
+            onClick={() => handleCallback(index)}
+          >
+            {visible ? <Show /> : <Hide className="hide_svg" />}
           </button>
         ) : (
           <></>

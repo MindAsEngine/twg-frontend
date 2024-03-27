@@ -21,40 +21,57 @@ const AdminHomeEditor = () => {
   const [state, setState] = useState({
     components: [
       {
-        component: (i) => (
-          <Map hideButton={true} handleCallback={handleCallback} index={i} />
-        ),
-        className: "",
-      },
-      {
-        component: (i) => (
-          <AboutUs
+        component: (i, visible) => (
+          <Map
             hideButton={true}
             handleCallback={handleCallback}
             index={i}
+            visible={visible}
           />
         ),
         className: "",
       },
       {
-        component: (i) => (
+        component: (i, visible) => (
+          <AboutUs
+            hideButton={true}
+            handleCallback={handleCallback}
+            index={i}
+            visible={visible}
+          />
+        ),
+        className: "",
+      },
+      {
+        component: (i, visible) => (
           <AuthorTours
             hideButton={true}
             handleCallback={handleCallback}
             index={i}
+            visible={visible}
           />
         ),
         className: "bg3",
       },
       {
-        component: (i) => (
-          <NoTur hideButton={true} handleCallback={handleCallback} index={i} />
+        component: (i, visible) => (
+          <NoTur
+            hideButton={true}
+            handleCallback={handleCallback}
+            index={i}
+            visible={visible}
+          />
         ),
         className: "bgGr",
       },
       {
-        component: (i) => (
-          <News hideButton={true} handleCallback={handleCallback} index={i} />
+        component: (i, visible) => (
+          <News
+            hideButton={true}
+            handleCallback={handleCallback}
+            index={i}
+            visible={visible}
+          />
         ),
         className: "bgGr",
       },
@@ -89,7 +106,7 @@ const AdminHomeEditor = () => {
   const handleSetVisibility = (index) => {
     setVisible((prevVisibility) => {
       const newVisibility = [...prevVisibility];
-      newVisibility[index].visibility = false;
+      newVisibility[index].visibility = !newVisibility[index].visibility;
       return newVisibility;
     });
   };
@@ -116,7 +133,6 @@ const AdminHomeEditor = () => {
       },
     };
     try {
-      console.log(visible);
       //setState({ ...state, loading: true });
       const response = axios.put(
         "/admin/configs/visual/put",
@@ -134,19 +150,21 @@ const AdminHomeEditor = () => {
       <section className="bgGr">
         <Feature />
       </section>
-      {state.components.map((el, i) =>
-        visible[i].visibility ? (
-          <section className={el.className}>{el.component(i)}</section>
-        ) : (
-          <></>
-        )
-      )}
+      {state.components.map((el, i) => (
+        <section className={el.className} style={{ position: "relative" }}>
+          <div className={visible[i].visibility ? "" : "hide"}></div>
+          {el.component(i, visible[i].visibility)}
+        </section>
+      ))}
       {visible.some((e) => e.visibility === false) ? (
         <div className="container m-centr adminedit__btn flex">
-          <button onClick={() => postMainPageVisibility()} className="bgYl">
+          <button onClick={() => handleResetVisibility()} className="bgYl">
             Сохранить изменения
           </button>
-          <button onClick={() => handleResetVisibility()}>
+          <button
+            onClick={() => handleResetVisibility()}
+            className="bgBl f-cWh"
+          >
             Отменить изменения
           </button>
         </div>

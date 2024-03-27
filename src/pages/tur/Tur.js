@@ -13,7 +13,12 @@ import TagsList from "../../components/tags/TagsList";
 import Album from "../../components/album/Album";
 
 const Tur = ({ link }) => {
-  const token = useSelector((state) => state.persistantReducer.token.value);
+  const tokenFromLocalStorage = localStorage.getItem("token");
+  const tokenValue = useSelector(
+    (state) => state.persistantReducer.token.value
+  );
+
+  const token = tokenFromLocalStorage || tokenValue;
   useEffect(() => {
     async function fetchData() {
       try {
@@ -64,7 +69,7 @@ const Tur = ({ link }) => {
           <div className="preview__text container m-centr flex justif-ss-betw pd">
             <p className="tur__name fs64 f-cWh">{state.pageContent.title}</p>
             <div className="tur__price  bgYl">
-              <p className="fs36 fw600 lh44">{state.pageContent.price}</p>
+              <p className="fs36 fw600 lh44">{state.pageContent.price == null ? "0" : state.pageContent.price}</p>
             </div>
           </div>
         </div>

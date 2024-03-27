@@ -7,15 +7,17 @@ import SelectedToursIcon from "../../img/profile/selectedtoursicon.svg";
 import FavoriteIcon from "../../img/profile/favoriteicon.svg";
 import ArchiveIcon from "../../img/profile/archiveicon.svg";
 import instance from "../../app/axiosClient";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import StandartSvg from "../../img/userIcon.svg";
+import { changeToken } from "../../store/slices/Token";
 
 export default function Profile() {
   const [state, setState] = useState({
     loading: false,
   });
   const userAvatar = useRef();
+  const dispatch = useDispatch();
   const [user, setUser] = useState({
     email: "",
     picture: "",
@@ -79,7 +81,29 @@ export default function Profile() {
       daysAmount: 4,
     },
   ]);
+  const handlePost = (values) => {
+    async function fetchData() {
+      try {
+        //setState({ ...state, loading: true });
+        let config = {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        };
+        const response = await instance.post("/auth/users/logout", {}, config);
 
+        dispatch(changeToken(null));
+        localStorage.removeItem("token");
+        //Обновление страницы после получения данных в redux
+        window.location.reload();
+      } catch (error) {
+        //setState({ ...state, loading: false });
+        console.log(error);
+      }
+    }
+
+    fetchData();
+  };
   return (
     <div className="profile container">
       <aside className="profile__userinfo">
@@ -93,7 +117,11 @@ export default function Profile() {
         </p>
         <p>@{user.username}</p>
         <p>{user.email}</p>
-        <Link className="profile__editbtn">Редактировать</Link>
+
+        {/* <Link className="profile__editbtn">Редактировать</Link> */}
+        <button onClick={() => handlePost()} className="profile__editbtn">
+          Выйти
+        </button>
       </aside>
       <div className="profile__sections">
         <ProfileSection

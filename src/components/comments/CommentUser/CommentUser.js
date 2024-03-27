@@ -70,7 +70,9 @@ const CommentUser = () => {
                   type="submit"
                   disabled={rating == 0 || isSubmitting}
                   className={`fw400 fs16 lh22 ${
-                    values.text.length > 0 || rating > 0 ? "full" : ""
+                    (values.text.length > 0 && rating > 0) || rating > 0
+                      ? "full"
+                      : ""
                   }`}
                 >
                   Отправить

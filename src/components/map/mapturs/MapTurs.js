@@ -23,10 +23,9 @@ const MapTurs = () => {
       // };
       try {
         setLoading(true);
-        const response = await instance.get(
-          `/travel/${language}/tours`
-        );
-        console.log(response.data);
+        const response = await instance.get(`/travel/${language}/tours`, {
+          params: { size: 5, page: 0 },
+        });
         setCardsList(response.data);
         setLoading(false);
       } catch (error) {
@@ -36,7 +35,8 @@ const MapTurs = () => {
     }
 
     fetchData();
-  }, [token]);
+  }, [token, language]);
+
   const ref = useRef();
   const { events } = useScrollOnDrag(ref);
   return (
@@ -58,7 +58,7 @@ const MapTurs = () => {
                 key={index}
                 title={card.title}
                 description={card.introduction}
-                rating={card.rating}
+                rating={card.grade}
                 reviewsAmount={card.reviewsAmount}
                 img={card.img}
                 path={card.path}

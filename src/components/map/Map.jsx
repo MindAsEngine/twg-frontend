@@ -6,6 +6,7 @@ import "@maptiler/sdk/dist/maptiler-sdk.css";
 import "./map.scss";
 import PointMap from "../../img/pointMap.svg";
 import { ReactComponent as Show } from "../../img/show.svg";
+import { ReactComponent as Hide } from "../../img/hidenEye.svg";
 
 import createCustomMarker, {
   addCluster,
@@ -37,7 +38,6 @@ class Map extends Component {
   setPoints = (newPoints) => {
     this.setState({ points: newPoints });
   };
-
   //Функция для обновления state
   updateState = (newData) => {
     this.setState({
@@ -54,7 +54,6 @@ class Map extends Component {
       dragRotate: false,
     });
 
-    console.log(this.props);
     const imgElement = new Image();
     imgElement.src = PointMap;
     imgElement.alt = "";
@@ -180,8 +179,11 @@ class Map extends Component {
       <div className="container m-centr map">
         {/* Тут мы добавляем элемент если передано hideButton так Админ может контролировать внешний вид страницы */}
         {this.props.hideButton ? (
-          <button onClick={() => this.props.handleCallback(this.props.index)}>
-            <Show className="adm_editShow" />
+          <button
+            className="adm_editShow"
+            onClick={() => this.props.handleCallback(this.props.index)}
+          >
+            {this.props.visible ? <Show /> : <Hide className="hide_svg"/>}
           </button>
         ) : (
           <></>

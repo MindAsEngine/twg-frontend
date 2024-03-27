@@ -8,53 +8,44 @@ import NewsImg from "../../img/newsImg.png";
 import { ReactComponent as Show } from "../../img/show.svg";
 import { ShowMoreNews } from "../showMore/ShowMoreNews";
 import instance from "../../app/axiosClient";
+import { ReactComponent as Hide } from "../../img/hidenEye.svg";
 
-const News = ({ hideButton, handleCallback, index }) => {
+const News = ({ hideButton, handleCallback, index, visible }) => {
   const language = useSelector(
     (state) => state.persistantReducer.language.value
   );
   const [state, setState] = useState({
-    // newsList: [
-    //   {
-    //     img: NewsImg,
-    //     title: "Заголовок новости пара строк",
-    //     text: "Разрез гомогенно эволюционирует в зоогенный минерал. Однако, при увеличении выборки набухание поглощает гистерезис ОГХ, однозначно свидетельствуя о неустойчивости процесса в целом. Суглинок, согласно традиционным представлениям, увлажняет амфифильный глей. Профиль концентрирует биокосный желтозём, хотя этот факт нуждается в дальнейшей тщательной экспериментальной проверке. Солеперенос пространственно перемещает песок.",
-    //     date: "20 февраля 2024",
-    //   },
-    //   {
-    //     img: NewsImg,
-    //     title: "Заголовок новости пара строк",
-    //     text: "Разрез гомогенно эволюционирует в зоогенный минерал. Однако, при увеличении выборки набухание поглощает гистерезис ОГХ, однозначно свидетельствуя о неустойчивости процесса в целом. Суглинок, согласно традиционным представлениям, увлажняет амфифильный глей. Профиль концентрирует биокосный желтозём, хотя этот факт нуждается в дальнейшей тщательной экспериментальной проверке. Солеперенос пространственно перемещает песок.",
-    //     date: "20 февраля 2024",
-    //   },
-    //   {
-    //     img: NewsImg,
-    //     title: "Заголовок новости пара строк",
-    //     text: "Разрез гомогенно эволюционирует в зоогенный минерал. Однако, при увеличении выборки набухание поглощает гистерезис ОГХ, однозначно свидетельствуя о неустойчивости процесса в целом. Суглинок, согласно традиционным представлениям, увлажняет амфифильный глей. Профиль концентрирует биокосный желтозём, хотя этот факт нуждается в дальнейшей тщательной экспериментальной проверке. Солеперенос пространственно перемещает песок.",
-    //     date: "20 февраля 2024",
-    //   },
-    //   {
-    //     img: NewsImg,
-    //     title: "Заголовок новости пара строк",
-    //     text: "Разрез гомогенно эволюционирует в зоогенный минерал. Однако, при увеличении выборки набухание поглощает гистерезис ОГХ, однозначно свидетельствуя о неустойчивости процесса в целом. Суглинок, согласно традиционным представлениям, увлажняет амфифильный глей. Профиль концентрирует биокосный желтозём, хотя этот факт нуждается в дальнейшей тщательной экспериментальной проверке. Солеперенос пространственно перемещает песок.",
-    //     date: "20 февраля 2024",
-    //   },
-    //   {
-    //     img: NewsImg,
-    //     title: "Заголовок новости пара строк",
-    //     text: "Разрез гомогенно эволюционирует в зоогенный минерал. Однако, при увеличении выборки набухание поглощает гистерезис ОГХ, однозначно свидетельствуя о неустойчивости процесса в целом. Суглинок, согласно традиционным представлениям, увлажняет амфифильный глей. Профиль концентрирует биокосный желтозём, хотя этот факт нуждается в дальнейшей тщательной экспериментальной проверке. Солеперенос пространственно перемещает песок.",
-    //     date: "20 февраля 2024",
-    //   },
-    // ],
-    newsList: [],
+    newsList: [
+      {
+        img: null,
+        title: "Заголовок новости пара строк",
+        text: "Разрез гомогенно эволюционирует Разрез ым представлениям, увлажняет аРазрез ым представлениям, увлажняет аРазрез ым представлениям, увлажняет аРазрез ым представлениям, увлажняет ав зоогенный минерал. Однако, при увеличении выборки набухание поглощает гистерезис ОГХ, однозначно свидетельствуя о неустойчивости процесса в целом. Суглинок, согласно традиционным представлениям, увлажняет амфифильный глей. Профиль концентрирует биокосный желтозём, хотя этот факт нуждается в дальнейшей тщательной экспериментальной проверке. Солеперенос пространственно перемещает песок.Разрез гомогенно эволюционирует Разрез ым представлениям, увлажняет аРазрез ым представлениям, увлажняет аРазрез ым представлениям, увлажняет аРазрез ым представлениям, увлажняет ав зоогенный минерал. Однако, при увеличении выборки набухание поглощает гистерезис ОГХ, однозначно свидетельствуя о неустойчивости процесса в целом. Суглинок, согласно традиционным представлениям, увлажняет амфифильный глей. Профиль концентрирует биокосный желтозём, хотя этот факт нуждается в дальнейшей тщательной экспериментальной проверке. Солеперенос пространственно перемещает песок.Разрез гомогенно эволюционирует Разрез ым представлениям, увлажняет аРазрез ым представлениям, увлажняет аРазрез ым представлениям, увлажняет аРазрез ым представлениям, увлажняет ав зоогенный минерал. Однако, при увеличении выборки набухание поглощает гистерезис ОГХ, однозначно свидетельствуя о неустойчивости процесса в целом. Суглинок, согласно традиционным представлениям, увлажняет амфифильный глей. Профиль концентрирует биокосный желтозём, хотя этот факт нуждается в дальнейшей тщательной экспериментальной проверке. Солеперенос пространственно перемещает песок.Разрез ым представлениям, увлажняет амфифииментальной проверке. Солеперенос пространственно перемещает песок.",
+        date: "20 февраля 2024",
+      },
+      {
+        img: NewsImg,
+        title: "Заголовок новости пара строк",
+        text: "Разрез гомогенно эволюционирует Разрез ым представлениям, увлажняет аРазрез ым представлениям, увлажняет аРазрез ым представлениям, увлажняет аРазрез ым представлениям, увлажняет ав зоогенный минерал. Однако, при увеличении выборки набухание поглощает гистерезис ОГХ, однозначно свидетельствуя о неустойчивости процесса в целом. Суглинок, согласно традиционным представлениям, увлажняет амфифильный глей. Профиль концентрирует биокосный желтозём, хотя этот факт нуждается в дальнейшей тщательной экспериментальной проверке. Солеперенос пространственно перемещает песок.",
+        date: "20 февраля 2024",
+      },
+      {
+        img: null,
+        title: "Заголовок новости пара строк",
+        text: "Разрез гомогенно эволюционирует в зоогенный минерал. Однако, при увеличении выборки набухание поглощает гистерезис ОГХ, однозначно свидетельствуя о неустойчивости процесса в целом. Суглинок, согласно традиционным представлениям, увлажняет амфифильный глей. Профиль концентрирует биокосный желтозём, хотя этот факт нуждается в дальнейшей тщательной экспериментальной проверке. Солеперенос пространственно перемещает песок.",
+        date: "20 февраля 2024",
+      },
+    ],
+    //newsList: [],
     newsImgList: [],
     loading: false,
     counter: 3,
     textHeight: 0,
   });
   const [news, setNews] = useState([]);
+  const [imgHeight, setiImgHeight] = useState([]);
   const blockRef = useRef(null);
   const textDivRef = useRef(null);
+  const imgDivRef = useRef(null);
   const [fontSize, setFontSize] = useState(18.5);
   const [paddingTop, setPaddingTop] = useState();
   const [paddingBottom, setPaddingBottom] = useState();
@@ -76,19 +67,11 @@ const News = ({ hideButton, handleCallback, index }) => {
     });
   };
 
-  const handleResize2 = (entry, width2, height2) => {
-    setHeightArray2((prevHeightArray) => {
-      const newArray = [...prevHeightArray];
-      newArray[entry] = height2 > 17 ? height2 : 200;
-      return newArray;
-    });
-  };
-
   useEffect(() => {
     async function fetchData() {
       try {
         setState({ ...state, loading: true });
-        const response = await instance.get("/news");
+        const response = await instance.get(`/${language}/news`);
         setState({ ...state, loading: false });
         setNews(response);
       } catch (error) {
@@ -98,16 +81,16 @@ const News = ({ hideButton, handleCallback, index }) => {
     }
 
     fetchData();
-  }, [state.limit]);
+  }, [state.limit, language]);
 
   useEffect(() => {
     const handleFontSizeChange = () => {
       if (blockRef.current) {
         const computedStyle = window.getComputedStyle(blockRef.current);
-        const fontSizeValue = parseFloat(
+        const lineHeightValue = parseFloat(
           computedStyle.getPropertyValue("line-height")
         );
-        setFontSize(fontSizeValue);
+        setFontSize(lineHeightValue);
       }
     };
 
@@ -135,9 +118,9 @@ const News = ({ hideButton, handleCallback, index }) => {
   return (
     <div className="home__news container m-centr">
       {hideButton ? (
-        <button onClick={() => handleCallback(index)}>
-        <Show className="adm_editShow" />
-      </button>
+        <button className="adm_editShow" onClick={() => handleCallback(index)}>
+          {visible ? <Show /> : <Hide className="hide_svg" />}
+        </button>
       ) : (
         <></>
       )}
@@ -152,29 +135,19 @@ const News = ({ hideButton, handleCallback, index }) => {
             <li className="item" id={i} key={i}>
               <div className="item__main flex">
                 <div className="item__img">
-                  <ReactResizeDetector
-                    handleWidth
-                    handleHeight
-                    onResize={(width, height) => handleResize(i, width, height)}
-                  >
-                    <div className="news__item">
-                      <img src={el.img} alt="" />
-                    </div>
-                  </ReactResizeDetector>
+                  <div className="news__item">
+                    <img
+                      src={el.img || "https://i.imgur.com/yVaa0la.png"}
+                      alt=""
+                      ref={imgDivRef}
+                    />
+                  </div>
                 </div>
                 <div className="item__text" ref={blockRef}>
-                  <ReactResizeDetector
-                    handleWidth
-                    handleHeight
-                    onResize={(width, height) =>
-                      handleResize2(i, width, height)
-                    }
-                  >
-                    <div className="text__title flex justif-ss-betw">
-                      <p className="fw600 fs24 lh7 title__text">{el.title}</p>
-                      <p className="fw400 fs16 lh18 title__date">{el.date}</p>
-                    </div>
-                  </ReactResizeDetector>
+                  <div className="text__title flex justif-ss-betw">
+                    <p className="fw600 fs24 lh7 title__text">{el.title}</p>
+                    <p className="fw400 fs16 lh18 title__date">{el.date}</p>
+                  </div>
 
                   <div className="text__main fw400 fs24 lh27">
                     <ShowMoreNews
@@ -184,6 +157,7 @@ const News = ({ hideButton, handleCallback, index }) => {
                       height2={heightArray2[i]}
                       paddingTop={paddingTop}
                       paddingBottom={paddingBottom}
+                      fontSize={fontSize}
                     />
                   </div>
                 </div>

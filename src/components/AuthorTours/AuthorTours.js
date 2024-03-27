@@ -7,12 +7,14 @@ import CardItem from "../cardItem/CardItem";
 import instance from "../../app/axiosClient";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { ReactComponent as Show } from "../../img/show.svg";
+import { ReactComponent as Hide } from "../../img/hidenEye.svg";
 
 export default function AuthorTours({
   runScroll,
   hideButton,
   handleCallback,
   index,
+  visible
 }) {
   const language = useSelector(
     (state) => state.persistantReducer.language.value
@@ -42,17 +44,11 @@ export default function AuthorTours({
   token == "" ? (token = localStorage.token) : (token = token);
   useEffect(() => {
     async function fetchData() {
-      let config = {
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-      };
       try {
         setLoading(true);
-        const response = await instance.get(
-          `/travel/${language}/tours?page=0&size=6`,
-          config
-        );
+        const response = await instance.get(`/travel/${language}/tours`, {
+          params: { size: 5, page: 0 },
+        });
         setCardsList(response.data);
         setLoading(false);
       } catch (error) {
@@ -62,14 +58,14 @@ export default function AuthorTours({
     }
 
     fetchData();
-  }, [token]);
+  }, [token, language]);
 
   return (
     <div className="cardslist container">
       {hideButton ? (
-        <button onClick={() => handleCallback(index)}>
-        <Show className="adm_editShow" />
-      </button>
+        <button className="adm_editShow" onClick={() => handleCallback(index)}>
+          {visible ? <Show /> : <Hide className="hide_svg" />}
+        </button>
       ) : (
         <></>
       )}
@@ -88,7 +84,7 @@ export default function AuthorTours({
                 key={index}
                 title={card.title}
                 description={card.introduction}
-                rating={card.rating}
+                rating={card.grade}
                 reviewsAmount={card.reviewsAmount}
                 img={card.img}
                 path={card.path}
