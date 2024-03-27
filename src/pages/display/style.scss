@@ -1,11 +1,13 @@
 .display {
   padding-top: 4.4rem;
   padding-bottom: 7.125rem;
+
   &__list {
     display: flex;
     flex-direction: column;
     gap: 50px;
   }
+  
   &__group {
     ul {
       display: grid;
@@ -13,6 +15,7 @@
       column-gap: 9px;
       row-gap: 22px;
       margin-top: 2.9375rem;
+
       li {
         padding: 10px;
         max-width: 323px;
@@ -20,10 +23,12 @@
         max-height: 200px;
         height: 12.5rem;
         border: 1px solid rgba(237, 237, 237, 1);
+        border-radius: 4px;
         display: flex;
         justify-content: center;
         align-items: center;
         box-shadow: 0px 4px 4px 0px #00000040;
+        background-color: white;
       }
     }
   }

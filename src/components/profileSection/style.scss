@@ -11,6 +11,10 @@
         display: flex;
         align-items: center;
         gap: 8px;
+
+        img {
+            user-select: none;
+        }
     }
     &__items {
         display: flex;

@@ -49,8 +49,8 @@ export default function TourEditorAdmin() {
     );
 
     const formInitialValues = {
-        'title': '',
-        'description': '',
+        'title': 'lorem ipsum',
+        'description': 'dolor sit amet',
         'type': 'TOURISM',
         'countryId': 1,
         'agencyId': 1,

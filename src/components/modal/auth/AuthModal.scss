@@ -57,12 +57,18 @@
       padding: 10px 32px;
       border-radius: 9999px;
       color: $fontGr;
+      transition-duration: .25s;
     }
     &.btn:last-of-type {
       margin-bottom: 0;
     }
     &.primarybtn {
       background-color: #e2e2e2;
+    }
+
+    &.btn.full {
+      background-color: $backgroundYl;
+      color: $fontBl;
     }
   }
 

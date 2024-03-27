@@ -4,9 +4,14 @@
   gap: 144px;
   width: 100%;
   padding-top: 32px;
+  padding-bottom: 32px;
 
   @media (max-width: $mobileBreakpoint) {
     flex-direction: column;
+  }
+
+  &__logo {
+    user-select: none;
   }
 
   &__list {

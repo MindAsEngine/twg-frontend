@@ -44,8 +44,7 @@ export default function AuthorTours({ runScroll }) {
       try {
         setLoading(true);
         const response = await instance.get(
-          `/travel/${language}/tours?page=0&size=6`,
-          config
+          `/travel/${language}/tours`
         );
         setCardsList(response.data);
         setLoading(false);
