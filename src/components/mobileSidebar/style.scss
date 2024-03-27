@@ -1,0 +1,48 @@
+@import "../../styles/base/variables.module.scss";
+
+.sidebar {
+    position: fixed;
+    inset: 0;
+    top: 88px;
+    background-color: $backgroundMainBlue;
+    z-index: -1;
+    padding: 20px;
+    color: $fontWh;
+
+    transform: translateX(100vw);
+    transition-duration: .35s;
+    transition-timing-function: ease-in-out;
+
+    &.show {
+        transform: translateX(0);
+    }
+
+    ul {
+        li {
+            line-height: 1.75;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        align-items: center;
+        margin-bottom: 24px;
+
+        button:not(.header__auth__avatar) {
+            margin: 0;
+            padding: 10px 24px;
+            border-radius: 9999px;
+            color: $fontBl;
+            font-family: inherit;
+            font-size: inherit;
+
+            &.sidebar__actions__registerbtn {
+                color: $fontWh;
+            }
+        }
+    }
+
+    @media screen and (min-width: $mobileBreakpoint) {
+        display: none;
+    }
+}

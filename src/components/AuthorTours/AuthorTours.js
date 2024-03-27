@@ -46,9 +46,11 @@ export default function AuthorTours({
     async function fetchData() {
       try {
         setLoading(true);
+
         const response = await instance.get(`/travel/${language}/tours`, {
           params: { size: 5, page: 0 },
         });
+
         setCardsList(response.data);
         setLoading(false);
       } catch (error) {

@@ -8,6 +8,7 @@
   background-color: white;
   box-shadow: 0px 4px 4px 0px #00000040;
   min-width: calc((100vw - 40px) / 4);
+  cursor: move;
 
   @media (max-width: $mobileBreakpoint) {
     min-width: calc(100vw - 40px);
@@ -34,7 +35,7 @@
 
   &__title {
     gap: 10px;
-    align-items: center;
+    align-items: start;
     p {
       font-weight: 700;
       font-size: 20px;
@@ -42,6 +43,8 @@
   }
   &__rating {
     white-space: nowrap;
+    margin-top: 4px;
+    user-select: none;
   }
   &__description {
     font-size: 16px;

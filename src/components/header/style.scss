@@ -5,14 +5,16 @@
     padding-top: 14px;
     padding-bottom: 14px;
 
-    @media (max-width: $mobileBreakpoint) {
-        padding-top: 21px;
-        padding-bottom: 22px;
+    @media screen and (max-width: $mobileBreakpoint) {
+        justify-content: space-between;
+        padding-top: 24px;
+        padding-bottom: 25px;
     }
 
     &__logo {
         user-select: none;
-        @media (max-width: $mobileBreakpoint) {
+        @media screen and (max-width: $mobileBreakpoint) {
+            order: 2;
             img {
                 width: 128px;
             }
@@ -29,8 +31,9 @@
             font-size: inherit;
             color: inherit;
         }
-        @media (max-width: $mobileBreakpoint) {
-            display: none;
+
+        @media screen and (max-width: $mobileBreakpoint) {
+            order: 1;
         }
     }
 
@@ -44,7 +47,7 @@
             text-align: center;
         }
 
-        @media (max-width: $mobileBreakpoint) {
+        @media screen and (max-width: $mobileBreakpoint) {
             display: none;
         }
     }
@@ -54,6 +57,10 @@
             padding: 10px 31px;
             border-radius: 9999px;
             font-family: inherit;
+        }
+
+        @media screen and (max-width: $mobileBreakpoint) {
+            display: none;
         }
 
         &__avatar {
@@ -69,7 +76,30 @@
     }
 
     &__registerbtn {
-        @media (max-width: $mobileBreakpoint) {
+        @media screen and (max-width: $mobileBreakpoint) {
+            display: none;
+        }
+    }
+
+    &__search {
+        @media screen and (max-width: $mobileBreakpoint) {
+            display: none;
+        }
+    }
+
+    &__mobilemenu {
+        order: 3;
+        user-select: none;
+        margin: 0 24px;
+
+        img {
+            --size: 28px;
+            width: var(--size);
+            height: var(--size);
+        }
+
+        // отображение только на небольших экранах
+        @media screen and (min-width: $mobileBreakpoint) {
             display: none;
         }
     }

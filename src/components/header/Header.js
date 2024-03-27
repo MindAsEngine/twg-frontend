@@ -13,8 +13,15 @@ import "./style.scss";
 
 import ModalAuthComponent from "../modal/auth/AuthModal";
 import StandartSvg from "../../img/userIcon.svg";
+
 import instance from "../../app/axiosClient";
 import { getUser } from "../../store/slices/User";
+
+import MenuIcon from "../../img/menuicon.svg";
+import WhiteX from "../../img/whitex.svg";
+
+import MobileSidebar from "../mobileSidebar/MobileSidebar";
+
 
 export const Header = () => {
   // авторизован ли пользователь или нет
@@ -53,6 +60,12 @@ export const Header = () => {
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [authModalTab, setAuthModalTab] = useState(0);
 
+  // отображение мобильного меню
+  const [showMobileSidebar, setShowMobileSidebar] = useState(false);
+  function handleSidebar() {
+    setShowMobileSidebar(curr => !curr);
+  }
+
   function openAuthModal(initTab) {
     setShowAuthModal(true);
     setAuthModalTab((current) => initTab);
@@ -85,11 +98,11 @@ export const Header = () => {
   return (
     <>
       <header className="header row align-cent flex bg2 container m-centr">
-        <Link to="/">
-          <div className="header__logo">
-            <img src={Logo} alt="" onDragStart={handleDragStart} />
-          </div>
-        </Link>
+        <div className="header__logo">
+          <Link to="/">
+          <img src={Logo} alt="" onDragStart={handleDragStart} />
+          </Link>
+        </div>
         <div className="header__i18n">
           <DropdownLg />
         </div>
@@ -132,6 +145,7 @@ export const Header = () => {
             </Link>
           )}
           {user && (
+
             <button className="header__auth__avatar">
               {userProfile.avatar ? (
                 <img src={userProfile.avatar} alt="Avatar" />
@@ -142,9 +156,22 @@ export const Header = () => {
                 />
               )}
             </button>
+
           )}
         </div>
+        <button className="header__mobilemenu" onClick={handleSidebar}>
+          {!showMobileSidebar && <img src={MenuIcon} alt="" onDragStart={e => e.preventDefault()} /> }
+          {showMobileSidebar && <img src={WhiteX} alt="" onDragStart={e => e.preventDefault()} /> }
+        </button>
       </header>
+
+      <MobileSidebar
+        show={showMobileSidebar}
+        changedText={changedText}
+        user={user}
+        openAuthModal={openAuthModal}
+        onAction={() => setShowMobileSidebar(false)}
+      />
 
       <ModalAuthComponent
         show={showAuthModal}

@@ -14,6 +14,7 @@ import ChevronIcon from "../../../img/chevron-left.svg";
 import instance from "../../../app/axiosClient";
 import { useNavigate } from "react-router-dom";
 import { changeToken } from "../../../store/slices/Token";
+import { values } from "lodash";
 
 // Вход
 function LoginUser({ switchTab }) {
@@ -68,7 +69,7 @@ function LoginUser({ switchTab }) {
           setSubmitting(false);
         }}
       >
-        {({ isSubmitting }) => (
+        {({ isSubmitting, values }) => (
           <Form>
             <div className="form-row">
               <label htmlFor="login">Логин или номер телефона</label>
@@ -89,7 +90,12 @@ function LoginUser({ switchTab }) {
               Забыли пароль?
             </button>
 
-            <button className="btn primarybtn">Войти</button>
+            <button
+              className={`btn primarybtn ${(values.username.trim().length > 0 && values.password.trim().length > 0) ? 'full' : ''}`}
+              disabled={!values.username.trim() || !values.password.trim()}
+            >
+              Войти
+            </button>
           </Form>
         )}
       </Formik>
@@ -163,7 +169,7 @@ function SignupUser({ switchTab }) {
           setSubmitting(false);
         }}
       >
-        {({ isSubmitting }) => (
+        {({ isSubmitting, values }) => (
           <Form>
             <div className="form-row">
               <label htmlFor="phone">Номер телефона</label>
@@ -227,7 +233,16 @@ function SignupUser({ switchTab }) {
               </ErrorMessage>
             </div>
 
-            <button className="btn primarybtn" style={{ marginTop: "24px" }}>
+            <button style={{ marginTop: "24px" }}
+              className={`btn primarybtn
+              ${(values.firstName.trim().length > 0 && values.lastName.trim().length > 0) &&
+                values.patronymic.trim().length > 0 && values.password.trim().length > 0 &&
+                values.email.trim().length > 0 && values.username.trim().length > 0 &&
+                values.phone.trim().length > 0 ? 'full' : ''}
+              `}
+              disabled={!values.firstName.trim() || !values.lastName.trim() || !values.patronymic.trim() ||
+                !values.password.trim() || !values.email.trim() || !values.username.trim() || !values.phone.trim() }
+            >
               Зарегистрироваться
             </button>
           </Form>
