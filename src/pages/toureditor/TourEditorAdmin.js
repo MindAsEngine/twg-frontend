@@ -248,29 +248,8 @@ export default function TourEditorAdmin() {
         { title: 'ru', component: <LanguageTabRU /> },
         { title: 'uz', component: <LanguageTabUZ /> },
         { title: 'en', component: <LanguageTabEN /> }
-<<<<<<< HEAD
     ]);
 
-    const handlePost = (values) => {
-        const formData = new FormData();
-        /*async function fetchData() {
-            try {
-                setState({ ...state, loading: true });
-                const response = await axios.post(
-                    "https://jsonplaceholder.typicode.com/todos"
-                );
-                setState({ ...state, loading: false });
-            } catch (error) {
-                setState({ ...state, loading: false });
-                console.log(error);
-            }
-        }
-
-        fetchData();*/
-    };
-=======
-    ])
->>>>>>> 910542ce421a86a555c7b48eb3f09d8a3d910a5c
 
     return (
         <div className="toureditor container">
