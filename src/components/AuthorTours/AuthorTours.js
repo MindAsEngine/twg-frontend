@@ -5,11 +5,13 @@ import { useSelector } from "react-redux";
 import "./authortours.scss";
 import CardItem from "../cardItem/CardItem";
 import instance from "../../app/axiosClient";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 export default function AuthorTours({ runScroll }) {
   const language = useSelector(
     (state) => state.persistantReducer.language.value
   );
+  const [page, setPage] = useState(1);
   const changedText =
     language === "RU"
       ? [
@@ -25,28 +27,26 @@ export default function AuthorTours({ runScroll }) {
           "Mualliflik sayohatlari",
           "Bizning mutaxassislar siz uchun eng yaxshi takliflarni maxsus tanlashdi",
         ];
-  const [cardsList, setCardsList] = useState([
-    
-  ]);
+  const [cardsList, setCardsList] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const ref = useRef();
   const { events } = useScrollOnDrag(ref);
-
+  let token = useSelector((state) => state.persistantReducer.token.value);
+  token == "" ? (token = localStorage.token) : (token = token);
   useEffect(() => {
-    let config = {
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("token"),
-      },
-    };
     async function fetchData() {
+      let config = {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      };
       try {
         setLoading(true);
         const response = await instance.get(
-          `/travel/${language}/tours`,
+          `/travel/${language}/tours?page=0&size=6`,
           config
         );
-        console.log(response.data);
         setCardsList(response.data);
         setLoading(false);
       } catch (error) {
@@ -56,7 +56,23 @@ export default function AuthorTours({ runScroll }) {
     }
 
     fetchData();
-  }, []);
+  }, [token]);
+
+  async function fetchData() {
+    try {
+      setLoading(true);
+      const response = await instance.get(
+        `/travel/${language}/tours?page=${page}&size=2`
+      );
+      setCardsList((prevCardsList) => [...prevCardsList, ...response.data]);
+      console.log(response.data);
+      setPage(page + 1);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+    }
+  }
 
   return (
     <div className="cardslist container">

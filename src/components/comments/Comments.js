@@ -7,7 +7,7 @@ import PaginatedItems from "./commentsPages/CommentsPagesNum";
 import CommentUser from "./CommentUser/CommentUser";
 import { useSelector } from "react-redux";
 
-const Comments = ({ hideButton }) => {
+const Comments = ({ hideButton, comments }) => {
   const userState = useSelector((el) => el.persistantReducer.user);
   const avatar = { img: "", name: "Имя Фамилия" };
 
@@ -49,35 +49,32 @@ const Comments = ({ hideButton }) => {
   const [bottomStyle, setBottomStyle] = useState(0);
 
   useEffect(() => {
-    if (userState.name !== null) {
-      const handleScroll = () => {
-        const footer = document.querySelector("footer");
+    const handleScroll = () => {
+      const footer = document.querySelector("footer");
 
-        const blockVisibility = footer.getBoundingClientRect();
+      const blockVisibility = footer.getBoundingClientRect();
 
-        const windowHeight = window.innerHeight;
-        const blockTop = blockVisibility.top;
-        const blockBottom = blockVisibility.bottom;
+      const windowHeight = window.innerHeight;
+      const blockTop = blockVisibility.top;
+      const blockBottom = blockVisibility.bottom;
 
-        const visibleHeight =
-          Math.min(blockBottom, windowHeight) - Math.max(blockTop, 0);
+      const visibleHeight =
+        Math.min(blockBottom, windowHeight) - Math.max(blockTop, 0);
 
-        if (visibleHeight > 15) {
-          // Тут проверка на сколько пикселей торчит footer
-          orderButton.current.classList.add("static");
-          firstBefore.current.classList.add("static");
-        } else {
-          orderButton.current.classList.remove("static");
-          firstBefore.current.classList.remove("static");
-        }
+      if (visibleHeight > 15) {
+        // Тут проверка на сколько пикселей торчит footer
+        orderButton.current.classList.add("static");
+        firstBefore.current.classList.add("static");
+      } else {
+        orderButton.current.classList.remove("static");
+        firstBefore.current.classList.remove("static");
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
 
-        window.addEventListener("scroll", handleScroll);
-
-        return () => {
-          window.removeEventListener("scroll", handleScroll);
-        };
-      };
-    }
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
   return (
     <section id="comments">
@@ -103,8 +100,9 @@ const Comments = ({ hideButton }) => {
           </div>
           <div className="comments__list"></div>
           <div className="comments__pages" ref={firstBefore}>
-            <PaginatedItems itemsPerPage={3} />
+            <PaginatedItems itemsPerPage={3} comments={comments} />
           </div>
+
           {userState.name !== null ? (
             <div
               className="comment__order flex justif-ss-cent"

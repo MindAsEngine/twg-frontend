@@ -15,6 +15,7 @@ import mapPanelSlice from "./slices/MapPanel.js";
 import languageSlice from "./slices/Language.js";
 import HomePageVisibility from "./slices/HomePageVisibility.js";
 import UserSlice from "./slices/User.js";
+import TokenSlice from "./slices/Token.js";
 
 const persistConfig = {
   key: "root",
@@ -26,6 +27,7 @@ const rootReducer = combineReducers({
   language: languageSlice,
   mapPanel: mapPanelSlice,
   visibilityIndex: HomePageVisibility,
+  token: TokenSlice
 });
 
 const persistantReducer = persistReducer(persistConfig, rootReducer);

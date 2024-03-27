@@ -23,9 +23,15 @@ const Attractions = lazy(() => import("./pages/attractions/Attractions"));
 const Hotel = lazy(() => import("./pages/hotel/Hotel"));
 const Profile = lazy(() => import("./pages/profile/Profile"));
 const ProfileAgent = lazy(() => import("./pages/profileAgent/ProfileAgent"));
-const TourEditorAdmin = lazy(() => import("./pages/toureditor/TourEditorAdmin"));
+const TourEditorAdmin = lazy(() =>
+  import("./pages/toureditor/TourEditorAdmin")
+);
+
 const TourEditorBus = lazy(() => import("./pages/toureditor/TourEditorBus"));
 const TourEditorMed = lazy(() => import("./pages/toureditor/TourEditorMed"));
+const AdminHomeEditor = lazy(() =>
+  import("./pages/adminHomeEditor/AdminHomeEditor")
+);
 
 const Wrapper = ({ children }) => {
   const location = useLocation();
@@ -60,9 +66,13 @@ function App() {
             <Route
               path="/const"
               element={
-                <Suspense fallback={<></>}>
-                  <Constructor />
-                </Suspense>
+                isAuthenticated ? (
+                  <Suspense fallback={<></>}>
+                    <Constructor />
+                  </Suspense>
+                ) : (
+                  <Navigate to="/" />
+                )
               }
             />
             <Route
@@ -114,25 +124,51 @@ function App() {
             <Route
               path="/toureditor/admin"
               element={
-                <Suspense fallback={<></>}>
-                  <TourEditorAdmin />
-                </Suspense>
+                isAuthenticated ? (
+                  <Suspense fallback={<></>}>
+                    <TourEditorAdmin />
+                  </Suspense>
+                ) : (
+                  <Navigate to="/" />
+                )
               }
             />
+
+            <Route
+              path="/admin/editpage"
+              element={
+                isAuthenticated ? (
+                  <Suspense fallback={<></>}>
+                    <AdminHomeEditor />
+                  </Suspense>
+                ) : (
+                  <Navigate to="/" />
+                )
+              }
+            />
+
             <Route
               path="/toureditor/bus"
               element={
-                <Suspense fallback={<></>}>
-                  <TourEditorBus />
-                </Suspense>
+                isAuthenticated ? (
+                  <Suspense fallback={<></>}>
+                    <TourEditorBus />
+                  </Suspense>
+                ) : (
+                  <Navigate to="/" />
+                )
               }
             />
             <Route
               path="/toureditor/med"
               element={
-                <Suspense fallback={<></>}>
-                  <TourEditorMed />
-                </Suspense>
+                isAuthenticated ? (
+                  <Suspense fallback={<></>}>
+                    <TourEditorMed />
+                  </Suspense>
+                ) : (
+                  <Navigate to="/" />
+                )
               }
             />
 

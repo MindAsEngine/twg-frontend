@@ -13,6 +13,7 @@ import "./AuthModal.scss";
 import ChevronIcon from "../../../img/chevron-left.svg";
 import instance from "../../../app/axiosClient";
 import { useNavigate } from "react-router-dom";
+import { changeToken } from "../../../store/slices/Token";
 
 // Вход
 function LoginUser({ switchTab }) {
@@ -27,11 +28,12 @@ function LoginUser({ switchTab }) {
     async function fetchData() {
       try {
         //setState({ ...state, loading: true });
-        const response = await instance.post("/auth/users/sign-in", values);
-        instance.defaults.headers.common["Authorization"] =
-          "Bearer " + response.data.token;
+        const response = await instance.post("/auth/users/sign-in", values, {
+          headers: {},
+        });
+
         dispatch(getUser(values));
-        localStorage.setItem("token", response.data.token);
+        dispatch(changeToken(response.data.token));
         //Обновление страницы после получения данных в redux
         window.location.reload();
       } catch (error) {
@@ -122,7 +124,6 @@ function SignupUser({ switchTab }) {
       try {
         //setState({ ...state, loading: true });
         const response = await instance.post("/auth/users/sign-up", values);
-        instance.defaults.headers.common["token"] = response.data.token;
 
         dispatch(getUser(values));
         localStorage.setItem("token", response.data.token);

@@ -13,20 +13,14 @@ import TagsList from "../../components/tags/TagsList";
 import Album from "../../components/album/Album";
 
 const Tur = ({ link }) => {
+  const token = useSelector((state) => state.persistantReducer.token.value);
   useEffect(() => {
     async function fetchData() {
-      let config = {
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("token"),
-        },
-      };
       try {
         setState({ ...state, loading: true });
         const response = await instance.get(
-          `/travel/${language}/tours/get?slug=${id || link}`,
-          config
+          `/travel/${language}/tours/get?slug=${id || link}`
         );
-        console.log(response.data);
         setState({ ...state, loading: false });
         setState({ ...state, pageContent: response.data });
       } catch (error) {
@@ -36,7 +30,7 @@ const Tur = ({ link }) => {
     }
 
     fetchData();
-  }, []);
+  }, [token]);
   const language = useSelector(
     (state) => state.persistantReducer.language.value
   );
@@ -92,8 +86,19 @@ const Tur = ({ link }) => {
       <section id="about-tur">
         <div className="tur__about container m-centr pd">
           <div className="section__title m-centr fs24 fw400 lh22">О туре</div>
-          <ShowMoreContent content={<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio atque corporis incidunt fuga voluptates tempore aperiam, vel officiis nobis sint alias eum, itaque mollitia impedit! Repudiandae quisquam quas natus sit.
-          Modi, debitis magni veniam amet laudantium sequi sint eligendi id unde iure, saepe ex velit ipsam odio illum quaerat quod fugiat voluptate provident est temporibus eius aspernatur dolor accusamus. Quos?</p>} />
+          <ShowMoreContent
+            content={
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Distinctio atque corporis incidunt fuga voluptates tempore
+                aperiam, vel officiis nobis sint alias eum, itaque mollitia
+                impedit! Repudiandae quisquam quas natus sit. Modi, debitis
+                magni veniam amet laudantium sequi sint eligendi id unde iure,
+                saepe ex velit ipsam odio illum quaerat quod fugiat voluptate
+                provident est temporibus eius aspernatur dolor accusamus. Quos?
+              </p>
+            }
+          />
           <div className="tur__photo m-centr">
             <img src={turNo} alt="" className="ad__img" />
           </div>
@@ -125,13 +130,9 @@ const Tur = ({ link }) => {
           <MapsWithSideBar hotels={state.pageContent.hotels} />
         </div>
       </section>
-      {state.pageContent.comments > 0 ? (
-        <section id="comments">
-          <Comments />
-        </section>
-      ) : (
-        <></>
-      )}
+      <section id="comments">
+        <Comments comments={state.pageContent.comments} />
+      </section>
     </div>
   );
 };

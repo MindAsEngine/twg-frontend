@@ -172,11 +172,11 @@ function Items({ currentItems }) {
   );
 }
 
-function PaginatedItems({ itemsPerPage }) {
+function PaginatedItems({ itemsPerPage, comments }) {
   const [itemOffset, setItemOffset] = useState(0);
 
   const endOffset = itemOffset + itemsPerPage;
-  const currentItems = items.slice(itemOffset, endOffset);
+  const currentItems = comments;
   const pageCount = Math.ceil(items.length / itemsPerPage);
 
   const handlePageClick = (event) => {
@@ -184,7 +184,7 @@ function PaginatedItems({ itemsPerPage }) {
     setItemOffset(newOffset);
   };
 
-  return (
+  return comments > 0 ? (
     <>
       <Items currentItems={currentItems} />
       <ReactPaginate
@@ -198,6 +198,10 @@ function PaginatedItems({ itemsPerPage }) {
         renderOnZeroPageCount={null}
       />
     </>
+  ) : (
+    <div className="no-comments flex justif-ss-cent">
+      <p className="fw400 fs32 lh22">На этот тур отзывов еще нет</p>
+    </div>
   );
 }
 

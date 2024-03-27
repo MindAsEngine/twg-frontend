@@ -10,23 +10,21 @@ const MapTurs = () => {
   const language = useSelector(
     (state) => state.persistantReducer.language.value
   );
-  const [cardsList, setCardsList] = useState([
-   
-  ]);
+  const token = useSelector((state) => state.persistantReducer.token.value);
+  const [cardsList, setCardsList] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    let config = {
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("token"),
-      },
-    };
     async function fetchData() {
+      // let config = {
+      //   headers: {
+      //     Authorization: "Bearer " + token,
+      //   },
+      // };
       try {
         setLoading(true);
         const response = await instance.get(
-          `/travel/${language}/tours`,
-          config
+          `/travel/${language}/tours`
         );
         console.log(response.data);
         setCardsList(response.data);
@@ -38,7 +36,7 @@ const MapTurs = () => {
     }
 
     fetchData();
-  }, []);
+  }, [token]);
   const ref = useRef();
   const { events } = useScrollOnDrag(ref);
   return (

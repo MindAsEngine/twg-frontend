@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from "axios";
 
 /* Создание нескольких путей:
 
@@ -20,7 +20,7 @@ import axios from 'axios'
 // instance1.get('/endpoint1')
 
 const instance = axios.create({
-  baseURL: `${process.env.REACT_APP_PUBLIC_SERVER_URL}`, // Тут мы берем значение пути базовое из окружения (.env)
-})
+  baseURL: `${process.env.REACT_APP_PUBLIC_SERVER_URL}`,
+});
 
-export default instance
+export default instance;

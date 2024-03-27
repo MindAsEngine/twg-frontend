@@ -13,6 +13,7 @@ const Hotel = ({ link }) => {
   const language = useSelector(
     (state) => state.persistantReducer.language.value
   );
+  const token = useSelector((state) => state.persistantReducer.token.value);
   //Тут мы добавляем возможность получения id из url. Т.к. могут отправить ссылку на тур
   const { id } = useParams();
   const [state, setState] = useState({
@@ -21,16 +22,10 @@ const Hotel = ({ link }) => {
   });
   useEffect(() => {
     async function fetchData() {
-      let config = {
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("token"),
-        },
-      };
       try {
         setState({ ...state, loading: true });
         const response = await instance.get(
-          `/travel/${language}/hotels/get?id=${id || link}`,
-          config
+          `/travel/${language}/hotels/get?id=${id || link}`
         );
         console.log(response);
         setState({ ...state, loading: false });
@@ -42,7 +37,7 @@ const Hotel = ({ link }) => {
     }
 
     fetchData();
-  }, []);
+  }, [token]);
   return (
     <div className="tur">
       <section id="preview">
